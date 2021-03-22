@@ -601,17 +601,16 @@ mod tests {
 	use secp_utils::*;
 
 	use sp_core::H256;
-	use parity_scale_codec::Encode;
+	use codec::Encode;
 	// The testing primitives are very useful for avoiding having to work with signatures
 	// or public keys. `u64` is used as the `AccountId` and no `Signature`s are required.
 	use sp_runtime::{traits::{BlakeTwo256, IdentityLookup, Identity}, testing::Header};
 	use frame_support::{
 		assert_ok, assert_err, assert_noop, parameter_types,
 		ord_parameter_types, weights::{Pays, GetDispatchInfo}, traits::ExistenceRequirement,
-		dispatch::DispatchError::BadOrigin,
 	};
 	use pallet_balances;
-	use crate::claims;
+	use crate as claims;
 	use claims::Call as ClaimsCall;
 
 	type UncheckedExtrinsic = frame_system::mocking::MockUncheckedExtrinsic<Test>;
@@ -695,7 +694,6 @@ mod tests {
 		type Event = Event;
 		type VestingSchedule = Vesting;
 		type Prefix = Prefix;
-		type MoveClaimOrigin = frame_system::EnsureSignedBy<Six, u64>;
 		type WeightInfo = TestWeightInfo;
 	}
 
@@ -767,27 +765,6 @@ mod tests {
 			assert_eq!(Balances::free_balance(&42), 100);
 			assert_eq!(Vesting::vesting_balance(&42), Some(50));
 			assert_eq!(Claims::total(), total_claims() - 100);
-		});
-	}
-
-	#[test]
-	fn basic_claim_moving_works() {
-		new_test_ext().execute_with(|| {
-			assert_eq!(Balances::free_balance(42), 0);
-			assert_noop!(Claims::claim(Origin::none(), 42, sig::<Test>(&alice(), &42u64.encode(), &[][..])), Error::<Test>::SignerHasNoClaim);
-			assert_ok!(Claims::claim(Origin::none(), 42, sig::<Test>(&bob(), &42u64.encode(), &[][..])));
-			assert_eq!(Balances::free_balance(&42), 100);
-			assert_eq!(Vesting::vesting_balance(&42), Some(50));
-			assert_eq!(Claims::total(), total_claims() - 100);
-		});
-	}
-
-	#[test]
-	fn claim_attest_moving_works() {
-		new_test_ext().execute_with(|| {
-			let s = sig::<Test>(&bob(), &42u64.encode(), StatementKind::Regular.to_text());
-			assert_ok!(Claims::claim_attest(Origin::none(), 42, s, StatementKind::Regular.to_text().to_vec()));
-			assert_eq!(Balances::free_balance(&42), 200);
 		});
 	}
 
