@@ -1,0 +1,64 @@
+[package]
+authors = ['Anonymous']
+edition = '2018'
+name = 'claims'
+version = "2.0.0"
+license = "Unlicense"
+homepage = "https://substrate.dev"
+repository = "https://github.com/paritytech/substrate/"
+description = "FRAME pallet template for defining custom runtime logic."
+readme = "README.md"
+
+[dependencies.frame-system]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+
+[dependencies.frame-support]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+
+[dependencies.sp-runtime]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+
+[dependencies.sp-std]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+
+[dependencies.sp-io]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+
+[dependencies.codec]
+default-features = false
+features = ['derive']
+package = 'parity-scale-codec'
+version = '2.0.0'
+
+[dependencies]
+rustc-hex = { version = "2.1.0", default-features = false }
+serde = { version = "1.0.123", default-features = false }
+
+[features]
+default = ['std']
+no_std = []
+std = [
+  'codec/std',
+  'frame-system/std',
+  'frame-support/std',
+  'sp-runtime/std',
+  'sp-io/std',
+  'sp-std/std',
+  "rustc-hex/std",
+	"serde/std",
+]
