@@ -7,7 +7,7 @@
 
 use std::sync::Arc;
 
-use acuity_runtime::{opaque::Block, AccountId, Balance, Index, BlockNumber};
+use node_primitives::{Block, BlockNumber, AccountId, Index, Balance, Hash};
 use sp_api::ProvideRuntimeApi;
 use sp_blockchain::{Error as BlockChainError, HeaderMetadata, HeaderBackend};
 use sp_block_builder::BlockBuilder;
