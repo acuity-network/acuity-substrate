@@ -127,14 +127,18 @@ impl_opaque_keys! {
 	}
 }
 
+/// Runtime version (Acuity).
 pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("acuity"),
-	impl_name: create_runtime_str!("acuity"),
+	impl_name: create_runtime_str!("acuity-substrate"),
 	authoring_version: 1,
-	spec_version: 1,
-	impl_version: 1,
+	spec_version: 6,
+	impl_version: 0,
+	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
-	transaction_version: 1,
+	#[cfg(feature = "disable-runtime-api")]
+	apis: version::create_apis_vec![[]],
+	transaction_version: 2,
 };
 
 /// Change this to adjust the block time.
