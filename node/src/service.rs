@@ -13,7 +13,14 @@ use sc_network::{Event, NetworkService};
 use sp_runtime::traits::Block as BlockT;
 use futures::prelude::*;
 use sc_client_api::{ExecutorProvider, RemoteBackend};
-use node_executor::Executor;
+use sc_executor::native_executor_instance;
+// Our native executor instance.
+native_executor_instance!(
+	pub Executor,
+	acuity_runtime::api::dispatch,
+	acuity_runtime::native_version,
+	frame_benchmarking::benchmarking::HostFunctions,
+);
 use sc_telemetry::{TelemetryConnectionNotifier, TelemetrySpan};
 
 type FullClient = sc_service::TFullClient<Block, RuntimeApi, Executor>;
