@@ -1,7 +1,7 @@
 [dependencies]
 jsonrpc-core = '15.1.0'
-structopt = '0.3.8'
 futures = { version = "0.3.9", features = ["compat"] }
+structopt = { version = "0.3.8", optional = true }
 
 [dependencies.frame-benchmarking]
 git = 'https://github.com/paritytech/substrate.git'
@@ -14,9 +14,32 @@ branch = "polkadot-v0.8.29"
 version = '3.0.0'
 optional = true
 
+[dependencies.node-inspect]
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '0.8.0'
+optional = true
+
+[dependencies.try-runtime-cli]
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '0.9.0'
+optional = true
+
 [dependencies.acuity-runtime]
 path = '../runtime'
 version = '2.0.0'
+
+[dependencies.node-executor]
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '2.0.0'
+
+[target.'cfg(target_arch="x86_64")'.dependencies.node-executor]
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '2.0.0'
+features = [ "wasmtime" ]
 
 [dependencies.node-rpc]
 git = 'https://github.com/paritytech/substrate.git'
@@ -53,6 +76,12 @@ git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
 version = '0.9.0'
 
+[dependencies.sc-finality-grandpa-warp-sync]
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '0.9.0'
+optional = true
+
 [dependencies.sc-basic-authorship]
 git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
@@ -63,6 +92,7 @@ features = ['wasmtime']
 git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
 version = '0.9.0'
+optional = true
 
 [dependencies.sc-client-api]
 git = 'https://github.com/paritytech/substrate.git'
@@ -190,19 +220,45 @@ version = '3.0.0'
 git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
 version = '3.0.0'
+
 [build-dependencies.substrate-build-script-utils]
 git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
 version = '3.0.0'
+optional = true
+
+[build-dependencies.substrate-frame-cli]
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+optional = true
 
 [[bin]]
 name = 'acuity'
 
 [features]
-default = []
+default = [ "cli" ]
+cli = [
+	"node-executor/wasmi-errno",
+	"node-inspect",
+	"sc-cli",
+	"frame-benchmarking-cli",
+	"substrate-frame-cli",
+	"sc-service/db",
+	"sc-finality-grandpa-warp-sync",
+	"structopt",
+	"substrate-build-script-utils",
+	"try-runtime-cli",
+]
 runtime-benchmarks = [
 	"acuity-runtime/runtime-benchmarks",
 	"frame-benchmarking-cli",
+]
+# Enable features that allow the runtime to be tried and debugged. Name might be subject to change
+# in the near future.
+try-runtime = [
+	"acuity-runtime/try-runtime",
+	"try-runtime-cli",
 ]
 
 [package]
