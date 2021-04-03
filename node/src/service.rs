@@ -461,8 +461,8 @@ mod tests {
 		RecordProof,
 	};
 	use node_primitives::{Block, DigestItem, Signature};
-	use node_runtime::{BalancesCall, Call, UncheckedExtrinsic, Address};
-	use node_runtime::constants::{currency::CENTS, time::SLOT_DURATION};
+	use acuity_runtime::{BalancesCall, Call, UncheckedExtrinsic, Address};
+	use acuity_runtime::constants::{currency::CENTS, time::SLOT_DURATION};
 	use codec::Encode;
 	use sp_core::{
 		crypto::Pair as CryptoPair,
