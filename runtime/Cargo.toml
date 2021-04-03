@@ -6,14 +6,36 @@ version = '4.0.0'
 [features]
 default = ['std']
 runtime-benchmarks = [
-    'sp-runtime/runtime-benchmarks',
-    'frame-benchmarking',
-    'frame-support/runtime-benchmarks',
-    'frame-system-benchmarking',
-    'hex-literal',
-    'frame-system/runtime-benchmarks',
-    'pallet-balances/runtime-benchmarks',
-    'pallet-timestamp/runtime-benchmarks',
+	"frame-benchmarking",
+	"frame-support/runtime-benchmarks",
+	"frame-system/runtime-benchmarks",
+	"pallet-election-provider-multi-phase/runtime-benchmarks",
+	"sp-runtime/runtime-benchmarks",
+	"pallet-babe/runtime-benchmarks",
+	"pallet-balances/runtime-benchmarks",
+	"pallet-bounties/runtime-benchmarks",
+	"pallet-collective/runtime-benchmarks",
+	"pallet-contracts/runtime-benchmarks",
+	"pallet-democracy/runtime-benchmarks",
+	"pallet-elections-phragmen/runtime-benchmarks",
+	"pallet-grandpa/runtime-benchmarks",
+	"pallet-identity/runtime-benchmarks",
+	"pallet-im-online/runtime-benchmarks",
+	"pallet-indices/runtime-benchmarks",
+	"pallet-multisig/runtime-benchmarks",
+	"pallet-proxy/runtime-benchmarks",
+	"pallet-scheduler/runtime-benchmarks",
+  "pallet-society/runtime-benchmarks",
+	"pallet-staking/runtime-benchmarks",
+	"pallet-timestamp/runtime-benchmarks",
+	"pallet-treasury/runtime-benchmarks",
+	"pallet-utility/runtime-benchmarks",
+	"pallet-vesting/runtime-benchmarks",
+  "claims/runtime-benchmarks",
+	"pallet-offences-benchmarking",
+	"pallet-session-benchmarking",
+	"frame-system-benchmarking",
+	"hex-literal",
 ]
 std = [
     'codec/std',
@@ -45,6 +67,7 @@ std = [
     'pallet-staking/std',
     'pallet-session/std',
     'pallet-scheduler/std',
+    'pallet-society/std',
     'pallet-sudo/std',
     'pallet-timestamp/std',
     'pallet-treasury/std',
@@ -231,6 +254,13 @@ git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
 version = '3.0.0'
 
+[dependencies.pallet-offences-benchmarking]
+default-features = false
+optional = true
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+
 [dependencies.pallet-grandpa]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
@@ -252,6 +282,19 @@ version = '3.0.0'
 [dependencies.pallet-session]
 default-features = false
 features = ["historical"]
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+
+[dependencies.pallet-session-benchmarking]
+default-features = false
+optional = true
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.8.29"
+version = '3.0.0'
+
+[dependencies.pallet-society]
+default-features = false
 git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
 version = '3.0.0'

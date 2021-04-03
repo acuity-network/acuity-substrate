@@ -54,6 +54,8 @@ version = '2.0.0'
 [dependencies]
 rustc-hex = { version = "2.1.0", default-features = false }
 serde = { version = "1.0.123", default-features = false }
+frame-benchmarking = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.8.29", default-features = false, optional = true }
+libsecp256k1 = { version = "0.3.5", default-features = false, optional = true }
 
 [dev-dependencies]
 pallet-balances = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.8.29", default-features = false }
@@ -75,4 +77,10 @@ std = [
   'sp-core/std',
   'rustc-hex/std',
 	'serde/std',
+]
+runtime-benchmarks = [
+	"libsecp256k1/hmac",
+	"frame-benchmarking",
+	"frame-support/runtime-benchmarks",
+	"frame-system/runtime-benchmarks",
 ]

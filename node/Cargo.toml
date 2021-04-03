@@ -12,6 +12,7 @@ version = '3.0.0'
 git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
 version = '3.0.0'
+optional = true
 
 [dependencies.acuity-runtime]
 path = '../runtime'
@@ -199,7 +200,10 @@ name = 'acuity'
 
 [features]
 default = []
-runtime-benchmarks = ['acuity-runtime/runtime-benchmarks']
+runtime-benchmarks = [
+	"acuity-runtime/runtime-benchmarks",
+	"frame-benchmarking-cli",
+]
 
 [package]
 authors = ['Anonymous']

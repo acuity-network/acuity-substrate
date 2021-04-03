@@ -1109,7 +1109,6 @@ mod benchmarking {
 	use frame_benchmarking::{benchmarks, account};
 	use sp_runtime::DispatchResult;
 	use sp_runtime::traits::ValidateUnsigned;
-	use crate::claims::Call;
 
 	const SEED: u32 = 0;
 
