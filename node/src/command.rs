@@ -1,6 +1,13 @@
 use crate::{chain_spec, service};
 use crate::cli::{Cli, Subcommand};
-use node_executor::Executor;
+use sc_executor::native_executor_instance;
+// Our native executor instance.
+native_executor_instance!(
+	pub Executor,
+	acuity_runtime::api::dispatch,
+	acuity_runtime::native_version,
+	frame_benchmarking::benchmarking::HostFunctions,
+);
 use sc_cli::{Result, SubstrateCli, RuntimeVersion, Role, ChainSpec};
 use sc_service::PartialComponents;
 use acuity_runtime::{Block, RuntimeApi};

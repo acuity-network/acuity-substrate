@@ -37,17 +37,6 @@ optional = true
 path = '../runtime'
 version = '2.0.0'
 
-[dependencies.node-executor]
-git = 'https://github.com/paritytech/substrate.git'
-branch = "polkadot-v0.8.29"
-version = '2.0.0'
-
-[target.'cfg(target_arch="x86_64")'.dependencies.node-executor]
-git = 'https://github.com/paritytech/substrate.git'
-branch = "polkadot-v0.8.29"
-version = '2.0.0'
-features = [ "wasmtime" ]
-
 [dependencies.node-rpc]
 git = 'https://github.com/paritytech/substrate.git'
 branch = "polkadot-v0.8.29"
@@ -285,7 +274,6 @@ name = 'acuity'
 [features]
 default = [ "cli" ]
 cli = [
-	"node-executor/wasmi-errno",
 	"node-inspect",
 	"sc-cli",
 	"frame-benchmarking-cli",
