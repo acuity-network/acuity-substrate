@@ -3,47 +3,17 @@
 #![recursion_limit="256"]
 
 use sp_std::prelude::*;
-use sp_core::{
-	crypto::KeyTypeId,
-	u32_trait::{_1, _2, _3, _4, _5},
-	OpaqueMetadata,
-};
-use sp_runtime::{
-	Permill, Perbill, Perquintill, Percent, ApplyExtrinsicResult, impl_opaque_keys, generic,
-	create_runtime_str, ModuleId, FixedPointNumber,
-    transaction_validity::{TransactionValidity, TransactionSource, TransactionPriority},
-};
-use sp_runtime::traits::{
-	self, BlakeTwo256, Block as BlockT, StaticLookup, SaturatedConversion, NumberFor, ConvertInto, OpaqueKeys,
-};
-pub use node_primitives::{AccountId, Signature};
-use node_primitives::{AccountIndex, Balance, BlockNumber, Hash, Index, Moment};
-use sp_api::impl_runtime_apis;
-use pallet_grandpa::{AuthorityId as GrandpaId, AuthorityList as GrandpaAuthorityList};
-use pallet_grandpa::fg_primitives;
-use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
-use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
-use sp_version::RuntimeVersion;
-#[cfg(feature = "std")]
-use sp_version::NativeVersion;
-use static_assertions::const_assert;
-
-// A few exports that help ease life for downstream crates.
-#[cfg(any(feature = "std", test))]
-pub use sp_runtime::BuildStorage;
-pub use pallet_timestamp::Call as TimestampCall;
-pub use pallet_balances::Call as BalancesCall;
-use sp_runtime::curve::PiecewiseLinear;
-pub use frame_support::{
-	construct_runtime, parameter_types, StorageValue, debug, RuntimeDebug,
+use frame_support::{
+	construct_runtime, parameter_types, debug, RuntimeDebug,
 	weights::{
 		Weight, IdentityFee,
 		constants::{BlockExecutionWeight, ExtrinsicBaseWeight, RocksDbWeight, WEIGHT_PER_SECOND},
-        DispatchClass
+		DispatchClass,
 	},
-    traits::{
-        Currency, Imbalance, OnUnbalanced, KeyOwnerProofSystem, Randomness, U128CurrencyToVote, LockIdentifier,
-    },
+	traits::{
+		Currency, Imbalance, KeyOwnerProofSystem, OnUnbalanced, Randomness, LockIdentifier,
+		U128CurrencyToVote,
+	},
 };
 use frame_system::{
 	EnsureRoot, EnsureOneOf,
@@ -51,15 +21,46 @@ use frame_system::{
 };
 use frame_support::traits::InstanceFilter;
 use codec::{Encode, Decode};
+use sp_core::{
+	crypto::KeyTypeId,
+	u32_trait::{_1, _2, _3, _4, _5},
+	OpaqueMetadata,
+};
+pub use node_primitives::{AccountId, Signature};
+use node_primitives::{AccountIndex, Balance, BlockNumber, Hash, Index, Moment};
+use sp_api::impl_runtime_apis;
+use sp_runtime::{
+	Permill, Perbill, Perquintill, Percent, ApplyExtrinsicResult, impl_opaque_keys, generic,
+	create_runtime_str, ModuleId, FixedPointNumber,
+};
+use sp_runtime::curve::PiecewiseLinear;
+use sp_runtime::transaction_validity::{TransactionValidity, TransactionSource, TransactionPriority};
+use sp_runtime::traits::{
+	self, BlakeTwo256, Block as BlockT, StaticLookup, SaturatedConversion, ConvertInto, OpaqueKeys,
+	NumberFor,
+};
+use sp_version::RuntimeVersion;
+#[cfg(any(feature = "std", test))]
+use sp_version::NativeVersion;
+use pallet_grandpa::{AuthorityId as GrandpaId, AuthorityList as GrandpaAuthorityList};
+use pallet_grandpa::fg_primitives;
+use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
+use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
 use pallet_transaction_payment::{FeeDetails, RuntimeDispatchInfo};
 pub use pallet_transaction_payment::{Multiplier, TargetedFeeAdjustment, CurrencyAdapter};
 use pallet_session::{historical as pallet_session_historical};
 use sp_inherents::{InherentData, CheckInherentsResult};
+use static_assertions::const_assert;
+use pallet_contracts::weights::WeightInfo;
 
 #[cfg(any(feature = "std", test))]
+pub use sp_runtime::BuildStorage;
+#[cfg(any(feature = "std", test))]
+pub use pallet_balances::Call as BalancesCall;
+#[cfg(any(feature = "std", test))]
+pub use frame_system::Call as SystemCall;
+#[cfg(any(feature = "std", test))]
 pub use pallet_staking::StakerStatus;
-
-mod weights;
 
 /// Implementations of some helper traits passed into runtime modules as associated types.
 pub mod impls;
@@ -68,6 +69,8 @@ use impls::Author;
 pub mod constants;
 use constants::{time::*, currency::*};
 use sp_runtime::generic::Era;
+
+mod weights;
 
 #[cfg(feature = "std")]
 include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
@@ -79,8 +82,6 @@ pub fn wasm_binary_unwrap() -> &'static [u8] {
 						built with `SKIP_WASM_BUILD` flag and it is only usable for \
 						production chains. Please rebuild with the flag disabled.")
 }
-
-use pallet_contracts::weights::WeightInfo;
 
 /// Runtime version (Acuity).
 pub const VERSION: RuntimeVersion = RuntimeVersion {
