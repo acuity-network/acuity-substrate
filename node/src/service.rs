@@ -36,9 +36,9 @@ pub fn new_partial(config: &Configuration) -> Result<sc_service::PartialComponen
 	sc_transaction_pool::FullPool<Block, FullClient>,
 	(
 		impl Fn(
-			node_rpc::DenyUnsafe,
+			crate::rpc::DenyUnsafe,
 			sc_rpc::SubscriptionTaskExecutor,
-		) -> node_rpc::IoHandler,
+		) -> crate::rpc::IoHandler,
 		(
 			sc_consensus_babe::BabeBlockImport<Block, FullClient, FullGrandpaBlockImport>,
 			sc_finality_grandpa::LinkHalf<Block, FullClient, FullSelectChain>,
@@ -111,18 +111,18 @@ pub fn new_partial(config: &Configuration) -> Result<sc_service::PartialComponen
 		let chain_spec = config.chain_spec.cloned_box();
 
 		let rpc_extensions_builder = move |deny_unsafe, subscription_executor| {
-			let deps = node_rpc::FullDeps {
+			let deps = crate::rpc::FullDeps {
 				client: client.clone(),
 				pool: pool.clone(),
 				select_chain: select_chain.clone(),
 				chain_spec: chain_spec.cloned_box(),
 				deny_unsafe,
-				babe: node_rpc::BabeDeps {
+				babe: crate::rpc::BabeDeps {
 					babe_config: babe_config.clone(),
 					shared_epoch_changes: shared_epoch_changes.clone(),
 					keystore: keystore.clone(),
 				},
-				grandpa: node_rpc::GrandpaDeps {
+				grandpa: crate::rpc::GrandpaDeps {
 					shared_voter_state: shared_voter_state.clone(),
 					shared_authority_set: shared_authority_set.clone(),
 					justification_stream: justification_stream.clone(),
@@ -131,7 +131,7 @@ pub fn new_partial(config: &Configuration) -> Result<sc_service::PartialComponen
 				},
 			};
 
-			node_rpc::create_full(deps)
+			crate::rpc::create_full(deps)
 		};
 
 		(rpc_extensions_builder, rpc_setup)
@@ -415,14 +415,14 @@ pub fn new_light_base(mut config: Configuration) -> Result<(
 		);
 	}
 
-	let light_deps = node_rpc::LightDeps {
+	let light_deps = crate::rpc::LightDeps {
 		remote_blockchain: backend.remote_blockchain(),
 		fetcher: on_demand.clone(),
 		client: client.clone(),
 		pool: transaction_pool.clone(),
 	};
 
-	let rpc_extensions = node_rpc::create_light(light_deps);
+	let rpc_extensions = crate::rpc::create_light(light_deps);
 
 	let telemetry_span = TelemetrySpan::new();
 	let _telemetry_span_entered = telemetry_span.enter();
