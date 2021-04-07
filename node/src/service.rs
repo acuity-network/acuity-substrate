@@ -2,7 +2,7 @@
 
 use std::sync::Arc;
 use sc_consensus_babe;
-use node_primitives::Block;
+use acuity_runtime::opaque::Block;
 use acuity_runtime::{self, RuntimeApi};
 use sc_service::{
 	config::{Configuration}, error::{Error as ServiceError},
@@ -467,7 +467,7 @@ mod tests {
 		Environment, Proposer, BlockImportParams, BlockOrigin, ForkChoiceStrategy, BlockImport,
 		RecordProof,
 	};
-	use node_primitives::{Block, DigestItem, Signature};
+	use acuity_runtime::{opaque::Block, DigestItem, Signature};
 	use acuity_runtime::{BalancesCall, Call, UncheckedExtrinsic, Address};
 	use acuity_runtime::constants::{currency::CENTS, time::SLOT_DURATION};
 	use codec::Encode;

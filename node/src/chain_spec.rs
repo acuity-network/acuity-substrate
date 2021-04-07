@@ -20,7 +20,7 @@ use sc_service::ChainType;
 use hex_literal::hex;
 use sc_telemetry::TelemetryEndpoints;
 
-pub use node_primitives::{AccountId, Balance, Signature};
+pub use acuity_runtime::{AccountId, Balance, Signature};
 
 
 // The URL for the telemetry server.

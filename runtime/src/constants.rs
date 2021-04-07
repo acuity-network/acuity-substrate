@@ -19,7 +19,7 @@
 
 /// Money matters.
 pub mod currency {
-	use node_primitives::Balance;
+	use crate::Balance;
 
 	pub const ACU: Balance = 1_000_000_000_000_000_000;
 	pub const DOLLARS: Balance = ACU / 6;
@@ -33,7 +33,7 @@ pub mod currency {
 
 /// Time.
 pub mod time {
-	use node_primitives::{Moment, BlockNumber};
+	use crate::{Moment, BlockNumber};
 
 	/// Since BABE is probabilistic this is the average expected block time that
 	/// we are targeting. Blocks will be produced at a minimum duration defined

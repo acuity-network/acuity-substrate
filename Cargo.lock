@@ -22,7 +22,6 @@ dependencies = [
  "hex-literal",
  "jsonrpc-core",
  "node-inspect",
- "node-primitives",
  "pallet-contracts",
  "pallet-contracts-rpc",
  "pallet-im-online",
@@ -87,7 +86,6 @@ dependencies = [
  "frame-system-rpc-runtime-api",
  "frame-try-runtime",
  "hex-literal",
- "node-primitives",
  "pallet-authority-discovery",
  "pallet-authorship",
  "pallet-babe",
@@ -3725,18 +3723,6 @@ dependencies = [
  "sp-core",
  "sp-runtime",
  "structopt",
-]
-
-[[package]]
-name = "node-primitives"
-version = "2.0.0"
-source = "git+https://github.com/paritytech/substrate.git?branch=polkadot-v0.8.29#61b1eb84a11b743c96c2537d7194c9af900015d3"
-dependencies = [
- "frame-system",
- "parity-scale-codec",
- "sp-application-crypto",
- "sp-core",
- "sp-runtime",
 ]
 
 [[package]]
