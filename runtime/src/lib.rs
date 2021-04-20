@@ -35,7 +35,7 @@ use sp_runtime::curve::PiecewiseLinear;
 use sp_runtime::transaction_validity::{TransactionValidity, TransactionSource, TransactionPriority};
 use sp_runtime::traits::{
 	self, BlakeTwo256, Block as BlockT, StaticLookup, SaturatedConversion, ConvertInto, OpaqueKeys,
-	NumberFor, Verify, IdentifyAccount,
+	NumberFor, Verify, IdentifyAccount, AccountIdLookup
 };
 use sp_version::RuntimeVersion;
 #[cfg(any(feature = "std", test))]
@@ -75,9 +75,13 @@ pub type BlockNumber = u32;
 /// Alias to 512-bit hash when used in the context of a transaction signature on the chain.
 pub type Signature = MultiSignature;
 
-/// Some way of identifying an account on the chain. We intentionally make it equivalent
-/// to the public key of our transaction signing scheme.
-pub type AccountId = <<Signature as Verify>::Signer as IdentifyAccount>::AccountId;
+/// Alias to the public key used for this chain, actually a `MultiSigner`. Like the signature, this
+/// also isn't a fixed size when encoded, as different cryptos have different size public keys.
+pub type AccountPublic = <Signature as Verify>::Signer;
+
+/// Alias to the opaque account ID type for this chain, actually a `AccountId32`. This is always
+/// 32 bytes.
+pub type AccountId = <AccountPublic as IdentifyAccount>::AccountId;
 
 /// The type for looking up accounts. We don't expect more than 4 billion of them.
 pub type AccountIndex = u32;
@@ -191,6 +195,12 @@ const NORMAL_DISPATCH_RATIO: Perbill = Perbill::from_percent(75);
 /// We allow for 2 seconds of compute with a 6 second average block time.
 const MAXIMUM_BLOCK_WEIGHT: Weight = 2 * WEIGHT_PER_SECOND;
 
+type MoreThanHalfCouncil = EnsureOneOf<
+	AccountId,
+	EnsureRoot<AccountId>,
+	pallet_collective::EnsureProportionMoreThan<_1, _2, AccountId, CouncilCollective>
+>;
+
 parameter_types! {
 	pub const BlockHashCount: BlockNumber = 2400;
 	pub const Version: RuntimeVersion = VERSION;
@@ -231,7 +241,7 @@ impl frame_system::Config for Runtime {
 	type Hash = Hash;
 	type Hashing = BlakeTwo256;
 	type AccountId = AccountId;
-	type Lookup = Indices;
+	type Lookup = AccountIdLookup<AccountId, AccountIndex>;
 	type Header = generic::Header<BlockNumber, BlakeTwo256>;
 	type Event = Event;
 	type BlockHashCount = BlockHashCount;
@@ -492,8 +502,8 @@ pallet_staking_reward_curve::build! {
 
 parameter_types! {
 	pub const SessionsPerEra: sp_staking::SessionIndex = 6;
-	pub const BondingDuration: pallet_staking::EraIndex = 24 * 28;
-	pub const SlashDeferDuration: pallet_staking::EraIndex = 24 * 7; // 1/4 the bonding duration.
+	pub const BondingDuration: pallet_staking::EraIndex = 28;
+	pub const SlashDeferDuration: pallet_staking::EraIndex = 7; // 1/4 the bonding duration.
 	pub const RewardCurve: &'static PiecewiseLinear<'static> = &REWARD_CURVE;
 	pub const MaxNominatorRewardedPerValidator: u32 = 256;
 }
@@ -569,15 +579,15 @@ impl pallet_election_provider_multi_phase::Config for Runtime {
 }
 
 parameter_types! {
-	pub const LaunchPeriod: BlockNumber = 28 * 24 * 60 * MINUTES;
-	pub const VotingPeriod: BlockNumber = 28 * 24 * 60 * MINUTES;
-	pub const FastTrackVotingPeriod: BlockNumber = 3 * 24 * 60 * MINUTES;
-	pub const InstantAllowed: bool = true;
-	pub const MinimumDeposit: Balance = 100 * DOLLARS;
-	pub const EnactmentPeriod: BlockNumber = 30 * 24 * 60 * MINUTES;
-	pub const CooloffPeriod: BlockNumber = 28 * 24 * 60 * MINUTES;
+	pub const LaunchPeriod: BlockNumber = 7 * DAYS;
+	pub const VotingPeriod: BlockNumber = 7 * DAYS;
+	pub const FastTrackVotingPeriod: BlockNumber = 3 * HOURS;
+	pub const MinimumDeposit: Balance = 1 * DOLLARS;
+	pub const EnactmentPeriod: BlockNumber = 8 * DAYS;
+	pub const CooloffPeriod: BlockNumber = 7 * DAYS;
 	// One cent: $10,000 / MB
-	pub const PreimageByteDeposit: Balance = 1 * CENTS;
+	pub const PreimageByteDeposit: Balance = 10 * MILLICENTS;
+	pub const InstantAllowed: bool = true;
 	pub const MaxVotes: u32 = 100;
 	pub const MaxProposals: u32 = 100;
 }
@@ -592,8 +602,8 @@ impl pallet_democracy::Config for Runtime {
 	type MinimumDeposit = MinimumDeposit;
 	/// A straight majority of the council can decide what their next motion is.
 	type ExternalOrigin = pallet_collective::EnsureProportionAtLeast<_1, _2, AccountId, CouncilCollective>;
-	/// A super-majority can have the next scheduled referendum be a straight majority-carries vote.
-	type ExternalMajorityOrigin = pallet_collective::EnsureProportionAtLeast<_3, _4, AccountId, CouncilCollective>;
+	/// A majority can have the next scheduled referendum be a straight majority-carries vote.
+	type ExternalMajorityOrigin = pallet_collective::EnsureProportionAtLeast<_1, _2, AccountId, CouncilCollective>;
 	/// A unanimous council can have the next scheduled referendum be a straight default-carries
 	/// (NTB) vote.
 	type ExternalDefaultOrigin = pallet_collective::EnsureProportionAtLeast<_1, _1, AccountId, CouncilCollective>;
@@ -604,7 +614,11 @@ impl pallet_democracy::Config for Runtime {
 	type InstantAllowed = InstantAllowed;
 	type FastTrackVotingPeriod = FastTrackVotingPeriod;
 	// To cancel a proposal which has been passed, 2/3 of the council must agree to it.
-	type CancellationOrigin = pallet_collective::EnsureProportionAtLeast<_2, _3, AccountId, CouncilCollective>;
+	type CancellationOrigin = EnsureOneOf<
+		AccountId,
+		EnsureRoot<AccountId>,
+		pallet_collective::EnsureProportionAtLeast<_2, _3, AccountId, CouncilCollective>,
+	>;
 	// To cancel a proposal before it has been passed, the technical committee must be unanimous or
 	// Root must agree.
 	type CancelProposalOrigin = EnsureOneOf<
@@ -628,7 +642,7 @@ impl pallet_democracy::Config for Runtime {
 }
 
 parameter_types! {
-	pub const CouncilMotionDuration: BlockNumber = 5 * DAYS;
+	pub const CouncilMotionDuration: BlockNumber = 3 * DAYS;
 	pub const CouncilMaxProposals: u32 = 100;
 	pub const CouncilMaxMembers: u32 = 100;
 }
@@ -646,14 +660,15 @@ impl pallet_collective::Config<CouncilCollective> for Runtime {
 }
 
 parameter_types! {
-	pub const CandidacyBond: Balance = 10 * DOLLARS;
+	pub const CandidacyBond: Balance = 1 * DOLLARS;
 	// 1 storage item created, key size is 32 bytes, value size is 16+16.
 	pub const VotingBondBase: Balance = deposit(1, 64);
 	// additional data per vote is 32 bytes (account id).
 	pub const VotingBondFactor: Balance = deposit(0, 32);
-	pub const TermDuration: BlockNumber = 7 * DAYS;
-	pub const DesiredMembers: u32 = 13;
-	pub const DesiredRunnersUp: u32 = 7;
+	/// Daily council elections
+	pub const TermDuration: BlockNumber = 24 * HOURS;
+	pub const DesiredMembers: u32 = 19;
+	pub const DesiredRunnersUp: u32 = 19;
 	pub const ElectionsPhragmenModuleId: LockIdentifier = *b"phrelect";
 }
 
@@ -681,7 +696,7 @@ impl pallet_elections_phragmen::Config for Runtime {
 }
 
 parameter_types! {
-	pub const TechnicalMotionDuration: BlockNumber = 5 * DAYS;
+	pub const TechnicalMotionDuration: BlockNumber = 3 * DAYS;
 	pub const TechnicalMaxProposals: u32 = 100;
 	pub const TechnicalMaxMembers: u32 = 100;
 }
@@ -732,21 +747,19 @@ parameter_types! {
 	pub const BountyValueMinimum: Balance = 5 * DOLLARS;
 }
 
+type ApproveOrigin = EnsureOneOf<
+	AccountId,
+	EnsureRoot<AccountId>,
+	pallet_collective::EnsureProportionAtLeast<_3, _5, AccountId, CouncilCollective>
+>;
+
 impl pallet_treasury::Config for Runtime {
 	type ModuleId = TreasuryModuleId;
 	type Currency = Balances;
-	type ApproveOrigin = EnsureOneOf<
-		AccountId,
-		EnsureRoot<AccountId>,
-		pallet_collective::EnsureProportionAtLeast<_3, _5, AccountId, CouncilCollective>
-	>;
-	type RejectOrigin = EnsureOneOf<
-		AccountId,
-		EnsureRoot<AccountId>,
-		pallet_collective::EnsureProportionMoreThan<_1, _2, AccountId, CouncilCollective>
-	>;
+	type ApproveOrigin = ApproveOrigin;
+	type RejectOrigin = MoreThanHalfCouncil;
 	type Event = Event;
-	type OnSlash = ();
+	type OnSlash = Treasury;
 	type ProposalBond = ProposalBond;
 	type ProposalBondMinimum = ProposalBondMinimum;
 	type SpendPeriod = SpendPeriod;
