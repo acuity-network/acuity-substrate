@@ -35,7 +35,7 @@ optional = true
 
 [dependencies.acuity-runtime]
 path = '../runtime'
-version = '2.0.0'
+version = '1.0.0'
 
 [dependencies.pallet-contracts]
 git = 'https://github.com/acuity-social/substrate.git'
@@ -311,14 +311,14 @@ try-runtime = [
 ]
 
 [package]
-authors = ['Anonymous']
+authors = ["Jonathan Brown <jbrown@acuity.social>"]
 build = 'build.rs'
 description = "Implementation of an Acuity node in Rust based on the Substrate framework."
 edition = '2018'
 homepage = 'https://acuity.social'
 license = "GPL-3.0-only"
 name = 'acuity'
-repository = 'https://github.com/paritytech/substrate/'
+repository = 'https://github.com/acuity-social/acuity-substrate'
 version = '1.0.0'
 [package.metadata.docs.rs]
 targets = ['x86_64-unknown-linux-gnu']

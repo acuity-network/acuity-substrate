@@ -1,13 +1,12 @@
 [package]
-authors = ['Anonymous']
+authors = ["Parity Technologies <admin@parity.io>"]
 edition = '2018'
 name = 'claims'
-version = "2.0.0"
+version = "0.8.30"
 license = "GPL-3.0-only"
-homepage = "https://substrate.dev"
-repository = "https://github.com/paritytech/substrate/"
-description = "FRAME pallet template for defining custom runtime logic."
-readme = "README.md"
+homepage = "https://polkadot.network/"
+repository = "https://github.com/paritytech/polkadot"
+description = "Module to process claims from MIX addresses."
 
 [dependencies.frame-system]
 default-features = false
