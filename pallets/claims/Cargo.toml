@@ -10,37 +10,37 @@ description = "Module to process claims from MIX addresses."
 
 [dependencies.frame-system]
 default-features = false
-git = 'https://github.com/acuity-social/substrate.git'
+git = 'https://github.com/paritytech/substrate'
 branch = "polkadot-v0.8.30"
 version = '3.0.0'
 
 [dependencies.frame-support]
 default-features = false
-git = 'https://github.com/acuity-social/substrate.git'
+git = 'https://github.com/paritytech/substrate'
 branch = "polkadot-v0.8.30"
 version = '3.0.0'
 
 [dependencies.sp-runtime]
 default-features = false
-git = 'https://github.com/acuity-social/substrate.git'
+git = 'https://github.com/paritytech/substrate'
 branch = "polkadot-v0.8.30"
 version = '3.0.0'
 
 [dependencies.sp-std]
 default-features = false
-git = 'https://github.com/acuity-social/substrate.git'
+git = 'https://github.com/paritytech/substrate'
 branch = "polkadot-v0.8.30"
 version = '3.0.0'
 
 [dependencies.sp-io]
 default-features = false
-git = 'https://github.com/acuity-social/substrate.git'
+git = 'https://github.com/paritytech/substrate'
 branch = "polkadot-v0.8.30"
 version = '3.0.0'
 
 [dependencies.sp-core]
 default-features = false
-git = 'https://github.com/acuity-social/substrate.git'
+git = 'https://github.com/paritytech/substrate'
 branch = "polkadot-v0.8.30"
 version = '3.0.0'
 

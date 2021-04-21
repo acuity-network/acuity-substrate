@@ -15,9 +15,9 @@ name = "acuity"
 version = "1.0.0"
 dependencies = [
  "acuity-runtime",
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
  "frame-benchmarking-cli",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-system",
  "futures 0.3.14",
  "hex-literal",
  "jsonrpc-core",
@@ -51,18 +51,18 @@ dependencies = [
  "sc-sync-state-rpc",
  "sc-telemetry",
  "sc-transaction-pool",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-authority-discovery",
  "sp-block-builder",
  "sp-blockchain",
  "sp-consensus",
  "sp-consensus-babe",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-finality-grandpa",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
  "sp-keyring",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-timestamp",
  "sp-transaction-pool",
  "structopt",
@@ -78,10 +78,10 @@ name = "acuity-runtime"
 version = "1.0.0"
 dependencies = [
  "claims",
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
  "frame-executive",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "frame-system-benchmarking",
  "frame-system-rpc-runtime-api",
  "frame-try-runtime",
@@ -90,7 +90,7 @@ dependencies = [
  "pallet-authority-discovery",
  "pallet-authorship",
  "pallet-babe",
- "pallet-balances 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "pallet-balances",
  "pallet-bounties",
  "pallet-collective",
  "pallet-contracts",
@@ -123,24 +123,24 @@ dependencies = [
  "pallet-transaction-payment-rpc-runtime-api",
  "pallet-treasury",
  "pallet-utility",
- "pallet-vesting 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "pallet-vesting",
  "parity-scale-codec",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-authority-discovery",
  "sp-block-builder",
  "sp-consensus-babe",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-inherents",
+ "sp-io",
  "sp-npos-elections",
  "sp-offchain",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-session",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-staking",
+ "sp-std",
  "sp-transaction-pool",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
  "static_assertions",
  "substrate-wasm-builder",
 ]
@@ -918,21 +918,21 @@ dependencies = [
 name = "claims"
 version = "0.8.30"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "hex-literal",
  "libsecp256k1",
- "pallet-balances 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "pallet-vesting 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "pallet-balances",
+ "pallet-vesting",
  "parity-scale-codec",
  "rustc-hex",
  "serde",
  "serde_json",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -1696,7 +1696,7 @@ checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 [[package]]
 name = "fork-tree"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
 ]
@@ -1714,48 +1714,30 @@ dependencies = [
 [[package]]
 name = "frame-benchmarking"
 version = "3.1.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "linregress",
  "log",
  "parity-scale-codec",
  "paste",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-storage 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "frame-benchmarking"
-version = "3.1.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "frame-support 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "log",
- "parity-scale-codec",
- "paste",
- "sp-api 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-runtime-interface 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-storage 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-io",
+ "sp-runtime",
+ "sp-runtime-interface",
+ "sp-std",
+ "sp-storage",
 ]
 
 [[package]]
 name = "frame-benchmarking-cli"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "Inflector",
  "chrono",
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
  "handlebars",
  "parity-scale-codec",
  "sc-cli",
@@ -1763,10 +1745,10 @@ dependencies = [
  "sc-executor",
  "sc-service",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-state-machine",
  "structopt",
 ]
@@ -1774,41 +1756,30 @@ dependencies = [
 [[package]]
 name = "frame-election-provider-support"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-arithmetic",
  "sp-npos-elections",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
 ]
 
 [[package]]
 name = "frame-executive"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "frame-metadata"
-version = "13.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "parity-scale-codec",
- "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+ "sp-tracing",
 ]
 
 [[package]]
@@ -1817,18 +1788,19 @@ version = "13.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "serde",
+ "sp-core",
+ "sp-std",
 ]
 
 [[package]]
 name = "frame-support"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "bitflags",
- "frame-metadata 13.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support-procedural 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-metadata",
+ "frame-support-procedural",
  "impl-trait-for-tuples",
  "log",
  "once_cell",
@@ -1836,50 +1808,15 @@ dependencies = [
  "paste",
  "serde",
  "smallvec 1.6.1",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-arithmetic",
+ "sp-core",
+ "sp-inherents",
+ "sp-io",
+ "sp-runtime",
+ "sp-staking",
  "sp-state-machine",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "frame-support"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "bitflags",
- "frame-metadata 13.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "frame-support-procedural 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "impl-trait-for-tuples",
- "log",
- "parity-scale-codec",
- "paste",
- "smallvec 1.6.1",
- "sp-arithmetic 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-staking 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "frame-support-procedural"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "Inflector",
- "frame-support-procedural-tools 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "proc-macro2",
- "quote",
- "syn",
+ "sp-std",
+ "sp-tracing",
 ]
 
 [[package]]
@@ -1888,19 +1825,7 @@ version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "Inflector",
- "frame-support-procedural-tools 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "frame-support-procedural-tools"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "frame-support-procedural-tools-derive 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "proc-macro-crate 1.0.0",
+ "frame-support-procedural-tools",
  "proc-macro2",
  "quote",
  "syn",
@@ -1911,18 +1836,8 @@ name = "frame-support-procedural-tools"
 version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support-procedural-tools-derive 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "frame-support-procedural-tools-derive",
  "proc-macro-crate 1.0.0",
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "frame-support-procedural-tools-derive"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
  "proc-macro2",
  "quote",
  "syn",
@@ -1941,69 +1856,53 @@ dependencies = [
 [[package]]
 name = "frame-system"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
  "impl-trait-for-tuples",
  "log",
  "parity-scale-codec",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "frame-system"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "frame-support 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "impl-trait-for-tuples",
- "log",
- "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-version 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+ "sp-version",
 ]
 
 [[package]]
 name = "frame-system-benchmarking"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "frame-system-rpc-runtime-api"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
 ]
 
 [[package]]
 name = "frame-try-runtime"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -4013,7 +3912,7 @@ dependencies = [
 [[package]]
 name = "node-inspect"
 version = "0.8.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "log",
@@ -4022,8 +3921,8 @@ dependencies = [
  "sc-client-api",
  "sc-service",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
  "structopt",
 ]
 
@@ -4187,71 +4086,56 @@ dependencies = [
 [[package]]
 name = "pallet-authority-discovery"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "pallet-session",
  "parity-scale-codec",
  "serde",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-application-crypto",
  "sp-authority-discovery",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-authorship"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "impl-trait-for-tuples",
  "parity-scale-codec",
  "sp-authorship",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-babe"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "log",
  "pallet-authorship",
  "pallet-session",
  "pallet-timestamp",
  "parity-scale-codec",
  "serde",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-application-crypto",
  "sp-consensus-babe",
  "sp-consensus-vrf",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
+ "sp-runtime",
  "sp-session",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "pallet-balances"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "log",
- "parity-scale-codec",
- "serde",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-staking",
+ "sp-std",
 ]
 
 [[package]]
@@ -4259,54 +4143,56 @@ name = "pallet-balances"
 version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "log",
  "parity-scale-codec",
- "sp-runtime 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "serde",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-bounties"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "pallet-treasury",
  "parity-scale-codec",
  "serde",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-collective"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "log",
  "parity-scale-codec",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-contracts"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "log",
  "pallet-contracts-primitives",
  "pallet-contracts-proc-macro",
@@ -4316,29 +4202,29 @@ dependencies = [
  "rand 0.7.3",
  "rand_pcg",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
  "sp-sandbox",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
  "wasmi-validation",
 ]
 
 [[package]]
 name = "pallet-contracts-primitives"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "bitflags",
  "parity-scale-codec",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-contracts-proc-macro"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -4348,7 +4234,7 @@ dependencies = [
 [[package]]
 name = "pallet-contracts-rpc"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "jsonrpc-core",
  "jsonrpc-core-client",
@@ -4357,339 +4243,339 @@ dependencies = [
  "pallet-contracts-rpc-runtime-api",
  "parity-scale-codec",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-rpc",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "pallet-contracts-rpc-runtime-api"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "pallet-contracts-primitives",
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-democracy"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-election-provider-multi-phase"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "log",
  "parity-scale-codec",
  "rand 0.7.3",
  "serde",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-arithmetic",
+ "sp-io",
  "sp-npos-elections",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
  "static_assertions",
 ]
 
 [[package]]
 name = "pallet-elections-phragmen"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "log",
  "parity-scale-codec",
  "serde",
  "sp-npos-elections",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-grandpa"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "log",
  "pallet-authorship",
  "pallet-session",
  "parity-scale-codec",
  "serde",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-application-crypto",
+ "sp-core",
  "sp-finality-grandpa",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-session",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-staking",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-identity"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "enumflags2",
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-im-online"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "log",
  "pallet-authorship",
  "parity-scale-codec",
  "serde",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-application-crypto",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-staking",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-indices"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
  "sp-keyring",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-membership"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-multisig"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-offences"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "log",
- "pallet-balances 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "pallet-balances",
  "parity-scale-codec",
  "serde",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-staking",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-offences-benchmarking"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "pallet-babe",
- "pallet-balances 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "pallet-balances",
  "pallet-grandpa",
  "pallet-im-online",
  "pallet-offences",
  "pallet-session",
  "pallet-staking",
  "parity-scale-codec",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-staking",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-proxy"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-randomness-collective-flip"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "safe-mix",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-recovery"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "enumflags2",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-scheduler"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "log",
  "parity-scale-codec",
  "serde",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-session"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "impl-trait-for-tuples",
  "pallet-timestamp",
  "parity-scale-codec",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
  "sp-session",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-staking",
+ "sp-std",
  "sp-trie",
 ]
 
 [[package]]
 name = "pallet-session-benchmarking"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "pallet-session",
  "pallet-staking",
  "rand 0.7.3",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-session",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-society"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "rand_chacha 0.2.2",
  "serde",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-staking"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "log",
  "pallet-authorship",
  "pallet-session",
@@ -4697,18 +4583,18 @@ dependencies = [
  "paste",
  "rand_chacha 0.2.2",
  "serde",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-application-crypto",
+ "sp-io",
+ "sp-runtime",
+ "sp-staking",
+ "sp-std",
  "static_assertions",
 ]
 
 [[package]]
 name = "pallet-staking-reward-curve"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "proc-macro-crate 1.0.0",
  "proc-macro2",
@@ -4719,140 +4605,125 @@ dependencies = [
 [[package]]
 name = "pallet-sudo"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-timestamp"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "impl-trait-for-tuples",
  "log",
  "parity-scale-codec",
  "serde",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
  "sp-timestamp",
 ]
 
 [[package]]
 name = "pallet-tips"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "pallet-treasury",
  "parity-scale-codec",
  "serde",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-transaction-payment"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
  "smallvec 1.6.1",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-transaction-payment-rpc"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "jsonrpc-core",
  "jsonrpc-core-client",
  "jsonrpc-derive",
  "pallet-transaction-payment-rpc-runtime-api",
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-rpc",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "pallet-transaction-payment-rpc-runtime-api"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "pallet-transaction-payment",
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "pallet-treasury"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "impl-trait-for-tuples",
- "pallet-balances 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "pallet-balances",
  "parity-scale-codec",
  "serde",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "pallet-utility"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "pallet-vesting"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "enumflags2",
- "frame-benchmarking 3.1.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "parity-scale-codec",
- "serde",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -4861,11 +4732,13 @@ version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "enumflags2",
- "frame-support 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
- "sp-runtime 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "serde",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -5814,7 +5687,7 @@ dependencies = [
 [[package]]
 name = "remote-externalities"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "env_logger 0.8.3",
  "hex-literal",
@@ -5823,9 +5696,9 @@ dependencies = [
  "jsonrpsee-types",
  "log",
  "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
 ]
 
 [[package]]
@@ -6012,7 +5885,7 @@ dependencies = [
 [[package]]
 name = "sc-authority-discovery"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -6028,19 +5901,19 @@ dependencies = [
  "sc-client-api",
  "sc-network",
  "serde_json",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-authority-discovery",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "substrate-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-basic-authorship"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "futures-timer 3.0.2",
@@ -6050,12 +5923,12 @@ dependencies = [
  "sc-client-api",
  "sc-proposer-metrics",
  "sc-telemetry",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-inherents",
+ "sp-runtime",
  "sp-transaction-pool",
  "substrate-prometheus-endpoint",
 ]
@@ -6063,23 +5936,23 @@ dependencies = [
 [[package]]
 name = "sc-block-builder"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
  "sc-client-api",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-block-builder",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-inherents",
+ "sp-runtime",
  "sp-state-machine",
 ]
 
 [[package]]
 name = "sc-chain-spec"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "impl-trait-for-tuples",
  "parity-scale-codec",
@@ -6093,14 +5966,14 @@ dependencies = [
  "serde_json",
  "sp-chain-spec",
  "sp-consensus-babe",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sc-chain-spec-derive"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "proc-macro-crate 1.0.0",
  "proc-macro2",
@@ -6111,7 +5984,7 @@ dependencies = [
 [[package]]
 name = "sc-cli"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "chrono",
  "fdlimit",
@@ -6133,13 +6006,13 @@ dependencies = [
  "serde",
  "serde_json",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-keyring",
  "sp-keystore",
  "sp-panic-handler",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-utils",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
  "structopt",
  "thiserror",
  "tiny-bip39",
@@ -6149,7 +6022,7 @@ dependencies = [
 [[package]]
 name = "sc-client-api"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "fnv",
@@ -6161,29 +6034,29 @@ dependencies = [
  "parity-scale-codec",
  "parking_lot 0.11.1",
  "sc-executor",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-database",
  "sp-externalities",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-state-machine",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-storage 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
+ "sp-storage",
  "sp-transaction-pool",
  "sp-trie",
  "sp-utils",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
  "substrate-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-client-db"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "blake2-rfc",
  "hash-db",
@@ -6199,12 +6072,12 @@ dependencies = [
  "sc-client-api",
  "sc-executor",
  "sc-state-db",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-arithmetic",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-database",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-state-machine",
  "sp-trie",
  "substrate-prometheus-endpoint",
@@ -6213,18 +6086,18 @@ dependencies = [
 [[package]]
 name = "sc-consensus"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "sc-client-api",
  "sp-blockchain",
  "sp-consensus",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sc-consensus-babe"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "fork-tree",
@@ -6248,29 +6121,29 @@ dependencies = [
  "sc-telemetry",
  "schnorrkel",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
  "sp-block-builder",
  "sp-blockchain",
  "sp-consensus",
  "sp-consensus-babe",
  "sp-consensus-slots",
  "sp-consensus-vrf",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-inherents",
+ "sp-io",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-timestamp",
  "sp-utils",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
  "substrate-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-consensus-babe-rpc"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "futures 0.3.14",
@@ -6281,33 +6154,33 @@ dependencies = [
  "sc-consensus-epochs",
  "sc-rpc-api",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
  "sp-blockchain",
  "sp-consensus",
  "sp-consensus-babe",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sc-consensus-epochs"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "fork-tree",
  "parity-scale-codec",
  "parking_lot 0.11.1",
  "sc-client-api",
  "sp-blockchain",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sc-consensus-slots"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "futures-timer 3.0.2",
@@ -6316,15 +6189,15 @@ dependencies = [
  "parking_lot 0.11.1",
  "sc-client-api",
  "sc-telemetry",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
+ "sp-arithmetic",
  "sp-blockchain",
  "sp-consensus",
  "sp-consensus-slots",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-inherents",
+ "sp-runtime",
  "sp-state-machine",
  "sp-timestamp",
  "sp-trie",
@@ -6334,21 +6207,21 @@ dependencies = [
 [[package]]
 name = "sc-consensus-uncles"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "log",
  "sc-client-api",
  "sp-authorship",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-inherents",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sc-executor"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "lazy_static",
@@ -6360,32 +6233,32 @@ dependencies = [
  "sc-executor-common",
  "sc-executor-wasmi",
  "sc-executor-wasmtime",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-core",
  "sp-externalities",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
  "sp-panic-handler",
- "sp-runtime-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime-interface",
  "sp-serializer",
  "sp-tasks",
  "sp-trie",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-wasm-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
+ "sp-wasm-interface",
  "wasmi",
 ]
 
 [[package]]
 name = "sc-executor-common"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "parity-scale-codec",
  "parity-wasm 0.41.0",
  "sp-allocator",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-serializer",
- "sp-wasm-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-wasm-interface",
  "thiserror",
  "wasmi",
 ]
@@ -6393,22 +6266,22 @@ dependencies = [
 [[package]]
 name = "sc-executor-wasmi"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "log",
  "parity-scale-codec",
  "sc-executor-common",
  "sp-allocator",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-wasm-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime-interface",
+ "sp-wasm-interface",
  "wasmi",
 ]
 
 [[package]]
 name = "sc-executor-wasmtime"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "log",
  "parity-scale-codec",
@@ -6417,16 +6290,16 @@ dependencies = [
  "sc-executor-common",
  "scoped-tls",
  "sp-allocator",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-wasm-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime-interface",
+ "sp-wasm-interface",
  "wasmtime",
 ]
 
 [[package]]
 name = "sc-finality-grandpa"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "dyn-clone",
@@ -6448,16 +6321,16 @@ dependencies = [
  "sc-network-gossip",
  "sc-telemetry",
  "serde_json",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
+ "sp-arithmetic",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-finality-grandpa",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-utils",
  "substrate-prometheus-endpoint",
 ]
@@ -6465,7 +6338,7 @@ dependencies = [
 [[package]]
 name = "sc-finality-grandpa-rpc"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "finality-grandpa",
@@ -6482,14 +6355,14 @@ dependencies = [
  "serde",
  "serde_json",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sc-finality-grandpa-warp-sync"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "futures 0.3.14",
@@ -6504,13 +6377,13 @@ dependencies = [
  "sc-service",
  "sp-blockchain",
  "sp-finality-grandpa",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sc-informant"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "ansi_term 0.12.1",
  "futures 0.3.14",
@@ -6519,7 +6392,7 @@ dependencies = [
  "sc-client-api",
  "sc-network",
  "sp-blockchain",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-transaction-pool",
  "sp-utils",
  "wasm-timer",
@@ -6528,7 +6401,7 @@ dependencies = [
 [[package]]
 name = "sc-keystore"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -6539,8 +6412,8 @@ dependencies = [
  "parking_lot 0.11.1",
  "rand 0.7.3",
  "serde_json",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-application-crypto",
+ "sp-core",
  "sp-keystore",
  "subtle 2.4.0",
 ]
@@ -6548,7 +6421,7 @@ dependencies = [
 [[package]]
 name = "sc-light"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "hash-db",
  "lazy_static",
@@ -6556,18 +6429,18 @@ dependencies = [
  "parking_lot 0.11.1",
  "sc-client-api",
  "sc-executor",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-state-machine",
 ]
 
 [[package]]
 name = "sc-network"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "async-std",
  "async-trait",
@@ -6603,11 +6476,11 @@ dependencies = [
  "serde",
  "serde_json",
  "smallvec 1.6.1",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-arithmetic",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
  "sp-utils",
  "substrate-prometheus-endpoint",
  "thiserror",
@@ -6620,7 +6493,7 @@ dependencies = [
 [[package]]
 name = "sc-network-gossip"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "futures-timer 3.0.2",
@@ -6628,7 +6501,7 @@ dependencies = [
  "log",
  "lru",
  "sc-network",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "substrate-prometheus-endpoint",
  "tracing",
  "wasm-timer",
@@ -6637,7 +6510,7 @@ dependencies = [
 [[package]]
 name = "sc-offchain"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "bytes 0.5.6",
  "fnv",
@@ -6654,10 +6527,10 @@ dependencies = [
  "sc-client-api",
  "sc-keystore",
  "sc-network",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-core",
  "sp-offchain",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-utils",
  "threadpool",
 ]
@@ -6665,7 +6538,7 @@ dependencies = [
 [[package]]
 name = "sc-peerset"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "libp2p",
@@ -6678,7 +6551,7 @@ dependencies = [
 [[package]]
 name = "sc-proposer-metrics"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "log",
  "substrate-prometheus-endpoint",
@@ -6687,7 +6560,7 @@ dependencies = [
 [[package]]
 name = "sc-rpc"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "hash-db",
@@ -6703,25 +6576,25 @@ dependencies = [
  "sc-rpc-api",
  "sc-tracing",
  "serde_json",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
  "sp-chain-spec",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-keystore",
  "sp-offchain",
  "sp-rpc",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-session",
  "sp-state-machine",
  "sp-transaction-pool",
  "sp-utils",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
 ]
 
 [[package]]
 name = "sc-rpc-api"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "futures 0.3.14",
@@ -6735,17 +6608,17 @@ dependencies = [
  "serde",
  "serde_json",
  "sp-chain-spec",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-rpc",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-transaction-pool",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
 ]
 
 [[package]]
 name = "sc-rpc-server"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.1.31",
  "jsonrpc-core",
@@ -6756,14 +6629,14 @@ dependencies = [
  "log",
  "serde",
  "serde_json",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "substrate-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-service"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "directories",
  "exit-future",
@@ -6797,24 +6670,24 @@ dependencies = [
  "sc-transaction-pool",
  "serde",
  "serde_json",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
  "sp-block-builder",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
+ "sp-io",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-session",
  "sp-state-machine",
- "sp-tracing 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-tracing",
  "sp-transaction-pool",
  "sp-trie",
  "sp-utils",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
  "substrate-prometheus-endpoint",
  "tempfile",
  "thiserror",
@@ -6826,7 +6699,7 @@ dependencies = [
 [[package]]
 name = "sc-service-test"
 version = "2.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "fdlimit",
  "futures 0.1.31",
@@ -6842,16 +6715,16 @@ dependencies = [
  "sc-light",
  "sc-network",
  "sc-service",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
  "sp-panic-handler",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-state-machine",
- "sp-storage 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-storage",
+ "sp-tracing",
  "sp-transaction-pool",
  "sp-trie",
  "substrate-test-runtime",
@@ -6863,7 +6736,7 @@ dependencies = [
 [[package]]
 name = "sc-state-db"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "log",
  "parity-scale-codec",
@@ -6871,14 +6744,14 @@ dependencies = [
  "parity-util-mem-derive",
  "parking_lot 0.11.1",
  "sc-client-api",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "thiserror",
 ]
 
 [[package]]
 name = "sc-sync-state-rpc"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "jsonrpc-core",
  "jsonrpc-core-client",
@@ -6891,14 +6764,14 @@ dependencies = [
  "sc-rpc-api",
  "serde_json",
  "sp-blockchain",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "thiserror",
 ]
 
 [[package]]
 name = "sc-telemetry"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "chrono",
  "futures 0.3.14",
@@ -6918,7 +6791,7 @@ dependencies = [
 [[package]]
 name = "sc-tracing"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "ansi_term 0.12.1",
  "atty",
@@ -6932,7 +6805,7 @@ dependencies = [
  "sc-tracing-proc-macro",
  "serde",
  "serde_json",
- "sp-tracing 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-tracing",
  "thiserror",
  "tracing",
  "tracing-core",
@@ -6945,7 +6818,7 @@ dependencies = [
 [[package]]
 name = "sc-tracing-proc-macro"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "proc-macro-crate 1.0.0",
  "proc-macro2",
@@ -6956,7 +6829,7 @@ dependencies = [
 [[package]]
 name = "sc-transaction-graph"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "futures 0.3.14",
@@ -6967,8 +6840,8 @@ dependencies = [
  "retain_mut",
  "serde",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
  "sp-transaction-pool",
  "sp-utils",
  "thiserror",
@@ -6978,7 +6851,7 @@ dependencies = [
 [[package]]
 name = "sc-transaction-pool"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "futures-diagnose",
@@ -6989,11 +6862,11 @@ dependencies = [
  "parking_lot 0.11.1",
  "sc-client-api",
  "sc-transaction-graph",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
+ "sp-tracing",
  "sp-transaction-pool",
  "sp-utils",
  "substrate-prometheus-endpoint",
@@ -7371,59 +7244,33 @@ dependencies = [
 [[package]]
 name = "sp-allocator"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "log",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-wasm-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-std",
+ "sp-wasm-interface",
  "thiserror",
 ]
 
 [[package]]
 name = "sp-api"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "hash-db",
  "log",
  "parity-scale-codec",
- "sp-api-proc-macro 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api-proc-macro",
+ "sp-core",
+ "sp-runtime",
  "sp-state-machine",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
+ "sp-version",
  "thiserror",
 ]
 
 [[package]]
-name = "sp-api"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "log",
- "parity-scale-codec",
- "sp-api-proc-macro 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-version 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "sp-api-proc-macro"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "blake2-rfc",
- "proc-macro-crate 1.0.0",
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
 name = "sp-api-proc-macro"
 version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
@@ -7438,37 +7285,13 @@ dependencies = [
 [[package]]
 name = "sp-application-crypto"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "parity-scale-codec",
- "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "sp-application-crypto"
-version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "sp-arithmetic"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "integer-sqrt",
- "num-traits",
- "parity-scale-codec",
  "serde",
- "sp-debug-derive 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-std",
 ]
 
 [[package]]
@@ -7479,59 +7302,60 @@ dependencies = [
  "integer-sqrt",
  "num-traits",
  "parity-scale-codec",
- "sp-debug-derive 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "serde",
+ "sp-debug-derive",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-authority-discovery"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-authorship"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-block-builder"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-inherents",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-blockchain"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "log",
  "lru",
  "parity-scale-codec",
  "parking_lot 0.11.1",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-consensus",
  "sp-database",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-state-machine",
  "thiserror",
 ]
@@ -7539,7 +7363,7 @@ dependencies = [
 [[package]]
 name = "sp-chain-spec"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "serde",
  "serde_json",
@@ -7548,7 +7372,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "futures-timer 3.0.2",
@@ -7557,15 +7381,15 @@ dependencies = [
  "parity-scale-codec",
  "parking_lot 0.11.1",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-core",
+ "sp-inherents",
+ "sp-runtime",
  "sp-state-machine",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
  "sp-trie",
  "sp-utils",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
  "substrate-prometheus-endpoint",
  "thiserror",
  "wasm-timer",
@@ -7574,66 +7398,66 @@ dependencies = [
 [[package]]
 name = "sp-consensus-aura"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
  "sp-consensus",
  "sp-consensus-slots",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
+ "sp-runtime",
+ "sp-std",
  "sp-timestamp",
 ]
 
 [[package]]
 name = "sp-consensus-babe"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "merlin",
  "parity-scale-codec",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
  "sp-consensus",
  "sp-consensus-slots",
  "sp-consensus-vrf",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-inherents",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
  "sp-timestamp",
 ]
 
 [[package]]
 name = "sp-consensus-slots"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-arithmetic",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sp-consensus-vrf"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
  "schnorrkel",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-core"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "base58",
  "blake2-rfc",
@@ -7660,11 +7484,11 @@ dependencies = [
  "secrecy",
  "serde",
  "sha2 0.9.3",
- "sp-debug-derive 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-debug-derive",
  "sp-externalities",
- "sp-runtime-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-storage 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime-interface",
+ "sp-std",
+ "sp-storage",
  "substrate-bip39",
  "thiserror",
  "tiny-bip39",
@@ -7675,43 +7499,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-core"
+name = "sp-database"
 version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "byteorder",
- "hash-db",
- "hash256-std-hasher",
- "log",
- "num-traits",
- "parity-scale-codec",
- "parity-util-mem",
- "primitive-types",
- "secrecy",
- "sp-debug-derive 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-runtime-interface 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-storage 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "zeroize",
-]
-
-[[package]]
-name = "sp-database"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
  "kvdb",
  "parking_lot 0.11.1",
-]
-
-[[package]]
-name = "sp-debug-derive"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]
@@ -7727,41 +7520,29 @@ dependencies = [
 [[package]]
 name = "sp-externalities"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "environmental",
  "parity-scale-codec",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-storage 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
+ "sp-storage",
 ]
 
 [[package]]
 name = "sp-finality-grandpa"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "finality-grandpa",
  "log",
  "parity-scale-codec",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
+ "sp-core",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "sp-inherents"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "parity-scale-codec",
- "parking_lot 0.11.1",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "thiserror",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -7770,14 +7551,16 @@ version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "parking_lot 0.11.1",
+ "sp-core",
+ "sp-std",
+ "thiserror",
 ]
 
 [[package]]
 name = "sp-io"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "hash-db",
@@ -7785,31 +7568,15 @@ dependencies = [
  "log",
  "parity-scale-codec",
  "parking_lot 0.11.1",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
  "sp-keystore",
- "sp-runtime-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime-interface",
  "sp-state-machine",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
+ "sp-tracing",
  "sp-trie",
- "sp-wasm-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "tracing",
- "tracing-core",
-]
-
-[[package]]
-name = "sp-io"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "hash-db",
- "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-runtime-interface 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-wasm-interface 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "sp-wasm-interface",
  "tracing",
  "tracing-core",
 ]
@@ -7817,18 +7584,18 @@ dependencies = [
 [[package]]
 name = "sp-keyring"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "lazy_static",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
  "strum",
 ]
 
 [[package]]
 name = "sp-keystore"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -7838,27 +7605,27 @@ dependencies = [
  "parking_lot 0.11.1",
  "schnorrkel",
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
 ]
 
 [[package]]
 name = "sp-npos-elections"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
  "serde",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-arithmetic",
+ "sp-core",
  "sp-npos-elections-compact",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-npos-elections-compact"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "proc-macro-crate 1.0.0",
  "proc-macro2",
@@ -7869,17 +7636,17 @@ dependencies = [
 [[package]]
 name = "sp-offchain"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-core",
+ "sp-runtime",
 ]
 
 [[package]]
 name = "sp-panic-handler"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "backtrace",
 ]
@@ -7887,16 +7654,16 @@ dependencies = [
 [[package]]
 name = "sp-rpc"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "serde",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
 ]
 
 [[package]]
 name = "sp-runtime"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "either",
  "hash256-std-hasher",
@@ -7907,75 +7674,28 @@ dependencies = [
  "paste",
  "rand 0.7.3",
  "serde",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-arithmetic 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "sp-runtime"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "either",
- "hash256-std-hasher",
- "impl-trait-for-tuples",
- "log",
- "parity-scale-codec",
- "parity-util-mem",
- "paste",
- "sp-application-crypto 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-arithmetic 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "sp-application-crypto",
+ "sp-arithmetic",
+ "sp-core",
+ "sp-io",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-runtime-interface"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "impl-trait-for-tuples",
  "parity-scale-codec",
  "primitive-types",
  "sp-externalities",
- "sp-runtime-interface-proc-macro 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-storage 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-wasm-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime-interface-proc-macro",
+ "sp-std",
+ "sp-storage",
+ "sp-tracing",
+ "sp-wasm-interface",
  "static_assertions",
-]
-
-[[package]]
-name = "sp-runtime-interface"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "impl-trait-for-tuples",
- "parity-scale-codec",
- "primitive-types",
- "sp-runtime-interface-proc-macro 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-storage 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-tracing 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-wasm-interface 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "static_assertions",
-]
-
-[[package]]
-name = "sp-runtime-interface-proc-macro"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "Inflector",
- "proc-macro-crate 1.0.0",
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]
@@ -7993,20 +7713,20 @@ dependencies = [
 [[package]]
 name = "sp-sandbox"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-wasm-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-io",
+ "sp-std",
+ "sp-wasm-interface",
  "wasmi",
 ]
 
 [[package]]
 name = "sp-serializer"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "serde",
  "serde_json",
@@ -8015,24 +7735,14 @@ dependencies = [
 [[package]]
 name = "sp-session"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-staking 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "sp-staking"
-version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-dependencies = [
- "parity-scale-codec",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-core",
+ "sp-runtime",
+ "sp-staking",
+ "sp-std",
 ]
 
 [[package]]
@@ -8041,14 +7751,14 @@ version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-runtime 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-state-machine"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "hash-db",
  "log",
@@ -8057,10 +7767,10 @@ dependencies = [
  "parking_lot 0.11.1",
  "rand 0.7.3",
  "smallvec 1.6.1",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
  "sp-panic-handler",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
  "sp-trie",
  "thiserror",
  "trie-db",
@@ -8070,113 +7780,86 @@ dependencies = [
 [[package]]
 name = "sp-std"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
-
-[[package]]
-name = "sp-std"
-version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 
 [[package]]
 name = "sp-storage"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "impl-serde",
  "parity-scale-codec",
  "ref-cast",
  "serde",
- "sp-debug-derive 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "sp-storage"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "parity-scale-codec",
- "ref-cast",
- "sp-debug-derive 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "sp-debug-derive",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-tasks"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "log",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-io",
+ "sp-runtime-interface",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-timestamp"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "parity-scale-codec",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-inherents",
+ "sp-runtime",
+ "sp-std",
  "wasm-timer",
 ]
 
 [[package]]
 name = "sp-tracing"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "log",
  "parity-scale-codec",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
  "tracing",
  "tracing-core",
  "tracing-subscriber",
 ]
 
 [[package]]
-name = "sp-tracing"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "parity-scale-codec",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "tracing",
- "tracing-core",
-]
-
-[[package]]
 name = "sp-transaction-pool"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "derive_more",
  "futures 0.3.14",
  "log",
  "parity-scale-codec",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "thiserror",
 ]
 
 [[package]]
 name = "sp-trie"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "hash-db",
  "memory-db",
  "parity-scale-codec",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-std",
  "trie-db",
  "trie-root",
 ]
@@ -8184,7 +7867,7 @@ dependencies = [
 [[package]]
 name = "sp-utils"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "futures-core",
@@ -8196,44 +7879,24 @@ dependencies = [
 [[package]]
 name = "sp-version"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "impl-serde",
  "parity-scale-codec",
  "serde",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
-]
-
-[[package]]
-name = "sp-version"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "parity-scale-codec",
- "sp-runtime 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
 name = "sp-wasm-interface"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "impl-trait-for-tuples",
  "parity-scale-codec",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
  "wasmi",
-]
-
-[[package]]
-name = "sp-wasm-interface"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
-dependencies = [
- "impl-trait-for-tuples",
- "parity-scale-codec",
- "sp-std 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30)",
 ]
 
 [[package]]
@@ -8350,7 +8013,7 @@ dependencies = [
 [[package]]
 name = "substrate-build-script-utils"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "platforms",
 ]
@@ -8358,19 +8021,19 @@ dependencies = [
 [[package]]
 name = "substrate-frame-cli"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-system",
  "sc-cli",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
  "structopt",
 ]
 
 [[package]]
 name = "substrate-frame-rpc-system"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "frame-system-rpc-runtime-api",
  "futures 0.3.14",
@@ -8382,18 +8045,18 @@ dependencies = [
  "sc-client-api",
  "sc-rpc-api",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-block-builder",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
  "sp-transaction-pool",
 ]
 
 [[package]]
 name = "substrate-prometheus-endpoint"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "async-std",
  "derive_more",
@@ -8407,7 +8070,7 @@ dependencies = [
 [[package]]
 name = "substrate-test-client"
 version = "2.0.1"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.1.31",
  "futures 0.3.14",
@@ -8425,21 +8088,21 @@ dependencies = [
  "serde_json",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-keyring",
  "sp-keystore",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-state-machine",
 ]
 
 [[package]]
 name = "substrate-test-runtime"
 version = "2.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "cfg-if 1.0.0",
- "frame-support 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "frame-system 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "frame-support",
+ "frame-system",
  "frame-system-rpc-runtime-api",
  "log",
  "memory-db",
@@ -8449,26 +8112,26 @@ dependencies = [
  "parity-util-mem",
  "sc-service",
  "serde",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-application-crypto 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
+ "sp-application-crypto",
  "sp-block-builder",
  "sp-consensus-aura",
  "sp-consensus-babe",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
  "sp-finality-grandpa",
- "sp-inherents 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-io 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-inherents",
+ "sp-io",
  "sp-keyring",
  "sp-offchain",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime-interface 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
+ "sp-runtime-interface",
  "sp-session",
  "sp-state-machine",
- "sp-std 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-std",
  "sp-transaction-pool",
  "sp-trie",
- "sp-version 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-version",
  "substrate-wasm-builder",
  "trie-db",
 ]
@@ -8476,7 +8139,7 @@ dependencies = [
 [[package]]
 name = "substrate-test-runtime-client"
 version = "2.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "futures 0.3.14",
  "parity-scale-codec",
@@ -8485,11 +8148,11 @@ dependencies = [
  "sc-consensus",
  "sc-light",
  "sc-service",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
  "sp-consensus",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
+ "sp-runtime",
  "substrate-test-client",
  "substrate-test-runtime",
 ]
@@ -8497,7 +8160,7 @@ dependencies = [
 [[package]]
 name = "substrate-wasm-builder"
 version = "4.0.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "ansi_term 0.12.1",
  "atty",
@@ -9123,7 +8786,7 @@ checksum = "59547bce71d9c38b83d9c0e92b6066c4253371f15005def0c30d9657f50c7642"
 [[package]]
 name = "try-runtime-cli"
 version = "0.9.0"
-source = "git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30#e19725e81c3c1a7a7ec9df9e72c74cfa1d86dbd6"
+source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.8.30#3655f9bb44d75ff205737023760198733a237685"
 dependencies = [
  "frame-try-runtime",
  "log",
@@ -9133,11 +8796,11 @@ dependencies = [
  "sc-client-api",
  "sc-executor",
  "sc-service",
- "sp-api 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-api",
  "sp-blockchain",
- "sp-core 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-core",
  "sp-externalities",
- "sp-runtime 3.0.0 (git+https://github.com/acuity-social/substrate.git?branch=polkadot-v0.8.30)",
+ "sp-runtime",
  "sp-state-machine",
  "structopt",
 ]
