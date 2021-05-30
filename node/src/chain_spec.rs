@@ -3,12 +3,10 @@
 
 use sp_core::{Pair, Public, crypto::UncheckedInto, sr25519};
 use acuity_runtime::{
-	BalancesConfig, GenesisConfig, BabeConfig, GrandpaConfig,
-	SudoConfig, SystemConfig, ClaimsConfig,
-    ContractsConfig, StakerStatus, StakingConfig, SessionKeys,
-    ImOnlineConfig, AuthorityDiscoveryConfig, DemocracyConfig, ElectionsConfig,
-    CouncilConfig, TechnicalCommitteeConfig, IndicesConfig, SessionConfig,
-    wasm_binary_unwrap,
+    AuthorityDiscoveryConfig, BabeConfig, BalancesConfig, CouncilConfig,
+	DemocracyConfig, GrandpaConfig, ImOnlineConfig, SessionConfig, SessionKeys, StakerStatus,
+	StakingConfig, ElectionsConfig, IndicesConfig, SudoConfig, SystemConfig,
+	TechnicalCommitteeConfig, wasm_binary_unwrap, MAX_NOMINATIONS, ClaimsConfig, GenesisConfig,
 };
 use acuity_runtime::constants::currency::*;
 use sc_service::ChainType;
@@ -116,12 +114,7 @@ fn staging_testnet_config_genesis() -> GenesisConfig {
 
 	let endowed_accounts: Vec<AccountId> = vec![root_key.clone()];
 
-	testnet_genesis(
-		initial_authorities,
-		root_key,
-		Some(endowed_accounts),
-		false,
-	)
+	testnet_genesis(initial_authorities, vec![], root_key, Some(endowed_accounts))
 }
 
 /// Staging testnet config.
@@ -184,9 +177,9 @@ pub fn testnet_genesis(
 		ImOnlineId,
 		AuthorityDiscoveryId,
 	)>,
+	initial_nominators: Vec<AccountId>,
 	root_key: AccountId,
 	endowed_accounts: Option<Vec<AccountId>>,
-	enable_println: bool,
 ) -> GenesisConfig {
 	let mut endowed_accounts: Vec<AccountId> = endowed_accounts.unwrap_or_else(|| {
 		vec![
@@ -204,11 +197,31 @@ pub fn testnet_genesis(
 			get_account_id_from_seed::<sr25519::Public>("Ferdie//stash"),
 		]
 	});
-	initial_authorities.iter().for_each(|x|
-		if !endowed_accounts.contains(&x.0) {
-			endowed_accounts.push(x.0.clone())
+	// endow all authorities and nominators.
+	initial_authorities.iter().map(|x| &x.0).chain(initial_nominators.iter()).for_each(|x| {
+		if !endowed_accounts.contains(&x) {
+			endowed_accounts.push(x.clone())
 		}
-	);
+	});
+
+	// stakers: all validators and nominators.
+	let mut rng = rand::thread_rng();
+	let stakers = initial_authorities
+		.iter()
+		.map(|x| (x.0.clone(), x.1.clone(), STASH, StakerStatus::Validator))
+		.chain(initial_nominators.iter().map(|x| {
+			use rand::{seq::SliceRandom, Rng};
+			let limit = (MAX_NOMINATIONS as usize).min(initial_authorities.len());
+			let count = rng.gen::<usize>() % limit;
+			let nominations = initial_authorities
+				.as_slice()
+				.choose_multiple(&mut rng, count)
+				.into_iter()
+				.map(|choice| choice.0.clone())
+				.collect::<Vec<_>>();
+			(x.clone(), x.clone(), STASH, StakerStatus::Nominator(nominations))
+		}))
+		.collect::<Vec<_>>();
 
 	let num_endowed_accounts = endowed_accounts.len();
 
@@ -239,13 +252,11 @@ pub fn testnet_genesis(
 			}).collect::<Vec<_>>(),
 		},
 		pallet_staking: StakingConfig {
-			validator_count: initial_authorities.len() as u32 * 2,
+			validator_count: initial_authorities.len() as u32,
 			minimum_validator_count: initial_authorities.len() as u32,
-			stakers: initial_authorities.iter().map(|x| {
-				(x.0.clone(), x.1.clone(), STASH, StakerStatus::Validator)
-			}).collect(),
 			invulnerables: initial_authorities.iter().map(|x| x.0.clone()).collect(),
 			slash_reward_fraction: Perbill::from_percent(10),
+			stakers,
 			.. Default::default()
 		},
 		pallet_democracy: DemocracyConfig::default(),
@@ -263,11 +274,6 @@ pub fn testnet_genesis(
 						.cloned()
 						.collect(),
 			phantom: Default::default(),
-		},
-		pallet_contracts: ContractsConfig {
-			// println should only be enabled on development chains
-			current_schedule: pallet_contracts::Schedule::default()
-				.enable_println(enable_println),
 		},
 		pallet_sudo: SudoConfig {
 			key: root_key,
@@ -300,9 +306,9 @@ fn development_config_genesis() -> GenesisConfig {
 		vec![
 			authority_keys_from_seed("Alice"),
 		],
+		vec![],
 		get_account_id_from_seed::<sr25519::Public>("Alice"),
 		None,
-		true,
 	)
 }
 
@@ -327,9 +333,9 @@ fn local_testnet_genesis() -> GenesisConfig {
 			authority_keys_from_seed("Alice"),
 			authority_keys_from_seed("Bob"),
 		],
+		vec![],
 		get_account_id_from_seed::<sr25519::Public>("Alice"),
 		None,
-		false,
 	)
 }
 
@@ -360,9 +366,9 @@ pub(crate) mod tests {
 			vec![
 				authority_keys_from_seed("Alice"),
 			],
+			vec![],
 			get_account_id_from_seed::<sr25519::Public>("Alice"),
 			None,
-			false,
 		)
 	}
 
