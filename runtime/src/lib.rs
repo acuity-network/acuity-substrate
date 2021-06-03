@@ -1020,6 +1020,10 @@ impl claims::Config for Runtime {
 	type WeightInfo = weights::runtime_common_claims::WeightInfo<Runtime>;
 }
 
+impl pallet_acuity_atomic_swap::Config for Runtime {
+	type Event = Event;
+}
+
 construct_runtime!(
 	pub enum Runtime where
 		Block = Block,
@@ -1060,6 +1064,7 @@ construct_runtime!(
 		Bounties: pallet_bounties::{Pallet, Call, Storage, Event<T>},
 		Tips: pallet_tips::{Pallet, Call, Storage, Event<T>},
 		Claims: claims::{Pallet, Call, Storage, Event<T>, Config<T>, ValidateUnsigned},
+		AtomicSwap: pallet_acuity_atomic_swap::{Pallet, Call, Storage, Event<T>},
 	}
 );
 
