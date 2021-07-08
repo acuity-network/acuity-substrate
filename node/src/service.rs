@@ -5,8 +5,7 @@ use sc_consensus_babe;
 use acuity_runtime::opaque::Block;
 use acuity_runtime::{self, RuntimeApi};
 use sc_service::{
-	config::{Configuration}, error::{Error as ServiceError},
-	RpcHandlers, TaskManager,
+	config::Configuration, error::Error as ServiceError, RpcHandlers, TaskManager,
 };
 use sc_network::{Event, NetworkService};
 use sp_runtime::traits::Block as BlockT;
@@ -321,6 +320,7 @@ pub fn new_full_base(
 			babe_link,
 			can_author_with,
 			block_proposal_slot_portion: SlotProportion::new(0.5),
+			max_block_proposal_slot_portion: None,
 			telemetry: telemetry.as_ref().map(|x| x.handle()),
 		};
 
