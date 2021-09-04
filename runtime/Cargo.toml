@@ -396,7 +396,7 @@ version = '3.0.0'
 [dependencies.pallet-acuity-atomic-swap]
 default_features = false
 git = 'https://github.com/acuity-social/acuity-atomic-swap-pallet'
-branch = 'master'
+rev = "5f19c9e3f072bf6238f61d886c79f7b9eec73aa4"
 
 [dependencies.serde]
 features = ['derive']
