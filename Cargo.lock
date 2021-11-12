@@ -4351,7 +4351,7 @@ dependencies = [
 [[package]]
 name = "pallet-acuity-atomic-swap"
 version = "3.0.0"
-source = "git+https://github.com/acuity-social/acuity-atomic-swap-pallet?rev=0ed17f589f0ebf4729db47ab3c6c4008b48ddd15#0ed17f589f0ebf4729db47ab3c6c4008b48ddd15"
+source = "git+https://github.com/acuity-social/acuity-atomic-swap-pallet?rev=b927468f24c63b9002a150b35f995c0a62ba0d95#b927468f24c63b9002a150b35f995c0a62ba0d95"
 dependencies = [
  "frame-support",
  "frame-system",
