@@ -1012,7 +1012,7 @@ dependencies = [
 
 [[package]]
 name = "claims"
-version = "0.9.11"
+version = "0.9.12"
 dependencies = [
  "beefy-primitives",
  "bitvec 0.20.4",
