@@ -7,7 +7,7 @@ use codec::{Decode, Encode, MaxEncodedLen};
 use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
-		Currency, EqualPrivilegeOnly, Everything, Imbalance, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
+		ConstU32, Currency, EqualPrivilegeOnly, Everything, Imbalance, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
 		Nothing, OnUnbalanced, U128CurrencyToVote,
 	},
 	weights::{
@@ -532,6 +532,12 @@ impl onchain::Config for Runtime {
 	type DataProvider = Staking;
 }
 
+pub struct StakingBenchmarkingConfig;
+impl pallet_staking::BenchmarkingConfig for StakingBenchmarkingConfig {
+	type MaxNominators = ConstU32<1000>;
+	type MaxValidators = ConstU32<1000>;
+}
+
 impl pallet_staking::Config for Runtime {
 	const MAX_NOMINATIONS: u32 = MAX_NOMINATIONS;
 	type Currency = Balances;
@@ -561,6 +567,7 @@ impl pallet_staking::Config for Runtime {
 	// Note that the aforementioned does not scale to a very large number of nominators.
 	type SortedListProvider = BagsList;
 	type WeightInfo = pallet_staking::weights::SubstrateWeight<Runtime>;
+	type BenchmarkingConfig = StakingBenchmarkingConfig;
 }
 
 parameter_types! {
