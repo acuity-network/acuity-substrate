@@ -1145,13 +1145,13 @@ impl claims::Config for Runtime {
 parameter_types! {
 	pub const AtomicSwapPalletId: PalletId = PalletId(*b"atomcswp");
 }
-
+/*
 impl pallet_acuity_atomic_swap::Config for Runtime {
 	type Event = Event;
     type Currency = Balances;
     type PalletId = AtomicSwapPalletId;
 }
-
+*/
 impl pallet_transaction_storage::Config for Runtime {
 	type Event = Event;
 	type Currency = Balances;
@@ -1202,7 +1202,7 @@ construct_runtime!(
 		TransactionStorage: pallet_transaction_storage,
 		BagsList: pallet_bags_list,
 		Claims: claims,
-		AtomicSwap: pallet_acuity_atomic_swap,
+//		AtomicSwap: pallet_acuity_atomic_swap,
 	}
 );
 
