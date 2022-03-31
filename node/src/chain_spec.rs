@@ -5,8 +5,8 @@ use sp_core::{Pair, Public, crypto::UncheckedInto, sr25519};
 use acuity_runtime::{
     AuthorityDiscoveryConfig, BabeConfig, BalancesConfig, CouncilConfig,
 	DemocracyConfig, GrandpaConfig, ImOnlineConfig, SessionConfig, SessionKeys, StakerStatus,
-	StakingConfig, ElectionsConfig, IndicesConfig, SudoConfig, SystemConfig,
-	TechnicalCommitteeConfig, wasm_binary_unwrap, MAX_NOMINATIONS, ClaimsConfig, GenesisConfig,
+	StakingConfig, ElectionsConfig, IndicesConfig, MaxNominations, SudoConfig, SystemConfig,
+	TechnicalCommitteeConfig, wasm_binary_unwrap, ClaimsConfig, GenesisConfig,
 };
 use acuity_runtime::constants::currency::*;
 use sc_chain_spec::ChainSpecExtension;
@@ -177,6 +177,7 @@ pub fn staging_testnet_config() -> ChainSpec {
 		),
 		None,
 		None,
+		None,
 		Default::default(),
 	)
 }
@@ -258,7 +259,7 @@ pub fn testnet_genesis(
 		.map(|x| (x.0.clone(), x.1.clone(), STASH, StakerStatus::Validator))
 		.chain(initial_nominators.iter().map(|x| {
 			use rand::{seq::SliceRandom, Rng};
-			let limit = (MAX_NOMINATIONS as usize).min(initial_authorities.len());
+			let limit = (MaxNominations::get() as usize).min(initial_authorities.len());
 			let count = rng.gen::<usize>() % limit;
 			let nominations = initial_authorities
 				.as_slice()
@@ -319,7 +320,7 @@ pub fn testnet_genesis(
 				.collect(),
 			phantom: Default::default(),
 		},
-		sudo: SudoConfig { key: root_key },
+		sudo: SudoConfig { key: Some(root_key) },
 		babe: BabeConfig {
 			authorities: vec![],
 			epoch_config: Some(acuity_runtime::BABE_GENESIS_EPOCH_CONFIG),
@@ -335,7 +336,6 @@ pub fn testnet_genesis(
 		},
 		vesting: Default::default(),
 		transaction_storage: Default::default(),
-		scheduler: Default::default(),
 		transaction_payment: Default::default(),
 	}
 }
@@ -360,6 +360,7 @@ pub fn development_config() -> ChainSpec {
 		None,
 		None,
 		None,
+		None,
 		Default::default(),
 	)
 }
@@ -381,6 +382,7 @@ pub fn local_testnet_config() -> ChainSpec {
 		ChainType::Local,
 		local_testnet_genesis,
 		vec![],
+		None,
 		None,
 		None,
 		None,
@@ -415,6 +417,7 @@ pub(crate) mod tests {
 			None,
 			None,
 			None,
+			None,
 			Default::default(),
 		)
 	}
@@ -427,6 +430,7 @@ pub(crate) mod tests {
 			ChainType::Development,
 			local_testnet_genesis,
 			vec![],
+			None,
 			None,
 			None,
 			None,
