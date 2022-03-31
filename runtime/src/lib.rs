@@ -1254,6 +1254,11 @@ impl pallet_acuity_atomic_swap::Config for Runtime {
     type PalletId = AtomicSwapPalletId;
 }
 */
+
+impl pallet_acuity_orderbook::Config for Runtime {
+	type Event = Event;
+}
+
 impl pallet_transaction_storage::Config for Runtime {
 	type Event = Event;
 	type Currency = Balances;
@@ -1333,6 +1338,7 @@ construct_runtime!(
 		Referenda: pallet_referenda,
 		ConvictionVoting: pallet_conviction_voting,
 		Claims: claims,
+		Orderbook: pallet_acuity_orderbook,
 //		AtomicSwap: pallet_acuity_atomic_swap,
 	}
 );

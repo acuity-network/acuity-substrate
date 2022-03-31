@@ -36,6 +36,8 @@ pallet-preimage = { git = 'https://github.com/paritytech/substrate', branch = "p
 pallet-referenda = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.18", version = "4.0.0-dev", default-features = false }
 pallet-state-trie-migration = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.18", version = "4.0.0-dev", default-features = false }
 
+pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
+
 [build-dependencies]
 substrate-wasm-builder = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.18", version = "5.0.0-dev" }
 
