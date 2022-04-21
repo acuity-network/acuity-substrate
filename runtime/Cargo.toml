@@ -38,6 +38,8 @@ pallet-state-trie-migration = { git = 'https://github.com/paritytech/substrate',
 
 pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
 
+pallet-acuity-trusted-accounts = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+
 [build-dependencies]
 substrate-wasm-builder = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.19", version = "5.0.0-dev" }
 

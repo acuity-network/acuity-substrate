@@ -1272,6 +1272,10 @@ impl pallet_acuity_orderbook::Config for Runtime {
 	type Event = Event;
 }
 
+impl pallet_acuity_trusted_accounts::Config for Runtime {
+	type Event = Event;
+}
+
 impl pallet_transaction_storage::Config for Runtime {
 	type Event = Event;
 	type Currency = Balances;
@@ -1351,6 +1355,7 @@ construct_runtime!(
 		ConvictionVoting: pallet_conviction_voting,
 		Claims: claims,
 		Orderbook: pallet_acuity_orderbook,
+		TrustedAccounts: pallet_acuity_trusted_accounts,
 //		AtomicSwap: pallet_acuity_atomic_swap,
 	}
 );

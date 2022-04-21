@@ -118,6 +118,7 @@ dependencies = [
  "hex-literal",
  "log",
  "pallet-acuity-orderbook",
+ "pallet-acuity-trusted-accounts",
  "pallet-authority-discovery",
  "pallet-authorship",
  "pallet-babe",
@@ -4664,6 +4665,17 @@ dependencies = [
  "scale-info",
  "sp-io",
  "sp-runtime",
+]
+
+[[package]]
+name = "pallet-acuity-trusted-accounts"
+version = "0.1.0"
+source = "git+https://github.com/acuity-social/acuity-trusted-accounts-pallet?branch=master#04916ef2d7d035a52dde29d7a59847aa854444df"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
 ]
 
 [[package]]
