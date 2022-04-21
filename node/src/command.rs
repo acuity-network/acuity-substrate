@@ -1,9 +1,17 @@
-use crate::{chain_spec, service};
+use super::command_helper::{inherent_benchmark_data, BenchmarkExtrinsicBuilder};
+use crate::{
+	chain_spec, service,
+	service::{new_partial, ExecutorDispatch, FullClient},
+};
 use crate::cli::{Cli, Subcommand};
-use sc_cli::{Result, SubstrateCli, RuntimeVersion, ChainSpec};
+use frame_benchmarking_cli::*;
+use sc_cli::{ChainSpec, Result, RuntimeVersion, SubstrateCli};
 use sc_service::PartialComponents;
+
+use std::sync::Arc;
+
+
 use acuity_runtime::{Block, RuntimeApi};
-use crate::service::{new_partial, ExecutorDispatch};
 
 impl SubstrateCli for Cli {
 	fn impl_name() -> String {
@@ -63,30 +71,39 @@ pub fn run() -> Result<()> {
 
 			runner.sync_run(|config| cmd.run::<Block, RuntimeApi, ExecutorDispatch>(config))
 		},
-		Some(Subcommand::Benchmark(cmd)) =>
-			if cfg!(feature = "runtime-benchmarks") {
-				let runner = cli.create_runner(cmd)?;
-
-				runner.sync_run(|config| cmd.run::<Block, ExecutorDispatch>(config))
-			} else {
-				Err("Benchmarking wasn't enabled when building the node. \
-				You can enable it with `--features runtime-benchmarks`."
-					.into())
-			},
-		Some(Subcommand::BenchmarkStorage(cmd)) => {
-			if !cfg!(feature = "runtime-benchmarks") {
-				return Err("Benchmarking wasn't enabled when building the node. \
-				You can enable it with `--features runtime-benchmarks`."
-					.into())
-			}
-
+		Some(Subcommand::Benchmark(cmd)) => {
 			let runner = cli.create_runner(cmd)?;
-			runner.async_run(|config| {
-				let PartialComponents { client, task_manager, backend, .. } = new_partial(&config)?;
-				let db = backend.expose_db();
-				let storage = backend.expose_storage();
 
-				Ok((cmd.run(config, client, db, storage), task_manager))
+			runner.sync_run(|config| {
+				let PartialComponents { client, backend, .. } = new_partial(&config)?;
+
+				// This switch needs to be in the client, since the client decides
+				// which sub-commands it wants to support.
+				match cmd {
+					BenchmarkCmd::Pallet(cmd) => {
+						if !cfg!(feature = "runtime-benchmarks") {
+							return Err(
+								"Runtime benchmarking wasn't enabled when building the node. \
+							You can enable it with `--features runtime-benchmarks`."
+									.into(),
+							)
+						}
+
+						cmd.run::<Block, ExecutorDispatch>(config)
+					},
+					BenchmarkCmd::Block(cmd) => cmd.run(client),
+					BenchmarkCmd::Storage(cmd) => {
+						let db = backend.expose_db();
+						let storage = backend.expose_storage();
+
+						cmd.run(config, client, db, storage)
+					},
+					BenchmarkCmd::Overhead(cmd) => {
+						let ext_builder = BenchmarkExtrinsicBuilder::new(client.clone());
+
+						cmd.run(config, client, inherent_benchmark_data()?, Arc::new(ext_builder))
+					},
+				}
 			})
 		},
 		Some(Subcommand::Key(cmd)) => cmd.run(&cli),
@@ -135,7 +152,12 @@ pub fn run() -> Result<()> {
 			let runner = cli.create_runner(cmd)?;
 			runner.async_run(|config| {
 				let PartialComponents { client, task_manager, backend, .. } = new_partial(&config)?;
-				Ok((cmd.run(client, backend), task_manager))
+				let aux_revert = Box::new(move |client: Arc<FullClient>, backend, blocks| {
+					sc_consensus_babe::revert(client.clone(), backend, blocks)?;
+					grandpa::revert(client, blocks)?;
+					Ok(())
+				});
+				Ok((cmd.run(client, backend, Some(aux_revert)), task_manager))
 			})
 		},
 		#[cfg(feature = "try-runtime")]
