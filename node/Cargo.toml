@@ -32,6 +32,10 @@ jsonrpc-core = "18.0.0"
 rand = "0.8"
 
 
+pallet-acuity-trusted-accounts-rpc  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+
+pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+
 # primitives
 sc-transaction-pool-api = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.19", version = "4.0.0-dev" }
 sp-transaction-storage-proof = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.19", version = "4.0.0-dev" }

@@ -113,6 +113,7 @@ where
 	C::Api: substrate_frame_rpc_system::AccountNonceApi<Block, AccountId, Index>,
 	C::Api: pallet_contracts_rpc::ContractsRuntimeApi<Block, AccountId, Balance, BlockNumber, Hash>,
 	C::Api: pallet_transaction_payment_rpc::TransactionPaymentRuntimeApi<Block, Balance>,
+	C::Api: pallet_acuity_trusted_accounts_rpc_runtime_api::TrustedAccountsApi<Block, AccountId>,
 	C::Api: BabeApi<Block>,
 	C::Api: BlockBuilder<Block>,
 	P: TransactionPool + 'static,
@@ -122,6 +123,7 @@ where
 {
 	use pallet_contracts_rpc::{Contracts, ContractsApi};
 	use pallet_transaction_payment_rpc::{TransactionPayment, TransactionPaymentApi};
+	use pallet_acuity_trusted_accounts_rpc::{TrustedAccounts, TrustedAccountsApi};
 	use sc_rpc::dev::{Dev, DevApi};
 	use substrate_frame_rpc_system::{FullSystem, SystemApi};
 
@@ -143,6 +145,7 @@ where
 	// These RPCs should use an asynchronous caller instead.
 	io.extend_with(ContractsApi::to_delegate(Contracts::new(client.clone())));
 	io.extend_with(TransactionPaymentApi::to_delegate(TransactionPayment::new(client.clone())));
+	io.extend_with(TrustedAccountsApi::to_delegate(TrustedAccounts::new(client.clone())));
 	io.extend_with(sc_consensus_babe_rpc::BabeApi::to_delegate(BabeRpcHandler::new(
 		client.clone(),
 		shared_epoch_changes.clone(),

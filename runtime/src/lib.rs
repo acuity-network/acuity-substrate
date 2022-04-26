@@ -1446,6 +1446,7 @@ mod benches {
 	);
 }
 
+#[cfg(not(feature = "disable-runtime-api"))]
 impl_runtime_apis! {
 	impl sp_api::Core<Block> for Runtime {
 		fn version() -> RuntimeVersion {
@@ -1670,6 +1671,12 @@ impl_runtime_apis! {
 		) -> Option<Vec<(Vec<u8>, KeyTypeId)>> {
 			SessionKeys::decode_into_raw_public_keys(&encoded)
 		}
+	}
+
+	impl pallet_acuity_trusted_accounts_rpc_runtime_api::TrustedAccountsApi<Block, AccountId> for Runtime {
+		fn is_trusted(account: AccountId, trustee: AccountId) -> bool {
+            TrustedAccounts::is_trusted(account, trustee)
+        }
 	}
 
 	#[cfg(feature = "try-runtime")]

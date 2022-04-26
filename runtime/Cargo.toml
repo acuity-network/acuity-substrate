@@ -12,7 +12,7 @@ targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
 # third-party dependencies
-codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = [
+codec = { package = "parity-scale-codec", version = "3.1.2", default-features = false, features = [
 	"derive",
 	"max-encoded-len",
 ] }
@@ -39,6 +39,8 @@ pallet-state-trie-migration = { git = 'https://github.com/paritytech/substrate',
 pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
 
 pallet-acuity-trusted-accounts = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+
+pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
 [build-dependencies]
 substrate-wasm-builder = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.19", version = "5.0.0-dev" }
@@ -124,6 +126,8 @@ std = [
     "pallet-transaction-storage/std",
     'pallet-utility/std',
     'pallet-vesting/std',
+		'pallet-acuity-trusted-accounts/std',
+    'pallet-acuity-trusted-accounts-rpc-runtime-api/std',
 #    'pallet-acuity-atomic-swap/std',
     'sp-api/std',
     'sp-block-builder/std',
