@@ -1677,6 +1677,22 @@ impl_runtime_apis! {
 		fn is_trusted(account: AccountId, trustee: AccountId) -> bool {
             TrustedAccounts::is_trusted(account, trustee)
         }
+
+		fn is_trusted_only_deep(account: AccountId, trustee: AccountId) -> bool {
+			TrustedAccounts::is_trusted_only_deep(account, trustee)
+		}
+
+		fn is_trusted_deep(account: AccountId, trustee: AccountId) -> bool {
+			TrustedAccounts::is_trusted_deep(account, trustee)
+		}
+
+		fn trusted_by(account: AccountId) -> Vec<AccountId> {
+			TrustedAccounts::trusted_by(account)
+		}
+
+		fn trusted_by_that_trust(account: AccountId, account_is_trusted_by_trusted: AccountId) -> Vec<AccountId> {
+			TrustedAccounts::trusted_by_that_trust(account, account_is_trusted_by_trusted)
+		}
 	}
 
 	#[cfg(feature = "try-runtime")]
