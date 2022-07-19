@@ -33,6 +33,8 @@ dependencies = [
  "nix 0.23.1",
  "node-executor",
  "node-inspect",
+ "pallet-acuity-trusted-accounts-rpc",
+ "pallet-acuity-trusted-accounts-rpc-runtime-api",
  "pallet-balances",
  "pallet-contracts",
  "pallet-contracts-rpc",
@@ -118,6 +120,9 @@ dependencies = [
  "frame-try-runtime",
  "hex-literal",
  "log",
+ "pallet-acuity-orderbook",
+ "pallet-acuity-trusted-accounts",
+ "pallet-acuity-trusted-accounts-rpc-runtime-api",
  "pallet-authority-discovery",
  "pallet-authorship",
  "pallet-babe",
@@ -4534,6 +4539,56 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6ff55baddef9e4ad00f88b6c743a2a8062d4c6ade126c2a528644b8e444d52ce"
 dependencies = [
  "stable_deref_trait",
+]
+
+[[package]]
+name = "pallet-acuity-orderbook"
+version = "4.0.0-dev"
+source = "git+https://github.com/acuity-social/acuity-orderbook-pallet?branch=master#9c5c3d21b1ae2f9d85355f32e3947a098fef8dd5"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-acuity-trusted-accounts"
+version = "0.1.0"
+source = "git+https://github.com/acuity-social/acuity-trusted-accounts-pallet?branch=master#059aef7fead820a92693eef032bce6a0a4541364"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-acuity-trusted-accounts-rpc"
+version = "0.1.0"
+source = "git+https://github.com/acuity-social/acuity-trusted-accounts-pallet?branch=master#059aef7fead820a92693eef032bce6a0a4541364"
+dependencies = [
+ "jsonrpsee",
+ "pallet-acuity-trusted-accounts-rpc-runtime-api",
+ "parity-scale-codec",
+ "sp-api",
+ "sp-blockchain",
+ "sp-core",
+ "sp-rpc",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-acuity-trusted-accounts-rpc-runtime-api"
+version = "0.1.0"
+source = "git+https://github.com/acuity-social/acuity-trusted-accounts-pallet?branch=master#059aef7fead820a92693eef032bce6a0a4541364"
+dependencies = [
+ "parity-scale-codec",
+ "sp-api",
+ "sp-std",
 ]
 
 [[package]]
@@ -9554,7 +9609,7 @@ version = "1.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "97fee6b57c6a41524a810daee9286c02d7752c4253064d0b05472833a438f675"
 dependencies = [
- "cfg-if 1.0.0",
+ "cfg-if 0.1.10",
  "digest 0.10.3",
  "rand 0.8.5",
  "static_assertions",
