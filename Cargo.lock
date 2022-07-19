@@ -120,6 +120,7 @@ dependencies = [
  "frame-try-runtime",
  "hex-literal",
  "log",
+ "pallet-acuity-atomic-swap",
  "pallet-acuity-orderbook",
  "pallet-acuity-trusted-accounts",
  "pallet-acuity-trusted-accounts-rpc-runtime-api",
@@ -4542,10 +4543,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-acuity-atomic-swap"
+version = "3.0.0"
+source = "git+https://github.com/acuity-social/acuity-atomic-swap-pallet?branch=master#14550e0e52d14078ff189b0cd03ee02907c1354b"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "pallet-balances",
+ "pallet-timestamp",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "pallet-acuity-orderbook"
 version = "4.0.0-dev"
 source = "git+https://github.com/acuity-social/acuity-orderbook-pallet?branch=master#9c5c3d21b1ae2f9d85355f32e3947a098fef8dd5"
 dependencies = [
+ "frame-benchmarking",
  "frame-support",
  "frame-system",
  "parity-scale-codec",
@@ -4559,6 +4578,7 @@ name = "pallet-acuity-trusted-accounts"
 version = "0.1.0"
 source = "git+https://github.com/acuity-social/acuity-trusted-accounts-pallet?branch=master#059aef7fead820a92693eef032bce6a0a4541364"
 dependencies = [
+ "frame-benchmarking",
  "frame-support",
  "frame-system",
  "parity-scale-codec",

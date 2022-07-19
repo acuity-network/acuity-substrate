@@ -1328,13 +1328,12 @@ impl claims::Config for Runtime {
 parameter_types! {
 	pub const AtomicSwapPalletId: PalletId = PalletId(*b"atomcswp");
 }
-/*
+
 impl pallet_acuity_atomic_swap::Config for Runtime {
 	type Event = Event;
     type Currency = Balances;
     type PalletId = AtomicSwapPalletId;
 }
-*/
 
 impl pallet_acuity_orderbook::Config for Runtime {
 	type Event = Event;
@@ -1429,7 +1428,7 @@ construct_runtime!(
 		Claims: claims,
 		Orderbook: pallet_acuity_orderbook,
 		TrustedAccounts: pallet_acuity_trusted_accounts,
-//		AtomicSwap: pallet_acuity_atomic_swap,
+		AtomicSwap: pallet_acuity_atomic_swap,
 		NominationPools: pallet_nomination_pools,
 	}
 );
