@@ -5,7 +5,7 @@
 use sp_std::prelude::*;
 use codec::{Decode, Encode, MaxEncodedLen};
 use frame_election_provider_support::{
-	onchain, ElectionDataProvider, ExtendedBalance, SequentialPhragmen, VoteWeight,
+	onchain, BalancingConfig, ElectionDataProvider, SequentialPhragmen, VoteWeight,
 };
 use frame_support::{
 	construct_runtime,
@@ -51,7 +51,6 @@ pub use pallet_transaction_payment::{Multiplier, TargetedFeeAdjustment, Currency
 use pallet_session::{historical as pallet_session_historical};
 use sp_inherents::{InherentData, CheckInherentsResult};
 use static_assertions::const_assert;
-use pallet_contracts::weights::WeightInfo;
 
 #[cfg(any(feature = "std", test))]
 pub use sp_runtime::BuildStorage;
@@ -470,6 +469,7 @@ parameter_types! {
 }
 
 impl pallet_transaction_payment::Config for Runtime {
+	type Event = Event;
 	type OnChargeTransaction = CurrencyAdapter<Balances, DealWithFees>;
 	type OperationalFeeMultiplier = OperationalFeeMultiplier;
 	type WeightToFee = IdentityFee<Balance>;
@@ -645,10 +645,10 @@ pub const MINER_MAX_ITERATIONS: u32 = 10;
 
 /// A source of random balance for NposSolver, which is meant to be run by the OCW election miner.
 pub struct OffchainRandomBalancing;
-impl Get<Option<(usize, ExtendedBalance)>> for OffchainRandomBalancing {
-	fn get() -> Option<(usize, ExtendedBalance)> {
+impl Get<Option<BalancingConfig>> for OffchainRandomBalancing {
+	fn get() -> Option<BalancingConfig> {
 		use sp_runtime::traits::TrailingZeroInput;
-		let iters = match MINER_MAX_ITERATIONS {
+		let iterations = match MINER_MAX_ITERATIONS {
 			0 => 0,
 			max => {
 				let seed = sp_io::offchain::random_seed();
@@ -659,7 +659,8 @@ impl Get<Option<(usize, ExtendedBalance)>> for OffchainRandomBalancing {
 			},
 		};
 
-		Some((iters, 0))
+		let config = BalancingConfig { iterations, tolerance: 0 };
+		Some(config)
 	}
 }
 
@@ -1100,18 +1101,13 @@ parameter_types! {
 	pub const DepositPerItem: Balance = deposit(1, 0);
 	pub const DepositPerByte: Balance = deposit(0, 1);
 	pub const MaxValueSize: u32 = 16 * 1024;
+	pub const DeletionQueueDepth: u32 = 128;
 	// The lazy deletion runs inside on_initialize.
 	pub DeletionWeightLimit: Weight = RuntimeBlockWeights::get()
 		.per_class
 		.get(DispatchClass::Normal)
 		.max_total
 		.unwrap_or(RuntimeBlockWeights::get().max_block);
-	// The weight needed for decoding the queue should be less or equal than a fifth
-	// of the overall weight dedicated to the lazy deletion.
-	pub DeletionQueueDepth: u32 = ((DeletionWeightLimit::get() / (
-			<Runtime as pallet_contracts::Config>::WeightInfo::on_initialize_per_queue_item(1) -
-			<Runtime as pallet_contracts::Config>::WeightInfo::on_initialize_per_queue_item(0)
-		)) / 5) as u32;
 	pub Schedule: pallet_contracts::Schedule<Runtime> = Default::default();
 }
 
@@ -1141,6 +1137,7 @@ impl pallet_contracts::Config for Runtime {
 	type ContractAccessWeight = pallet_contracts::DefaultContractAccessWeight<RuntimeBlockWeights>;
 	type MaxCodeLen = ConstU32<{ 128 * 1024 }>;
 	type RelaxedMaxCodeLen = ConstU32<{ 256 * 1024 }>;
+	type MaxStorageKeyLen = ConstU32<128>;
 }
 
 impl pallet_sudo::Config for Runtime {
@@ -1353,6 +1350,10 @@ impl pallet_transaction_storage::Config for Runtime {
 	type Call = Call;
 	type FeeDestination = ();
 	type WeightInfo = pallet_transaction_storage::weights::SubstrateWeight<Runtime>;
+	type MaxBlockTransactions =
+		ConstU32<{ pallet_transaction_storage::DEFAULT_MAX_BLOCK_TRANSACTIONS }>;
+	type MaxTransactionSize =
+		ConstU32<{ pallet_transaction_storage::DEFAULT_MAX_TRANSACTION_SIZE }>;
 }
 
 parameter_types! {
@@ -1471,7 +1472,6 @@ pub type Executive = frame_executive::Executive<
 	frame_system::ChainContext<Runtime>,
 	Runtime,
 	AllPalletsWithSystem,
-	(),
 >;
 
 #[cfg(feature = "runtime-benchmarks")]
@@ -1719,7 +1719,7 @@ impl_runtime_apis! {
 
 		fn get_storage(
 			address: AccountId,
-			key: [u8; 32],
+			key: Vec<u8>,
 		) -> pallet_contracts_primitives::GetStorageResult {
 			Contracts::get_storage(address, key)
 		}
