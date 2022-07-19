@@ -50,11 +50,11 @@ pallet-remark = { git = 'https://github.com/paritytech/substrate', branch = "pol
 pallet-referenda = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.24", version = "4.0.0-dev", default-features = false }
 pallet-state-trie-migration = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.24", version = "4.0.0-dev", default-features = false }
 
-pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
+#pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
 
-pallet-acuity-trusted-accounts = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+#pallet-acuity-trusted-accounts = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
-pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+#pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
 [build-dependencies]
 substrate-wasm-builder = { git = 'https://github.com/paritytech/substrate', branch = "polkadot-v0.9.24", version = "5.0.0-dev" }
@@ -108,8 +108,8 @@ std = [
     'pallet-utility/std',
 		'pallet-referenda/std',
     'pallet-vesting/std',
-		'pallet-acuity-trusted-accounts/std',
-    'pallet-acuity-trusted-accounts-rpc-runtime-api/std',
+#		'pallet-acuity-trusted-accounts/std',
+#    'pallet-acuity-trusted-accounts-rpc-runtime-api/std',
 #    'pallet-acuity-atomic-swap/std',
     'sp-api/std',
     'sp-block-builder/std',

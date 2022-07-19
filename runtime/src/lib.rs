@@ -1334,7 +1334,7 @@ impl pallet_acuity_atomic_swap::Config for Runtime {
     type PalletId = AtomicSwapPalletId;
 }
 */
-
+/*
 impl pallet_acuity_orderbook::Config for Runtime {
 	type Event = Event;
 }
@@ -1342,7 +1342,7 @@ impl pallet_acuity_orderbook::Config for Runtime {
 impl pallet_acuity_trusted_accounts::Config for Runtime {
 	type Event = Event;
 }
-
+*/
 impl pallet_transaction_storage::Config for Runtime {
 	type Event = Event;
 	type Currency = Balances;
@@ -1420,8 +1420,8 @@ construct_runtime!(
 		Remark: pallet_remark,
 		ConvictionVoting: pallet_conviction_voting,
 		Claims: claims,
-		Orderbook: pallet_acuity_orderbook,
-		TrustedAccounts: pallet_acuity_trusted_accounts,
+//		Orderbook: pallet_acuity_orderbook,
+//		TrustedAccounts: pallet_acuity_trusted_accounts,
 //		AtomicSwap: pallet_acuity_atomic_swap,
 		NominationPools: pallet_nomination_pools,
 	}
@@ -1742,7 +1742,7 @@ impl_runtime_apis! {
 			SessionKeys::decode_into_raw_public_keys(&encoded)
 		}
 	}
-
+/*
 	impl pallet_acuity_trusted_accounts_rpc_runtime_api::TrustedAccountsApi<Block, AccountId> for Runtime {
 		fn is_trusted(account: AccountId, trustee: AccountId) -> bool {
             TrustedAccounts::is_trusted(account, trustee)
@@ -1764,7 +1764,7 @@ impl_runtime_apis! {
 			TrustedAccounts::trusted_by_that_trust(account, account_is_trusted_by_trusted)
 		}
 	}
-
+*/
 	#[cfg(feature = "try-runtime")]
 	impl frame_try_runtime::TryRuntime<Block> for Runtime {
 		fn on_runtime_upgrade() -> (Weight, Weight) {
