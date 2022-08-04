@@ -49,6 +49,7 @@ use sp_blockchain::{Error as BlockChainError, HeaderBackend, HeaderMetadata};
 use sp_consensus::SelectChain;
 use sp_consensus_babe::BabeApi;
 use sp_keystore::SyncCryptoStorePtr;
+use pallet_acuity_atomic_swap_rpc::AcuityAssetId;
 
 /// Extra dependencies for BABE.
 pub struct BabeDeps {
@@ -109,6 +110,7 @@ where
 	C::Api: substrate_frame_rpc_system::AccountNonceApi<Block, AccountId, Index>,
 	C::Api: pallet_contracts_rpc::ContractsRuntimeApi<Block, AccountId, Balance, BlockNumber, Hash>,
 	C::Api: pallet_transaction_payment_rpc::TransactionPaymentRuntimeApi<Block, Balance>,
+	C::Api: pallet_acuity_atomic_swap_rpc_runtime_api::AtomicSwapApi<Block, AcuityAssetId, AccountId, Balance, BlockNumber>,
 	C::Api: pallet_acuity_trusted_accounts_rpc_runtime_api::TrustedAccountsApi<Block, AccountId>,
 	C::Api: BabeApi<Block>,
 	C::Api: BlockBuilder<Block>,
@@ -119,6 +121,7 @@ where
 {
 	use pallet_contracts_rpc::{Contracts, ContractsApiServer};
 	use pallet_transaction_payment_rpc::{TransactionPayment, TransactionPaymentApiServer};
+	use pallet_acuity_atomic_swap_rpc::{AtomicSwap, AtomicSwapApiServer};
 	use pallet_acuity_trusted_accounts_rpc::{TrustedAccounts, TrustedAccountsApiServer};
 	use sc_consensus_babe_rpc::{Babe, BabeApiServer};
 	use sc_finality_grandpa_rpc::{Grandpa, GrandpaApiServer};
@@ -145,6 +148,7 @@ where
 	// These RPCs should use an asynchronous caller instead.
 	io.merge(Contracts::new(client.clone()).into_rpc())?;
 	io.merge(TransactionPayment::new(client.clone()).into_rpc())?;
+	io.merge(AtomicSwap::new(client.clone()).into_rpc())?;
 	io.merge(TrustedAccounts::new(client.clone()).into_rpc())?;
 	io.merge(
 		Babe::new(

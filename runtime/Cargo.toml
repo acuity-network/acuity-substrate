@@ -54,6 +54,8 @@ pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-order
 
 pallet-acuity-atomic-swap = { git = 'https://github.com/acuity-social/acuity-atomic-swap-pallet', branch = "master", default-features = false }
 
+pallet-acuity-atomic-swap-rpc-runtime-api = { git = 'https://github.com/acuity-social/acuity-atomic-swap-pallet', branch = "master", default-features = false }
+
 pallet-acuity-trusted-accounts = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
 pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
@@ -112,6 +114,7 @@ std = [
     'pallet-vesting/std',
 		'pallet-acuity-orderbook/std',
 		'pallet-acuity-atomic-swap/std',
+		'pallet-acuity-atomic-swap-rpc-runtime-api/std',
 		'pallet-acuity-trusted-accounts/std',
     'pallet-acuity-trusted-accounts-rpc-runtime-api/std',
     'sp-api/std',

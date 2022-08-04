@@ -31,6 +31,10 @@ hex-literal = "0.3.4"
 log = "0.4.17"
 rand = "0.8"
 
+pallet-acuity-atomic-swap-rpc  = { git = 'https://github.com/acuity-social/acuity-atomic-swap-pallet', branch = "master", default-features = false }
+
+pallet-acuity-atomic-swap-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-atomic-swap-pallet', branch = "master", default-features = false }
+
 pallet-acuity-trusted-accounts-rpc  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
 pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
