@@ -37,7 +37,7 @@ use acuity_runtime::{opaque::Block, BlockNumber, AccountId, Index, Balance, Hash
 use sc_client_api::AuxStore;
 use sc_consensus_babe::{Config, Epoch};
 use sc_consensus_epochs::SharedEpochChanges;
-use grandpa::{
+use sc_finality_grandpa::{
 	FinalityProofProvider, GrandpaJustificationStream, SharedAuthoritySet, SharedVoterState,
 };
 use sc_rpc::SubscriptionTaskExecutor;

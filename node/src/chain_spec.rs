@@ -7,6 +7,7 @@ use acuity_runtime::{
 	DemocracyConfig, GrandpaConfig, ImOnlineConfig, SessionConfig, SessionKeys, StakerStatus,
 	StakingConfig, ElectionsConfig, IndicesConfig, MaxNominations, SudoConfig, SystemConfig,
 	TechnicalCommitteeConfig, wasm_binary_unwrap, ClaimsConfig, GenesisConfig,
+    NominationPoolsConfig
 };
 use acuity_runtime::constants::currency::*;
 use sc_chain_spec::ChainSpecExtension;
@@ -337,7 +338,11 @@ pub fn testnet_genesis(
 		vesting: Default::default(),
 		transaction_storage: Default::default(),
 		transaction_payment: Default::default(),
-		nomination_pools: Default::default(),
+		nomination_pools: NominationPoolsConfig {
+			min_create_bond: 10 * DOLLARS,
+			min_join_bond: 1 * DOLLARS,
+			..Default::default()
+		},
 	}
 }
 
