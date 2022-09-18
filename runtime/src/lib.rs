@@ -62,8 +62,6 @@ pub use frame_system::Call as SystemCall;
 #[cfg(any(feature = "std", test))]
 pub use pallet_staking::StakerStatus;
 
-use pallet_acuity_atomic_swap::AcuityAssetId;
-
 /// Implementations of some helper traits passed into runtime modules as associated types.
 pub mod impls;
 use impls::Author;
@@ -1796,11 +1794,7 @@ impl_runtime_apis! {
 		}
 	}
 
-	impl pallet_acuity_atomic_swap_rpc_runtime_api::AtomicSwapApi<Block, AcuityAssetId, AccountId, Balance, BlockNumber> for Runtime {
-		fn get_stashes(asset_id: AcuityAssetId, offset: u32, limit: u32) -> Vec<(AccountId, Balance)> {
-            AtomicSwap::get_stashes(asset_id, offset, limit)
-        }
-
+	impl pallet_acuity_atomic_swap_rpc_runtime_api::AtomicSwapApi<Block, AccountId, BlockNumber> for Runtime {
 		fn get_index_blocks(account: AccountId) -> Vec<BlockNumber> {
 			AtomicSwap::get_index_blocks(account)
 		}

@@ -2,7 +2,7 @@
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = '2021'
 name = 'claims'
-version = "0.9.26"
+version = "0.9.28"
 license = "GPL-3.0-only"
 homepage = "https://polkadot.network/"
 repository = "https://github.com/paritytech/polkadot"
