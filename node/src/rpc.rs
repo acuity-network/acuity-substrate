@@ -35,7 +35,7 @@ use std::sync::Arc;
 use jsonrpsee::RpcModule;
 use acuity_runtime::{opaque::Block, BlockNumber, AccountId, Index, Balance, Hash};
 use sc_client_api::AuxStore;
-use sc_consensus_babe::{Config, Epoch};
+use sc_consensus_babe::{BabeConfiguration, Epoch};
 use sc_consensus_epochs::SharedEpochChanges;
 use sc_finality_grandpa::{
 	FinalityProofProvider, GrandpaJustificationStream, SharedAuthoritySet, SharedVoterState,
@@ -53,7 +53,7 @@ use sp_keystore::SyncCryptoStorePtr;
 /// Extra dependencies for BABE.
 pub struct BabeDeps {
 	/// BABE protocol config.
-	pub babe_config: Config,
+	pub babe_config: BabeConfiguration,
 	/// BABE pending epoch changes.
 	pub shared_epoch_changes: SharedEpochChanges<Block, Epoch>,
 	/// The keystore that manages the keys of the node.
