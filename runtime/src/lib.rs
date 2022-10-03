@@ -62,6 +62,9 @@ pub use frame_system::Call as SystemCall;
 #[cfg(any(feature = "std", test))]
 pub use pallet_staking::StakerStatus;
 
+use pallet_acuity_orderbook::AssetId;
+use pallet_acuity_orderbook::PriceValue;
+
 /// Implementations of some helper traits passed into runtime modules as associated types.
 pub mod impls;
 use impls::Author;
@@ -1786,6 +1789,15 @@ impl_runtime_apis! {
 			encoded: Vec<u8>,
 		) -> Option<Vec<(Vec<u8>, KeyTypeId)>> {
 			SessionKeys::decode_into_raw_public_keys(&encoded)
+		}
+	}
+
+	impl pallet_acuity_orderbook_rpc_runtime_api::OrderbookApi<Block, AssetId, AccountId, PriceValue> for Runtime {
+		fn get_pair_sellers(sell_asset_id: AssetId, buy_asset_id: AssetId, offset: u32, count: u32) -> Vec<AccountId> {
+			Orderbook::get_pair_sellers(sell_asset_id, buy_asset_id, offset, count)
+		}
+    	fn get_pair_sellers_orders(sell_asset_id: AssetId, buy_asset_id: AssetId, offset: u32, count: u32) -> (Vec<AccountId>, Vec<PriceValue>) {
+			Orderbook::get_pair_sellers_orders(sell_asset_id, buy_asset_id, offset, count)
 		}
 	}
 

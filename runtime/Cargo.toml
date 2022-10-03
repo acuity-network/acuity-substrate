@@ -54,6 +54,8 @@ pallet-state-trie-migration = { git = 'https://github.com/paritytech/substrate',
 
 pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
 
+pallet-acuity-orderbook-rpc-runtime-api = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
+
 pallet-acuity-atomic-swap = { git = 'https://github.com/acuity-social/acuity-atomic-swap-pallet', branch = "master", default-features = false }
 
 pallet-acuity-atomic-swap-rpc-runtime-api = { git = 'https://github.com/acuity-social/acuity-atomic-swap-pallet', branch = "master", default-features = false }
@@ -118,6 +120,7 @@ std = [
 		'pallet-referenda/std',
     'pallet-vesting/std',
 		'pallet-acuity-orderbook/std',
+		'pallet-acuity-orderbook-rpc-runtime-api/std',
 		'pallet-acuity-atomic-swap/std',
 		'pallet-acuity-atomic-swap-rpc-runtime-api/std',
 		'pallet-acuity-trusted-accounts/std',
