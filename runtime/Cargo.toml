@@ -5,7 +5,7 @@ homepage = 'https://acuity.social'
 license = "GPL-3.0-only"
 name = 'acuity-runtime'
 repository = 'https://github.com/acuity-social/acuity-substrate'
-version = '1.2.2'
+version = '1.2.3'
 
 [package.metadata.docs.rs]
 targets = ["x86_64-unknown-linux-gnu"]
