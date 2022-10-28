@@ -108,7 +108,6 @@ std = [
 		"pallet-state-trie-migration/std",
     'pallet-session/std',
     'pallet-scheduler/std',
-    'pallet-society/std',
     'pallet-sudo/std',
     'pallet-timestamp/std',
     'pallet-tips/std',
@@ -169,7 +168,6 @@ runtime-benchmarks = [
 	"pallet-referenda/runtime-benchmarks",
 	"pallet-remark/runtime-benchmarks",
 	"pallet-scheduler/runtime-benchmarks",
-  "pallet-society/runtime-benchmarks",
 	"pallet-staking/runtime-benchmarks",
 	"pallet-timestamp/runtime-benchmarks",
   "pallet-tips/runtime-benchmarks",
@@ -307,12 +305,6 @@ version = '4.0.0-dev'
 [dependencies.pallet-session-benchmarking]
 default-features = false
 optional = true
-git = 'https://github.com/paritytech/substrate'
-branch = "polkadot-v0.9.30"
-version = '4.0.0-dev'
-
-[dependencies.pallet-society]
-default-features = false
 git = 'https://github.com/paritytech/substrate'
 branch = "polkadot-v0.9.30"
 version = '4.0.0-dev'

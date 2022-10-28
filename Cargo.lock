@@ -169,7 +169,6 @@ dependencies = [
  "pallet-scheduler",
  "pallet-session",
  "pallet-session-benchmarking",
- "pallet-society",
  "pallet-staking",
  "pallet-staking-reward-curve",
  "pallet-state-trie-migration",
@@ -5336,20 +5335,6 @@ dependencies = [
  "rand 0.7.3",
  "sp-runtime",
  "sp-session",
- "sp-std",
-]
-
-[[package]]
-name = "pallet-society"
-version = "4.0.0-dev"
-source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.9.30#a3ed0119c45cdd0d571ad34e5b3ee7518c8cef8d"
-dependencies = [
- "frame-support",
- "frame-system",
- "parity-scale-codec",
- "rand_chacha 0.2.2",
- "scale-info",
- "sp-runtime",
  "sp-std",
 ]
 
