@@ -7,7 +7,7 @@ homepage = 'https://acuity.social'
 license = "GPL-3.0-only"
 name = 'acuity'
 repository = 'https://github.com/acuity-social/acuity-substrate'
-version = '1.2.3'
+version = '1.2.4'
 
 [package.metadata.wasm-pack.profile.release]
 # `wasm-opt` has some problems on linux, see
