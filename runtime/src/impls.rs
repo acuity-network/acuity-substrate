@@ -17,9 +17,13 @@
 
 //! Some configurable implementations as associated type for the substrate runtime.
 
-use crate::{Authorship, Balances, NegativeImbalance};
-use frame_support::traits::{
-	Currency, OnUnbalanced,
+use crate::{
+	Authorship, Balances, NegativeImbalance,
+};
+use frame_support::{
+	traits::{
+		Currency, OnUnbalanced,
+	},
 };
 
 pub struct Author;
@@ -42,8 +46,8 @@ mod multiplier_tests {
 
 	use crate::{
 		constants::{currency::*, time::*},
-		AdjustmentVariable, MinimumMultiplier, Runtime, RuntimeBlockWeights as BlockWeights,
-		System, TargetBlockFullness, TransactionPayment,
+		AdjustmentVariable, MaximumMultiplier, MinimumMultiplier, Runtime,
+		RuntimeBlockWeights as BlockWeights, System, TargetBlockFullness, TransactionPayment,
 	};
 	use frame_support::{
 		dispatch::DispatchClass,
@@ -72,6 +76,7 @@ mod multiplier_tests {
 			TargetBlockFullness,
 			AdjustmentVariable,
 			MinimumMultiplier,
+			MaximumMultiplier,
 		>::convert(fm)
 	}
 
@@ -140,7 +145,7 @@ mod multiplier_tests {
 	fn multiplier_can_grow_from_zero() {
 		// if the min is too small, then this will not change, and we are doomed forever.
 		// the weight is 1/100th bigger than target.
-		run_with_system_weight(target() * 101 / 100, || {
+		run_with_system_weight(target().set_ref_time(target().ref_time() * 101 / 100), || {
 			let next = runtime_multiplier_update(min_multiplier());
 			assert!(next > min_multiplier(), "{:?} !>= {:?}", next, min_multiplier());
 		})

@@ -110,7 +110,6 @@ where
 		+ Send
 		+ 'static,
 	C::Api: substrate_frame_rpc_system::AccountNonceApi<Block, AccountId, Index>,
-	C::Api: pallet_contracts_rpc::ContractsRuntimeApi<Block, AccountId, Balance, BlockNumber, Hash>,
 	C::Api: pallet_transaction_payment_rpc::TransactionPaymentRuntimeApi<Block, Balance>,
 	C::Api: pallet_acuity_orderbook_rpc_runtime_api::OrderbookApi<Block, AssetId, AccountId, PriceValue>,
 	C::Api: pallet_acuity_atomic_swap_rpc_runtime_api::AtomicSwapApi<Block, AccountId, BlockNumber>,
@@ -122,7 +121,6 @@ where
 	B: sc_client_api::Backend<Block> + Send + Sync + 'static,
 	B::State: sc_client_api::backend::StateBackend<sp_runtime::traits::HashFor<Block>>,
 {
-	use pallet_contracts_rpc::{Contracts, ContractsApiServer};
 	use pallet_transaction_payment_rpc::{TransactionPayment, TransactionPaymentApiServer};
 	use pallet_acuity_orderbook_rpc::{Orderbook, OrderbookApiServer};
 	use pallet_acuity_atomic_swap_rpc::{AtomicSwap, AtomicSwapApiServer};
@@ -156,7 +154,6 @@ where
 	// Making synchronous calls in light client freezes the browser currently,
 	// more context: https://github.com/paritytech/substrate/pull/3480
 	// These RPCs should use an asynchronous caller instead.
-	io.merge(Contracts::new(client.clone()).into_rpc())?;
 	io.merge(TransactionPayment::new(client.clone()).into_rpc())?;
 	io.merge(Orderbook::new(client.clone()).into_rpc())?;
 	io.merge(AtomicSwap::new(client.clone()).into_rpc())?;
