@@ -120,10 +120,10 @@ pub fn create_extrinsic(
     let signature = raw_payload.using_encoded(|e| sender.sign(e));
 
     acuity_runtime::UncheckedExtrinsic::new_signed(
-        function.clone(),
+        function,
         sp_runtime::AccountId32::from(sender.public()).into(),
-        acuity_runtime::Signature::Sr25519(signature.clone()),
-        extra.clone(),
+        acuity_runtime::Signature::Sr25519(signature),
+        extra,
     )
 }
 
@@ -165,7 +165,7 @@ pub fn new_partial(
         })
         .transpose()?;
 
-    let executor = sc_service::new_native_or_wasm_executor(&config);
+    let executor = sc_service::new_native_or_wasm_executor(config);
 
     let (client, backend, keystore_container, task_manager) =
         sc_service::new_full_parts::<Block, RuntimeApi, _>(
@@ -333,7 +333,7 @@ pub fn new_full_base(
 ) -> Result<NewFullBase, ServiceError> {
     let hwbench = (!disable_hardware_benchmarks)
         .then_some(config.database.path().map(|database_path| {
-            let _ = std::fs::create_dir_all(&database_path);
+            let _ = std::fs::create_dir_all(database_path);
             sc_sysinfo::gather_hwbench(Some(database_path))
         }))
         .flatten();
@@ -367,7 +367,7 @@ pub fn new_full_base(
 
     let statement_handler_proto = sc_network_statement::StatementHandlerPrototype::new(
         client
-            .block_hash(0u32.into())
+            .block_hash(0u32)
             .ok()
             .flatten()
             .expect("Genesis block exists; qed"),
@@ -591,7 +591,7 @@ pub fn new_full_base(
     let statement_handler = statement_handler_proto.build(
         network.clone(),
         sync_service.clone(),
-        statement_store.clone(),
+        statement_store,
         prometheus_registry.as_ref(),
         statement_protocol_executor,
     )?;
