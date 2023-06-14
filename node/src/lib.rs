@@ -32,11 +32,11 @@ pub mod chain_spec;
 
 #[macro_use]
 pub mod service;
-pub mod rpc;
 #[cfg(feature = "cli")]
 mod cli;
 #[cfg(feature = "cli")]
 mod command;
+pub mod rpc;
 
 #[cfg(feature = "cli")]
 pub use cli::*;
