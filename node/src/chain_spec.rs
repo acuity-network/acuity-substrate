@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
 
+use grandpa_primitives::AuthorityId as GrandpaId;
 use sp_core::{Pair, Public, crypto::UncheckedInto, sr25519};
 use acuity_runtime::{
     AuthorityDiscoveryConfig, BabeConfig, BalancesConfig, CouncilConfig,
@@ -15,7 +16,6 @@ use sc_service::ChainType;
 use sc_telemetry::TelemetryEndpoints;
 use serde::{Deserialize, Serialize};
 use sp_consensus_babe::{AuthorityId as BabeId};
-use sp_finality_grandpa::AuthorityId as GrandpaId;
 use pallet_im_online::sr25519::{AuthorityId as ImOnlineId};
 use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
 use sp_runtime::{Perbill, traits::{Verify, IdentifyAccount}};
@@ -448,12 +448,13 @@ pub(crate) mod tests {
 		sp_tracing::try_init_simple();
 
 		sc_service_test::connectivity(integration_test_config_with_two_authorities(), |config| {
-			let NewFullBase { task_manager, client, network, transaction_pool, .. } =
+			let NewFullBase { task_manager, client, network, sync, transaction_pool, .. } =
 				new_full_base(config, false, |_, _| ())?;
 			Ok(sc_service_test::TestNetComponents::new(
 				task_manager,
 				client,
 				network,
+				sync,
 				transaction_pool,
 			))
 		});

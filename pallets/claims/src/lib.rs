@@ -1,4 +1,4 @@
-// Copyright 2017-2020 Parity Technologies (UK) Ltd.
+// Copyright Parity Technologies (UK) Ltd.
 // This file is part of Polkadot.
 
 // Substrate is free software: you can redistribute it and/or modify
@@ -174,7 +174,6 @@ pub mod pallet {
 	use frame_system::pallet_prelude::*;
 
 	#[pallet::pallet]
-	#[pallet::generate_store(pub(super) trait Store)]
 	#[pallet::without_storage_info]
 	pub struct Pallet<T>(_);
 
@@ -256,12 +255,9 @@ pub mod pallet {
 	impl<T: Config> GenesisBuild<T> for GenesisConfig<T> {
 		fn build(&self) {
 			// build `Claims`
-			self.claims
-				.iter()
-				.map(|(a, b, _, _)| (a.clone(), b.clone()))
-				.for_each(|(a, b)| {
-					Claims::<T>::insert(a, b);
-				});
+            self.claims.iter().map(|(a, b, _, _)| (*a, *b)).for_each(|(a, b)| {
+                Claims::<T>::insert(a, b);
+            });
 			// build `Total`
 			Total::<T>::put(
 				self.claims
@@ -275,17 +271,16 @@ pub mod pallet {
 			// build `Signing`
 			self.claims
 				.iter()
-				.filter_map(|(a, _, _, s)| Some((a.clone(), s.clone()?)))
+				.filter_map(|(a, _, _, s)| Some((*a, (*s)?)))
 				.for_each(|(a, s)| {
 					Signing::<T>::insert(a, s);
 				});
 			// build `Preclaims`
-			self.claims
-				.iter()
-				.filter_map(|(a, _, i, _)| Some((i.clone()?, a.clone())))
-				.for_each(|(i, a)| {
+			self.claims.iter().filter_map(|(a, _, i, _)| Some((i.clone()?, *a))).for_each(
+				|(i, a)| {
 					Preclaims::<T>::insert(i, a);
-				});
+				},
+			);
 		}
 	}
 
@@ -318,6 +313,7 @@ pub mod pallet {
 		///
 		/// Total Complexity: O(1)
 		/// </weight>
+		#[pallet::call_index(0)]
 		#[pallet::weight(T::WeightInfo::claim())]
 		pub fn claim(
 			origin: OriginFor<T>,
@@ -350,6 +346,7 @@ pub mod pallet {
 		///
 		/// Total Complexity: O(1)
 		/// </weight>
+		#[pallet::call_index(1)]
 		#[pallet::weight(T::WeightInfo::mint_claim())]
 		pub fn mint_claim(
 			origin: OriginFor<T>,
@@ -397,6 +394,7 @@ pub mod pallet {
 		///
 		/// Total Complexity: O(1)
 		/// </weight>
+		#[pallet::call_index(2)]
 		#[pallet::weight(T::WeightInfo::claim_attest())]
 		pub fn claim_attest(
 			origin: OriginFor<T>,
@@ -433,6 +431,7 @@ pub mod pallet {
 		///
 		/// Total Complexity: O(1)
 		/// </weight>
+		#[pallet::call_index(3)]
 		#[pallet::weight((
 			T::WeightInfo::attest(),
 			DispatchClass::Normal,
@@ -525,7 +524,7 @@ impl<T: Config> Pallet<T> {
 		}
 		let mut v = b"\x19Ethereum Signed Message:\n".to_vec();
 		v.extend(rev.into_iter().rev());
-		v.extend_from_slice(&prefix[..]);
+		v.extend_from_slice(prefix);
 		v.extend_from_slice(what);
 		v.extend_from_slice(extra);
 		v
@@ -632,7 +631,7 @@ where
 		info: &DispatchInfoOf<Self::Call>,
 		len: usize,
 	) -> Result<Self::Pre, TransactionValidityError> {
-		Ok(self.validate(who, call, info, len).map(|_| ())?)
+		self.validate(who, call, info, len).map(|_| ())
 	}
 
 	// <weight>
@@ -704,13 +703,14 @@ mod tests {
 		assert_err, assert_noop, assert_ok,
 		dispatch::{GetDispatchInfo, Pays},
 		ord_parameter_types, parameter_types,
-		traits::{ExistenceRequirement, GenesisBuild, WithdrawReasons},
+		traits::{ConstU32, ExistenceRequirement, GenesisBuild, WithdrawReasons},
 	};
 	use pallet_balances;
 	use sp_runtime::{
 		testing::Header,
 		traits::{BlakeTwo256, Identity, IdentityLookup},
 		transaction_validity::TransactionLongevity,
+		TokenError,
 	};
 
 	type UncheckedExtrinsic = frame_system::mocking::MockUncheckedExtrinsic<Test>;
@@ -773,6 +773,10 @@ mod tests {
 		type MaxReserves = ();
 		type ReserveIdentifier = [u8; 8];
 		type WeightInfo = ();
+        type HoldIdentifier = ();
+        type FreezeIdentifier = ();
+        type MaxHolds = ConstU32<1>;
+        type MaxFreezes = ConstU32<1>;
 	}
 
 	parameter_types! {
@@ -1130,7 +1134,7 @@ mod tests {
 					180,
 					ExistenceRequirement::AllowDeath
 				),
-				pallet_balances::Error::<Test, _>::LiquidityRestrictions,
+				TokenError::Frozen,
 			);
 		});
 	}
@@ -1218,6 +1222,8 @@ mod tests {
 	#[test]
 	fn claiming_while_vested_doesnt_work() {
 		new_test_ext().execute_with(|| {
+			CurrencyOf::<Test>::make_free_balance_be(&69, total_claims());
+			assert_eq!(Balances::free_balance(69), total_claims());
 			// A user is already vested
 			assert_ok!(<Test as Config>::VestingSchedule::add_vesting_schedule(
 				&69,
@@ -1225,8 +1231,6 @@ mod tests {
 				100,
 				10
 			));
-			CurrencyOf::<Test>::make_free_balance_be(&69, total_claims());
-			assert_eq!(Balances::free_balance(69), total_claims());
 			assert_ok!(Claims::mint_claim(
 				RuntimeOrigin::root(),
 				eth(&bob()),
