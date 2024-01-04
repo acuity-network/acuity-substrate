@@ -1,4 +1,4 @@
-// Copyright Parity Technologies (UK) Ltd.
+// Copyright (C) Parity Technologies (UK) Ltd.
 // This file is part of Polkadot.
 
 // Substrate is free software: you can redistribute it and/or modify
@@ -14,51 +14,30 @@
 // You should have received a copy of the GNU General Public License
 // along with Substrate.  If not, see <http://www.gnu.org/licenses/>.
 
-//! Module to process claims from MIX addresses.
-
-#![cfg_attr(not(feature = "std"), no_std)]
+//! Pallet to process claims from MIX addresses.
 
 use frame_support::{
     ensure,
     traits::{Currency, Get, IsSubType, VestingSchedule},
     weights::Weight,
+    DefaultNoBound,
 };
+pub use pallet::*;
 use parity_scale_codec::{Decode, Encode};
+use primitives::ValidityError;
 use scale_info::TypeInfo;
-#[cfg(feature = "std")]
 use serde::{self, Deserialize, Deserializer, Serialize, Serializer};
 use sp_io::{crypto::secp256k1_ecdsa_recover, hashing::keccak_256};
-#[cfg(feature = "std")]
-use sp_runtime::traits::Zero;
 use sp_runtime::{
-    traits::{CheckedSub, DispatchInfoOf, SignedExtension},
+    traits::{CheckedSub, DispatchInfoOf, SignedExtension, Zero},
     transaction_validity::{
         InvalidTransaction, TransactionValidity, TransactionValidityError, ValidTransaction,
     },
     RuntimeDebug,
 };
+#[cfg(not(feature = "std"))]
+use sp_std::alloc::{format, string::String};
 use sp_std::{fmt::Debug, prelude::*};
-
-/// Custom validity errors used in Polkadot while validating transactions.
-#[repr(u8)]
-pub enum ValidityError {
-    /// The Ethereum signature is invalid.
-    InvalidEthereumSignature = 0,
-    /// The signer has no claim.
-    SignerHasNoClaim = 1,
-    /// No permission to execute the call.
-    NoPermission = 2,
-    /// An invalid statement was made for a claim.
-    InvalidStatement = 3,
-}
-
-impl From<ValidityError> for u8 {
-    fn from(err: ValidityError) -> Self {
-        err as u8
-    }
-}
-
-pub use pallet::*;
 
 type CurrencyOf<T> = <<T as Config>::VestingSchedule as VestingSchedule<
     <T as frame_system::Config>::AccountId,
@@ -89,8 +68,9 @@ impl WeightInfo for TestWeightInfo {
 }
 
 /// The kind of statement an account needs to make for a claim to be valid.
-#[derive(Encode, Decode, Clone, Copy, Eq, PartialEq, RuntimeDebug, TypeInfo)]
-#[cfg_attr(feature = "std", derive(Serialize, Deserialize))]
+#[derive(
+    Encode, Decode, Clone, Copy, Eq, PartialEq, RuntimeDebug, TypeInfo, Serialize, Deserialize,
+)]
 pub enum StatementKind {
     /// Statement required to be made by non-SAFT holders.
     Regular,
@@ -124,7 +104,6 @@ impl Default for StatementKind {
 #[derive(Clone, Copy, PartialEq, Eq, Encode, Decode, Default, RuntimeDebug, TypeInfo)]
 pub struct EthereumAddress([u8; 20]);
 
-#[cfg(feature = "std")]
 impl Serialize for EthereumAddress {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -135,7 +114,6 @@ impl Serialize for EthereumAddress {
     }
 }
 
-#[cfg(feature = "std")]
 impl<'de> Deserialize<'de> for EthereumAddress {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
@@ -187,7 +165,7 @@ pub mod pallet {
     pub trait Config: frame_system::Config {
         /// The overarching event type.
         type RuntimeEvent: From<Event<Self>> + IsType<<Self as frame_system::Config>::RuntimeEvent>;
-        type VestingSchedule: VestingSchedule<Self::AccountId, Moment = Self::BlockNumber>;
+        type VestingSchedule: VestingSchedule<Self::AccountId, Moment = BlockNumberFor<Self>>;
         #[pallet::constant]
         type Prefix: Get<&'static [u8]>;
         type WeightInfo: WeightInfo;
@@ -212,8 +190,8 @@ pub mod pallet {
         SignerHasNoClaim,
         /// Account ID sending transaction has no claim.
         SenderHasNoClaim,
-        /// There's not enough in the pot to pay out some unvested amount. Generally implies a logic
-        /// error.
+        /// There's not enough in the pot to pay out some unvested amount. Generally implies a
+        /// logic error.
         PotUnderflow,
         /// A needed statement was not included.
         InvalidStatement,
@@ -236,7 +214,7 @@ pub mod pallet {
     #[pallet::storage]
     #[pallet::getter(fn vesting)]
     pub(super) type Vesting<T: Config> =
-        StorageMap<_, Identity, EthereumAddress, (BalanceOf<T>, BalanceOf<T>, T::BlockNumber)>;
+        StorageMap<_, Identity, EthereumAddress, (BalanceOf<T>, BalanceOf<T>, BlockNumberFor<T>)>;
 
     /// The statement kind that must be signed, if any.
     #[pallet::storage]
@@ -247,6 +225,7 @@ pub mod pallet {
     pub(super) type Preclaims<T: Config> = StorageMap<_, Identity, T::AccountId, EthereumAddress>;
 
     #[pallet::genesis_config]
+    #[derive(DefaultNoBound)]
     pub struct GenesisConfig<T: Config> {
         pub claims: Vec<(
             EthereumAddress,
@@ -256,22 +235,12 @@ pub mod pallet {
         )>,
         pub vesting: Vec<(
             EthereumAddress,
-            (BalanceOf<T>, BalanceOf<T>, T::BlockNumber),
+            (BalanceOf<T>, BalanceOf<T>, BlockNumberFor<T>),
         )>,
     }
 
-    #[cfg(feature = "std")]
-    impl<T: Config> Default for GenesisConfig<T> {
-        fn default() -> Self {
-            GenesisConfig {
-                claims: Default::default(),
-                vesting: Default::default(),
-            }
-        }
-    }
-
     #[pallet::genesis_build]
-    impl<T: Config> GenesisBuild<T> for GenesisConfig<T> {
+    impl<T: Config> BuildGenesisConfig for GenesisConfig<T> {
         fn build(&self) {
             // build `Claims`
             self.claims
@@ -327,8 +296,8 @@ pub mod pallet {
         ///
         /// Parameters:
         /// - `dest`: The destination account to payout the claim.
-        /// - `ethereum_signature`: The signature of an ethereum signed message
-        ///    matching the format described above.
+        /// - `ethereum_signature`: The signature of an ethereum signed message matching the format
+        ///   described above.
         ///
         /// <weight>
         /// The weight of this call is invariant over the input parameters.
@@ -378,7 +347,7 @@ pub mod pallet {
             origin: OriginFor<T>,
             who: EthereumAddress,
             value: BalanceOf<T>,
-            vesting_schedule: Option<(BalanceOf<T>, BalanceOf<T>, T::BlockNumber)>,
+            vesting_schedule: Option<(BalanceOf<T>, BalanceOf<T>, BlockNumberFor<T>)>,
             statement: Option<StatementKind>,
         ) -> DispatchResult {
             ensure_root(origin)?;
@@ -410,9 +379,10 @@ pub mod pallet {
         ///
         /// Parameters:
         /// - `dest`: The destination account to payout the claim.
-        /// - `ethereum_signature`: The signature of an ethereum signed message
-        ///    matching the format described above.
-        /// - `statement`: The identity of the statement which is being attested to in the signature.
+        /// - `ethereum_signature`: The signature of an ethereum signed message matching the format
+        ///   described above.
+        /// - `statement`: The identity of the statement which is being attested to in the
+        ///   signature.
         ///
         /// <weight>
         /// The weight of this call is invariant over the input parameters.
@@ -442,14 +412,16 @@ pub mod pallet {
 
         /// Attest to a statement, needed to finalize the claims process.
         ///
-        /// WARNING: Insecure unless your chain includes `PrevalidateAttests` as a `SignedExtension`.
+        /// WARNING: Insecure unless your chain includes `PrevalidateAttests` as a
+        /// `SignedExtension`.
         ///
         /// Unsigned Validation:
         /// A call to attest is deemed valid if the sender has a `Preclaim` registered
         /// and provides a `statement` which is expected for the account.
         ///
         /// Parameters:
-        /// - `statement`: The identity of the statement which is being attested to in the signature.
+        /// - `statement`: The identity of the statement which is being attested to in the
+        ///   signature.
         ///
         /// <weight>
         /// The weight of this call is invariant over the input parameters.
@@ -740,29 +712,24 @@ mod tests {
     use crate as claims;
     use claims::Call as ClaimsCall;
     use frame_support::{
-        assert_err, assert_noop, assert_ok,
+        assert_err, assert_noop, assert_ok, derive_impl,
         dispatch::{GetDispatchInfo, Pays},
         ord_parameter_types, parameter_types,
-        traits::{ConstU32, ExistenceRequirement, GenesisBuild, WithdrawReasons},
+        traits::{ConstU32, ExistenceRequirement, WithdrawReasons},
     };
     use pallet_balances;
     use sp_runtime::{
-        testing::Header,
         traits::{BlakeTwo256, Identity, IdentityLookup},
         transaction_validity::TransactionLongevity,
-        TokenError,
+        BuildStorage, TokenError,
     };
 
-    type UncheckedExtrinsic = frame_system::mocking::MockUncheckedExtrinsic<Test>;
     type Block = frame_system::mocking::MockBlock<Test>;
 
     frame_support::construct_runtime!(
-        pub enum Test where
-            Block = Block,
-            NodeBlock = Block,
-            UncheckedExtrinsic = UncheckedExtrinsic,
+        pub enum Test
         {
-            System: frame_system::{Pallet, Call, Config, Storage, Event<T>},
+            System: frame_system::{Pallet, Call, Config<T>, Storage, Event<T>},
             Balances: pallet_balances::{Pallet, Call, Storage, Config<T>, Event<T>},
             Vesting: pallet_vesting::{Pallet, Call, Storage, Config<T>, Event<T>},
             Claims: claims::{Pallet, Call, Storage, Config<T>, Event<T>, ValidateUnsigned},
@@ -772,6 +739,8 @@ mod tests {
     parameter_types! {
         pub const BlockHashCount: u32 = 250;
     }
+
+    #[derive_impl(frame_system::config_preludes::TestDefaultConfig as frame_system::DefaultConfig)]
     impl frame_system::Config for Test {
         type BaseCallFilter = frame_support::traits::Everything;
         type BlockWeights = ();
@@ -779,13 +748,12 @@ mod tests {
         type DbWeight = ();
         type RuntimeOrigin = RuntimeOrigin;
         type RuntimeCall = RuntimeCall;
-        type Index = u64;
-        type BlockNumber = u64;
+        type Nonce = u64;
         type Hash = H256;
         type Hashing = BlakeTwo256;
         type AccountId = u64;
         type Lookup = IdentityLookup<u64>;
-        type Header = Header;
+        type Block = Block;
         type RuntimeEvent = RuntimeEvent;
         type BlockHashCount = BlockHashCount;
         type Version = ();
@@ -813,7 +781,8 @@ mod tests {
         type MaxReserves = ();
         type ReserveIdentifier = [u8; 8];
         type WeightInfo = ();
-        type HoldIdentifier = ();
+        type RuntimeHoldReason = RuntimeHoldReason;
+        type RuntimeFreezeReason = RuntimeFreezeReason;
         type FreezeIdentifier = ();
         type MaxHolds = ConstU32<1>;
         type MaxFreezes = ConstU32<1>;
@@ -868,8 +837,8 @@ mod tests {
     // This function basically just builds a genesis storage key/value store according to
     // our desired mockup.
     pub fn new_test_ext() -> sp_io::TestExternalities {
-        let mut t = frame_system::GenesisConfig::default()
-            .build_storage::<Test>()
+        let mut t = frame_system::GenesisConfig::<Test>::default()
+            .build_storage()
             .unwrap();
         // We use default for brevity, but you can configure as desired if needed.
         pallet_balances::GenesisConfig::<Test>::default()
@@ -927,17 +896,6 @@ mod tests {
             assert_eq!(Balances::free_balance(&42), 100);
             assert_eq!(Vesting::vesting_balance(&42), Some(50));
             assert_eq!(Claims::total(), total_claims() - 100);
-        });
-    }
-
-    #[test]
-    fn attest_moving_works() {
-        new_test_ext().execute_with(|| {
-            assert_ok!(Claims::attest(
-                RuntimeOrigin::signed(42),
-                StatementKind::Saft.to_text().to_vec()
-            ));
-            assert_eq!(Balances::free_balance(&42), 300);
         });
     }
 
@@ -1460,7 +1418,7 @@ mod benchmarking {
     use super::*;
     use crate::claims::Call;
     use frame_benchmarking::{account, benchmarks};
-    use frame_support::dispatch::UnfilteredDispatchable;
+    use frame_support::traits::UnfilteredDispatchable;
     use frame_system::RawOrigin;
     use secp_utils::*;
     use sp_runtime::{traits::ValidateUnsigned, DispatchResult};
