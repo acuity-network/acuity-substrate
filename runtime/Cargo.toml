@@ -121,8 +121,6 @@ pallet-proxy = { version = "27.0.0", default-features = false }
 
 pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
 
-pallet-acuity-orderbook-rpc-runtime-api = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
-
 pallet-acuity-atomic-swap = { git = 'https://github.com/acuity-social/acuity-atomic-swap-pallet', branch = "master", default-features = false }
 
 pallet-acuity-trusted-accounts = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
