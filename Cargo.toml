@@ -3,8 +3,12 @@ panic = 'unwind'
 
 [workspace]
 members = [
+    'primitives',
     'node',
     'pallets/claims',
     'runtime',
 ]
 resolver = "2"
+
+[patch.crates-io]
+simple-mermaid = { git = "https://github.com/kianenigma/simple-mermaid.git", rev = "e48b187bcfd5cc75111acd9d241f1bd36604344b" }

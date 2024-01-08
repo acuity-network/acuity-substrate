@@ -31,9 +31,9 @@ futures = "0.3.21"
 log = "0.4.17"
 rand = "0.8"
 
-pallet-acuity-trusted-accounts-rpc  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+# pallet-acuity-trusted-accounts-rpc  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
-pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+# pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
 # primitives
 sp-authority-discovery = "25.0.0"
@@ -99,6 +99,7 @@ sc-cli = { version = "0.35.0", optional = true }
 frame-benchmarking-cli = { version = "31.0.0", optional = true }
 try-runtime-cli = { version = "0.37.0", optional = true }
 serde_json = "1.0.111"
+node-inspect = { package = "staging-node-inspect", version = "0.11.0" }
 
 [dev-dependencies]
 sc-keystore = "24.0.0"
@@ -135,10 +136,12 @@ try-runtime-cli = { version = "0.37.0", optional = true }
 sc-cli = { version = "0.35.0", optional = true }
 pallet-balances = "27.0.0"
 sc-storage-monitor = "0.15.0"
+node-inspect = { package = "staging-node-inspect", version = "0.11.0", optional = true }
 
 [features]
 default = [ "cli" ]
 cli = [
+	"node-inspect",
 	"sc-cli",
 	"frame-benchmarking-cli",
 	"substrate-frame-cli",
