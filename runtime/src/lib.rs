@@ -17,7 +17,10 @@ use frame_support::{
     parameter_types,
     traits::{
         fungible::{Balanced, Credit, HoldConsideration, ItemOf},
-        tokens::{nonfungibles_v2::Inspect, pay::PayAssetFromAccount, GetSalary, PayFromAccount},
+        tokens::{
+            nonfungibles_v2::Inspect, pay::PayAssetFromAccount, ConversionFromAssetBalance,
+            GetSalary, PayFromAccount,
+        },
         AsEnsureOriginWithArg, ConstBool, ConstU128, ConstU16, ConstU32, Contains, Currency,
         EitherOfDiverse, EqualPrivilegeOnly, Imbalance, InsideBoth, InstanceFilter,
         KeyOwnerProofSystem, LinearStoragePrice, LockIdentifier, Nothing, OnUnbalanced,
@@ -220,7 +223,7 @@ const_assert!(NORMAL_DISPATCH_RATIO.deconstruct() >= AVERAGE_ON_INITIALIZE_RATIO
 
 #[derive_impl(frame_system::config_preludes::SolochainDefaultConfig as frame_system::DefaultConfig)]
 impl frame_system::Config for Runtime {
-    type BaseCallFilter = InsideBoth<SafeMode, TxPause>;
+    type BaseCallFilter = frame_support::traits::Everything;
     type BlockWeights = RuntimeBlockWeights;
     type BlockLength = RuntimeBlockLength;
     type DbWeight = RocksDbWeight;
@@ -529,7 +532,7 @@ parameter_types! {
     pub const BondingDuration: sp_staking::EraIndex = 24 * 28;
     pub const SlashDeferDuration: sp_staking::EraIndex = 24 * 7; // 1/4 the bonding duration.
     pub const RewardCurve: &'static PiecewiseLinear<'static> = &REWARD_CURVE;
-    pub const MaxNominatorRewardedPerValidator: u32 = 256;
+    pub const MaxNominators: u32 = 64;
     pub const OffendingValidatorsThreshold: Perbill = Perbill::from_percent(17);
     pub OffchainRepeat: BlockNumber = 5;
     pub HistoryDepth: u32 = 84;
@@ -1092,6 +1095,17 @@ parameter_types! {
     pub const MaxApprovals: u32 = 100;
     pub const MaxBalance: Balance = Balance::max_value();
     pub const SpendPayoutPeriod: BlockNumber = 30 * DAYS;
+    pub TreasuryAccount: AccountId = Treasury::account_id();
+}
+
+pub struct NoConversion;
+impl ConversionFromAssetBalance<u128, (), u128> for NoConversion {
+    type Error = ();
+    fn from_asset_balance(balance: Balance, _asset_id: ()) -> Result<Balance, Self::Error> {
+        return Ok(balance);
+    }
+    #[cfg(feature = "runtime-benchmarks")]
+    fn ensure_successful(_: ()) {}
 }
 
 impl pallet_treasury::Config for Runtime {
@@ -1117,11 +1131,11 @@ impl pallet_treasury::Config for Runtime {
     type WeightInfo = pallet_treasury::weights::SubstrateWeight<Runtime>;
     type MaxApprovals = MaxApprovals;
     type SpendOrigin = EnsureWithSuccess<EnsureRoot<AccountId>, AccountId, MaxBalance>;
-    type AssetKind = u32;
+    type AssetKind = ();
     type Beneficiary = AccountId;
     type BeneficiaryLookup = Indices;
-    type Paymaster = PayAssetFromAccount<Assets, TreasuryAccount>;
-    type BalanceConverter = AssetRate;
+    type Paymaster = PayFromAccount<Balances, TreasuryAccount>;
+    type BalanceConverter = NoConversion;
     type PayoutPeriod = SpendPayoutPeriod;
     #[cfg(feature = "runtime-benchmarks")]
     type BenchmarkHelper = ();
@@ -1244,7 +1258,6 @@ parameter_types! {
     pub const MaxAuthorities: u32 = 100;
     pub const MaxKeys: u32 = 10_000;
     pub const MaxPeerInHeartbeats: u32 = 10_000;
-    pub const MaxPeerDataEncodingSize: u32 = 1_000;
 }
 
 impl<LocalCall> frame_system::offchain::CreateSignedTransaction<LocalCall> for Runtime
@@ -1255,7 +1268,7 @@ where
         call: RuntimeCall,
         public: <Signature as traits::Verify>::Signer,
         account: AccountId,
-        nonce: Index,
+        nonce: Nonce,
     ) -> Option<(
         RuntimeCall,
         <UncheckedExtrinsic as traits::Extrinsic>::SignaturePayload,
@@ -1838,8 +1851,8 @@ impl_runtime_apis! {
         }
     }
 
-    impl frame_system_rpc_runtime_api::AccountNonceApi<Block, AccountId, Index> for Runtime {
-        fn account_nonce(account: AccountId) -> Index {
+    impl frame_system_rpc_runtime_api::AccountNonceApi<Block, AccountId, Nonce> for Runtime {
+        fn account_nonce(account: AccountId) -> Nonce {
             System::account_nonce(account)
         }
     }

@@ -1,5 +1,5 @@
 [package]
-name = "node-primitives"
+name = "primitives"
 version = "2.0.0"
 description = "Substrate node low-level primitives."
 edition = '2021'
