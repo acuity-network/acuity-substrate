@@ -19,7 +19,7 @@
 use crate::cli::{Cli, Subcommand};
 use crate::{
     chain_spec, service,
-    service::{new_partial, ExecutorDispatch, FullClient},
+    service::{new_partial, FullClient},
 };
 use sc_cli::{ChainSpec, Result, RuntimeVersion, SubstrateCli};
 use sc_service::PartialComponents;
@@ -55,7 +55,7 @@ impl SubstrateCli for Cli {
 
     fn load_spec(&self, id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
         let spec = match id {
-            "" | "acuity" => Box::new(chain_spec::config()?),
+            "" | "acuity" => Box::new(chain_spec::development_config()),
             "dev" => Box::new(chain_spec::development_config()),
             "local" => Box::new(chain_spec::local_testnet_config()),
             "staging" => Box::new(chain_spec::staging_testnet_config()),
@@ -64,10 +64,6 @@ impl SubstrateCli for Cli {
             )?),
         };
         Ok(spec)
-    }
-
-    fn native_runtime_version(_: &Box<dyn ChainSpec>) -> &'static RuntimeVersion {
-        &acuity_runtime::VERSION
     }
 }
 
@@ -85,7 +81,7 @@ pub fn run() -> Result<()> {
         Some(Subcommand::Inspect(cmd)) => {
             let runner = cli.create_runner(cmd)?;
 
-            runner.sync_run(|config| cmd.run::<Block, RuntimeApi, ExecutorDispatch>(config))
+            runner.sync_run(|config| cmd.run::<Block, RuntimeApi>(config))
         }
         Some(Subcommand::Benchmark(_cmd)) => todo!(),
         Some(Subcommand::Key(cmd)) => cmd.run(&cli),
@@ -104,7 +100,7 @@ pub fn run() -> Result<()> {
                     task_manager,
                     import_queue,
                     ..
-                } = new_partial(&config)?;
+                } = new_partial(&config, None)?;
                 Ok((cmd.run(client, import_queue), task_manager))
             })
         }
@@ -115,7 +111,7 @@ pub fn run() -> Result<()> {
                     client,
                     task_manager,
                     ..
-                } = new_partial(&config)?;
+                } = new_partial(&config, None)?;
                 Ok((cmd.run(client, config.database), task_manager))
             })
         }
@@ -126,7 +122,7 @@ pub fn run() -> Result<()> {
                     client,
                     task_manager,
                     ..
-                } = new_partial(&config)?;
+                } = new_partial(&config, None)?;
                 Ok((cmd.run(client, config.chain_spec), task_manager))
             })
         }
@@ -138,7 +134,7 @@ pub fn run() -> Result<()> {
                     task_manager,
                     import_queue,
                     ..
-                } = new_partial(&config)?;
+                } = new_partial(&config, None)?;
                 Ok((cmd.run(client, import_queue), task_manager))
             })
         }
@@ -154,7 +150,7 @@ pub fn run() -> Result<()> {
                     task_manager,
                     backend,
                     ..
-                } = new_partial(&config)?;
+                } = new_partial(&config, None)?;
                 let aux_revert = Box::new(|client: Arc<FullClient>, backend, blocks| {
                     sc_consensus_babe::revert(client.clone(), backend, blocks)?;
                     sc_consensus_grandpa::revert(client, blocks)?;
@@ -164,28 +160,7 @@ pub fn run() -> Result<()> {
             })
         }
         #[cfg(feature = "try-runtime")]
-        Some(Subcommand::TryRuntime(cmd)) => {
-            use sc_executor::{sp_wasm_interface::ExtendedHostFunctions, NativeExecutionDispatch};
-            let runner = cli.create_runner(cmd)?;
-            runner.async_run(|config| {
-                // we don't need any of the components of new_partial, just a runtime, or a task
-                // manager to do `async_run`.
-                let registry = config.prometheus_config.as_ref().map(|cfg| &cfg.registry);
-                let task_manager =
-                    sc_service::TaskManager::new(config.tokio_handle.clone(), registry)
-                        .map_err(|e| sc_cli::Error::Service(sc_service::Error::Prometheus(e)))?;
-
-                let info_provider = substrate_info(SLOT_DURATION);
-
-                Ok((
-                    cmd.run::<Block, ExtendedHostFunctions<
-                        sp_io::SubstrateHostFunctions,
-                        <ExecutorDispatch as NativeExecutionDispatch>::ExtendHostFunctions,
-                    >, _>(Some(info_provider)),
-                    task_manager,
-                ))
-            })
-        }
+        Some(Subcommand::TryRuntime) => Err(try_runtime_cli::DEPRECATION_NOTICE.into()),
         #[cfg(not(feature = "try-runtime"))]
         Some(Subcommand::TryRuntime) => Err("TryRuntime wasn't enabled when building the node. \
 				You can enable it with `--features try-runtime`."

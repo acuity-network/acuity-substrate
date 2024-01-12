@@ -134,6 +134,7 @@ pub fn wasm_binary_unwrap() -> &'static [u8] {
 }
 
 /// Runtime version (Acuity).
+#[sp_version::runtime_version]
 pub const VERSION: RuntimeVersion = RuntimeVersion {
     spec_name: create_runtime_str!("acuity"),
     impl_name: create_runtime_str!("acuity-substrate"),
@@ -496,6 +497,7 @@ impl_opaque_keys! {
         pub babe: Babe,
         pub im_online: ImOnline,
         pub authority_discovery: AuthorityDiscovery,
+        pub mixnet: Mixnet,
     }
 }
 
@@ -1462,27 +1464,6 @@ impl pallet_transaction_storage::Config for Runtime {
 }
 
 parameter_types! {
-    pub const MigrationSignedDepositPerItem: Balance = 1 * CENTS;
-    pub const MigrationSignedDepositBase: Balance = 20 * DOLLARS;
-    pub const MigrationMaxKeyLen: u32 = 512;
-}
-
-impl pallet_state_trie_migration::Config for Runtime {
-    type RuntimeEvent = RuntimeEvent;
-    type ControlOrigin = EnsureRoot<AccountId>;
-    type Currency = Balances;
-    type MaxKeyLen = MigrationMaxKeyLen;
-    type SignedDepositPerItem = MigrationSignedDepositPerItem;
-    type SignedDepositBase = MigrationSignedDepositBase;
-    // Warning: this is not advised, as it might allow the chain to be temporarily DOS-ed.
-    // Preferably, if the chain's governance/maintenance team is planning on using a specific
-    // account for the migration, put it here to make sure only that account can trigger the signed
-    // migrations.
-    type SignedFilter = EnsureSigned<Self::AccountId>;
-    type WeightInfo = ();
-}
-
-parameter_types! {
     pub StatementCost: Balance = 1 * DOLLARS;
     pub StatementByteCost: Balance = 100 * MILLICENTS;
     pub const MinAllowedStatements: u32 = 4;
@@ -1500,6 +1481,29 @@ impl pallet_statement::Config for Runtime {
     type MaxAllowedStatements = MaxAllowedStatements;
     type MinAllowedBytes = MinAllowedBytes;
     type MaxAllowedBytes = MaxAllowedBytes;
+}
+
+parameter_types! {
+    pub const MixnetNumCoverToCurrentBlocks: BlockNumber = 3;
+    pub const MixnetNumRequestsToCurrentBlocks: BlockNumber = 3;
+    pub const MixnetNumCoverToPrevBlocks: BlockNumber = 3;
+    pub const MixnetNumRegisterStartSlackBlocks: BlockNumber = 3;
+    pub const MixnetNumRegisterEndSlackBlocks: BlockNumber = 3;
+    pub const MixnetRegistrationPriority: TransactionPriority = ImOnlineUnsignedPriority::get() - 1;
+}
+
+impl pallet_mixnet::Config for Runtime {
+    type MaxAuthorities = MaxAuthorities;
+    type MaxExternalAddressSize = ConstU32<128>;
+    type MaxExternalAddressesPerMixnode = ConstU32<16>;
+    type NextSessionRotation = Babe;
+    type NumCoverToCurrentBlocks = MixnetNumCoverToCurrentBlocks;
+    type NumRequestsToCurrentBlocks = MixnetNumRequestsToCurrentBlocks;
+    type NumCoverToPrevBlocks = MixnetNumCoverToPrevBlocks;
+    type NumRegisterStartSlackBlocks = MixnetNumRegisterStartSlackBlocks;
+    type NumRegisterEndSlackBlocks = MixnetNumRegisterEndSlackBlocks;
+    type RegistrationPriority = MixnetRegistrationPriority;
+    type MinMixnodes = ConstU32<7>; // Low to allow small testing networks
 }
 
 construct_runtime!(
@@ -1543,7 +1547,6 @@ construct_runtime!(
         Tips: pallet_tips,
         TransactionStorage: pallet_transaction_storage,
         VoterList: pallet_bags_list::<Instance1>,
-        StateTrieMigration: pallet_state_trie_migration,
         ChildBounties: pallet_child_bounties,
         Referenda: pallet_referenda,
         Remark: pallet_remark,
@@ -1558,6 +1561,7 @@ construct_runtime!(
         FastUnstake: pallet_fast_unstake,
         MessageQueue: pallet_message_queue,
         Statement: pallet_statement,
+        Mixnet: pallet_mixnet,
     }
 );
 
@@ -1963,6 +1967,24 @@ impl_runtime_apis! {
         }
         fn query_length_to_fee(length: u32) -> Balance {
             TransactionPayment::length_to_fee(length)
+        }
+    }
+
+    impl sp_mixnet::runtime_api::MixnetApi<Block> for Runtime {
+        fn session_status() -> sp_mixnet::types::SessionStatus {
+            Mixnet::session_status()
+        }
+
+        fn prev_mixnodes() -> Result<Vec<sp_mixnet::types::Mixnode>, sp_mixnet::types::MixnodesErr> {
+            Mixnet::prev_mixnodes()
+        }
+
+        fn current_mixnodes() -> Result<Vec<sp_mixnet::types::Mixnode>, sp_mixnet::types::MixnodesErr> {
+            Mixnet::current_mixnodes()
+        }
+
+        fn maybe_register(session_index: sp_mixnet::types::SessionIndex, mixnode: sp_mixnet::types::Mixnode) -> bool {
+            Mixnet::maybe_register(session_index, mixnode)
         }
     }
 

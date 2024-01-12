@@ -34,6 +34,7 @@ sp-block-builder = { version = "25.0.0", default-features = false }
 # sp-genesis-builder = { version = "0.6.0", default-features = false }
 sp-inherents = { version = "25.0.0", default-features = false }
 primitives = { path = "../primitives", default-features = false }
+sp-mixnet = { version = "0.3.0", default-features = false }
 sp-offchain = { version = "25.0.0", default-features = false }
 sp-core = { version = "27.0.0", default-features = false }
 sp-std = { version = "13.0.0", default-features = false }
@@ -86,6 +87,7 @@ pallet-identity = { version = "27.0.0", default-features = false }
 pallet-membership = { version = "27.0.0", default-features = false }
 pallet-message-queue = { version = "30.0.0", default-features = false }
 # pallet-mmr = { version = "26.0.0", default-features = false }
+pallet-mixnet = { version = "0.3.0", default-features = false }
 pallet-multisig = { version = "27.0.0", default-features = false }
 pallet-nomination-pools = { version = "24.0.0", default-features = false }
 # pallet-nomination-pools-benchmarking = { version = "25.0.0", default-features = false, optional = true }
@@ -171,6 +173,7 @@ std = [
 	"pallet-insecure-randomness-collective-flip/std",
 	"pallet-membership/std",
 	"pallet-message-queue/std",
+	"pallet-mixnet/std",
 	# "pallet-mmr/std",
 	"pallet-multisig/std",
 	# "pallet-nis/std",
@@ -212,6 +215,7 @@ std = [
 	# "sp-genesis-builder/std",
 	"sp-inherents/std",
 	"sp-io/std",
+	"sp-mixnet/std",
 	"sp-offchain/std",
 	"sp-runtime/std",
 	"sp-session/std",
@@ -260,6 +264,7 @@ runtime-benchmarks = [
 	"pallet-indices/runtime-benchmarks",
 	"pallet-membership/runtime-benchmarks",
 	"pallet-message-queue/runtime-benchmarks",
+	"pallet-mixnet/runtime-benchmarks",
 	# "pallet-mmr/runtime-benchmarks",
 	"pallet-multisig/runtime-benchmarks",
 	# "pallet-nis/runtime-benchmarks",
@@ -321,6 +326,7 @@ try-runtime = [
 	"pallet-insecure-randomness-collective-flip/try-runtime",
 	"pallet-membership/try-runtime",
 	"pallet-message-queue/try-runtime",
+	"pallet-mixnet/try-runtime",
 	# "pallet-mmr/try-runtime",
 	"pallet-multisig/try-runtime",
 	# "pallet-nis/try-runtime",

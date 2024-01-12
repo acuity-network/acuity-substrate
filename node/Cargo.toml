@@ -31,14 +31,16 @@ futures = "0.3.21"
 log = "0.4.17"
 rand = "0.8"
 
-# pallet-acuity-trusted-accounts-rpc  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+pallet-acuity-trusted-accounts-rpc  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
-# pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
+pallet-acuity-trusted-accounts-rpc-runtime-api  = { git = 'https://github.com/acuity-social/acuity-trusted-accounts-pallet', branch = "master", default-features = false }
 
 # primitives
+primitives = { path = "../primitives" }
 sp-authority-discovery = "25.0.0"
 sp-consensus-babe = "0.31.0"
 sp-consensus-grandpa = "12.0.0"
+sp-mixnet = "0.3.0"
 sp-api = "25.0.0"
 sp-core = "27.0.0"
 sp-runtime = "30.0.1"
@@ -61,10 +63,12 @@ sc-consensus = "0.32.0"
 sc-transaction-pool = "27.0.0"
 sc-transaction-pool-api = "27.0.0"
 sc-statement-store = "9.0.0"
+sc-mixnet = "0.3.0"
 sc-network = "0.33.0"
 sc-network-common = "0.32.0"
 sc-network-sync = "0.32.0"
 sc-network-statement = "0.15.0"
+sc-offchain = "28.0.0"
 sc-consensus-slots = "0.32.0"
 sc-consensus-babe = "0.33.0"
 sc-consensus-babe-rpc = "0.33.0"
