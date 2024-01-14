@@ -22,8 +22,8 @@
 
 use sp_runtime::{
     generic,
-    traits::{IdentifyAccount, Verify},
-    MultiSignature,
+    traits::{BlakeTwo256, IdentifyAccount, Verify},
+    MultiSignature, OpaqueExtrinsic,
 };
 
 /// An index to a block.
@@ -58,3 +58,7 @@ pub type Timestamp = u64;
 
 /// Digest item type.
 pub type DigestItem = generic::DigestItem;
+/// Header type.
+pub type Header = generic::Header<BlockNumber, BlakeTwo256>;
+/// Block type.
+pub type Block = generic::Block<Header, OpaqueExtrinsic>;

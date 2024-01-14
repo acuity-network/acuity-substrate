@@ -1,12 +1,7 @@
 #![allow(dead_code)]
 
 use acuity_runtime::constants::currency::*;
-use acuity_runtime::{
-    wasm_binary_unwrap, AuthorityDiscoveryConfig, BabeConfig, BalancesConfig, ClaimsConfig,
-    CouncilConfig, DemocracyConfig, ElectionsConfig, GenesisConfig, GrandpaConfig, ImOnlineConfig,
-    IndicesConfig, MaxNominations, NominationPoolsConfig, SessionConfig, SessionKeys, StakerStatus,
-    StakingConfig, SudoConfig, SystemConfig, TechnicalCommitteeConfig,
-};
+use acuity_runtime::{wasm_binary_unwrap, MaxNominations, SessionKeys, StakerStatus};
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use sc_chain_spec::ChainSpecExtension;
 use sc_service::ChainType;

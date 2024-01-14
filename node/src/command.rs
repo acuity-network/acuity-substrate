@@ -21,7 +21,7 @@ use crate::{
     chain_spec, service,
     service::{new_partial, FullClient},
 };
-use sc_cli::{ChainSpec, Result, RuntimeVersion, SubstrateCli};
+use sc_cli::{Result, SubstrateCli};
 use sc_service::PartialComponents;
 
 use std::sync::Arc;
