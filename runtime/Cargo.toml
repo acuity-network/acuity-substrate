@@ -31,7 +31,7 @@ sp-authority-discovery = { version = "25.0.0", default-features = false }
 sp-consensus-babe = { version = "0.31.0", default-features = false }
 sp-consensus-grandpa = { version = "12.0.0", default-features = false }
 sp-block-builder = { version = "25.0.0", default-features = false }
-# sp-genesis-builder = { version = "0.6.0", default-features = false }
+sp-genesis-builder = { version = "0.6.0", default-features = false }
 sp-inherents = { version = "25.0.0", default-features = false }
 primitives = { path = "../primitives", default-features = false }
 sp-mixnet = { version = "0.3.0", default-features = false }

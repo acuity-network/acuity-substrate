@@ -11,20 +11,14 @@ use frame_support::{
     construct_runtime, derive_impl,
     dispatch::DispatchClass,
     genesis_builder_helper::{build_config, create_default_config},
-    instances::{Instance1, Instance2},
-    ord_parameter_types,
     pallet_prelude::Get,
     parameter_types,
     traits::{
-        fungible::{Balanced, Credit, HoldConsideration, ItemOf},
-        tokens::{
-            nonfungibles_v2::Inspect, pay::PayAssetFromAccount, ConversionFromAssetBalance,
-            GetSalary, PayFromAccount,
-        },
-        AsEnsureOriginWithArg, ConstBool, ConstU128, ConstU16, ConstU32, Contains, Currency,
-        EitherOfDiverse, EqualPrivilegeOnly, Imbalance, InsideBoth, InstanceFilter,
-        KeyOwnerProofSystem, LinearStoragePrice, LockIdentifier, Nothing, OnUnbalanced,
-        WithdrawReasons,
+        fungible::HoldConsideration,
+        tokens::{ConversionFromAssetBalance, PayFromAccount},
+        ConstBool, ConstU128, ConstU16, ConstU32, Currency, EitherOfDiverse, EqualPrivilegeOnly,
+        Imbalance, InstanceFilter, KeyOwnerProofSystem, LinearStoragePrice, LockIdentifier,
+        OnUnbalanced, WithdrawReasons,
     },
     weights::{
         constants::{
@@ -47,7 +41,6 @@ pub use pallet_transaction_payment::{CurrencyAdapter, Multiplier, TargetedFeeAdj
 use pallet_transaction_payment::{FeeDetails, RuntimeDispatchInfo};
 pub use primitives::{AccountId, Signature};
 use primitives::{AccountIndex, Balance, BlockNumber, Hash, Moment, Nonce};
-use scale_info::TypeInfo;
 use sp_api::impl_runtime_apis;
 use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
 use sp_core::{crypto::KeyTypeId, OpaqueMetadata};
@@ -57,8 +50,8 @@ use sp_runtime::{
     curve::PiecewiseLinear,
     generic, impl_opaque_keys,
     traits::{
-        self, AccountIdConversion, BlakeTwo256, Block as BlockT, Bounded, ConvertInto, NumberFor,
-        OpaqueKeys, SaturatedConversion, StaticLookup,
+        self, BlakeTwo256, Block as BlockT, Bounded, ConvertInto, NumberFor, OpaqueKeys,
+        SaturatedConversion, StaticLookup,
     },
     transaction_validity::{TransactionPriority, TransactionSource, TransactionValidity},
     ApplyExtrinsicResult, FixedPointNumber, FixedU128, Perbill, Percent, Permill, Perquintill,
@@ -78,9 +71,6 @@ pub use pallet_balances::Call as BalancesCall;
 pub use pallet_staking::StakerStatus;
 #[cfg(any(feature = "std", test))]
 pub use sp_runtime::BuildStorage;
-
-use pallet_acuity_orderbook::AssetId;
-use pallet_acuity_orderbook::PriceValue;
 
 /// Implementations of some helper traits passed into runtime modules as associated types.
 pub mod impls;
@@ -592,8 +582,6 @@ impl pallet_fast_unstake::Config for Runtime {
     type Currency = Balances;
     type Staking = Staking;
     type MaxErasToCheckPerBlock = ConstU32<1>;
-    #[cfg(feature = "runtime-benchmarks")]
-    type MaxBackersPerValidator = MaxNominatorRewardedPerValidator;
     type WeightInfo = ();
 }
 
@@ -924,12 +912,12 @@ impl pallet_remark::Config for Runtime {
 }
 
 parameter_types! {
-    pub const LaunchPeriod: BlockNumber = 7 * DAYS;
-    pub const VotingPeriod: BlockNumber = 7 * DAYS;
-    pub const FastTrackVotingPeriod: BlockNumber = 3 * HOURS;
-    pub const MinimumDeposit: Balance = 1 * DOLLARS;
-    pub const EnactmentPeriod: BlockNumber = 8 * DAYS;
-    pub const CooloffPeriod: BlockNumber = 7 * DAYS;
+    pub const LaunchPeriod: BlockNumber = 28 * 24 * 60 * MINUTES;
+    pub const VotingPeriod: BlockNumber = 28 * 24 * 60 * MINUTES;
+    pub const FastTrackVotingPeriod: BlockNumber = 3 * 24 * 60 * MINUTES;
+    pub const MinimumDeposit: Balance = 100 * DOLLARS;
+    pub const EnactmentPeriod: BlockNumber = 30 * 24 * 60 * MINUTES;
+    pub const CooloffPeriod: BlockNumber = 28 * 24 * 60 * MINUTES;
     pub const MaxProposals: u32 = 100;
 }
 
@@ -958,7 +946,7 @@ impl pallet_democracy::Config for Runtime {
         pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 2, 3>;
     type InstantOrigin =
         pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 1, 1>;
-    type InstantAllowed = frame_support::traits::ConstBool<true>;
+    type InstantAllowed = ConstBool<true>;
     type FastTrackVotingPeriod = FastTrackVotingPeriod;
     // To cancel a proposal which has been passed, 2/3 of the council must agree to it.
     type CancellationOrigin =
@@ -1217,6 +1205,7 @@ impl pallet_tips::Config for Runtime {
 //     pub const DepositPerByte: Balance = deposit(0, 1);
 //     pub const DefaultDepositLimit: Balance = deposit(1024, 1024 * 1024);
 //     pub Schedule: pallet_contracts::Schedule<Runtime> = Default::default();
+//     pub CodeHashLockupDepositPercent: Perbill = Perbill::from_percent(30);
 // }
 
 // impl pallet_contracts::Config for Runtime {
@@ -1245,6 +1234,16 @@ impl pallet_tips::Config for Runtime {
 //     type MaxStorageKeyLen = ConstU32<128>;
 //     type UnsafeUnstableInterface = ConstBool<false>;
 //     type MaxDebugBufferLen = ConstU32<{ 2 * 1024 * 1024 }>;
+//     type RuntimeHoldReason = RuntimeHoldReason;
+//     #[cfg(not(feature = "runtime-benchmarks"))]
+//     type Migrations = ();
+//     #[cfg(feature = "runtime-benchmarks")]
+//     type Migrations = pallet_contracts::migration::codegen::BenchMigrations;
+//     type MaxDelegateDependencies = ConstU32<32>;
+//     type CodeHashLockupDepositPercent = CodeHashLockupDepositPercent;
+//     type Debug = ();
+//     type Environment = ();
+//     type Xcm = ();
 // }
 
 impl pallet_sudo::Config for Runtime {
@@ -1610,15 +1609,7 @@ pub type Executive = frame_executive::Executive<
 
 // All migrations executed on runtime upgrade as a nested tuple of types implementing
 // `OnRuntimeUpgrade`.
-type Migrations = (
-    pallet_nomination_pools::migration::v2::MigrateToV2<Runtime>,
-    // pallet_contracts::Migration<Runtime>,
-);
-
-type EventRecord = frame_system::EventRecord<
-    <Runtime as frame_system::Config>::RuntimeEvent,
-    <Runtime as frame_system::Config>::Hash,
->;
+type Migrations = ();
 
 #[cfg(feature = "runtime-benchmarks")]
 mod benches {
@@ -1742,7 +1733,7 @@ impl_runtime_apis! {
 
     impl sp_consensus_grandpa::GrandpaApi<Block> for Runtime {
         fn grandpa_authorities() -> sp_consensus_grandpa::AuthorityList {
-             Grandpa::grandpa_authorities()
+            Grandpa::grandpa_authorities()
         }
 
         fn current_set_id() -> sp_consensus_grandpa::SetId {
@@ -1860,80 +1851,6 @@ impl_runtime_apis! {
             System::account_nonce(account)
         }
     }
-
-    // impl pallet_contracts::ContractsApi<Block, AccountId, Balance, BlockNumber, Hash, EventRecord> for Runtime
-    // {
-    //     fn call(
-    //         origin: AccountId,
-    //         dest: AccountId,
-    //         value: Balance,
-    //         gas_limit: Option<Weight>,
-    //         storage_deposit_limit: Option<Balance>,
-    //         input_data: Vec<u8>,
-    //     ) -> pallet_contracts_primitives::ContractExecResult<Balance, EventRecord> {
-    //         let gas_limit = gas_limit.unwrap_or(RuntimeBlockWeights::get().max_block);
-    //         Contracts::bare_call(
-    //             origin,
-    //             dest,
-    //             value,
-    //             gas_limit,
-    //             storage_deposit_limit,
-    //             input_data,
-    //             pallet_contracts::DebugInfo::UnsafeDebug,
-    //             pallet_contracts::CollectEvents::UnsafeCollect,
-    //             pallet_contracts::Determinism::Enforced,
-    //         )
-    //     }
-
-    //     fn instantiate(
-    //         origin: AccountId,
-    //         value: Balance,
-    //         gas_limit: Option<Weight>,
-    //         storage_deposit_limit: Option<Balance>,
-    //         code: pallet_contracts_primitives::Code<Hash>,
-    //         data: Vec<u8>,
-    //         salt: Vec<u8>,
-    //     ) -> pallet_contracts_primitives::ContractInstantiateResult<AccountId, Balance, EventRecord>
-    //     {
-    //         let gas_limit = gas_limit.unwrap_or(RuntimeBlockWeights::get().max_block);
-    //         Contracts::bare_instantiate(
-    //             origin,
-    //             value,
-    //             gas_limit,
-    //             storage_deposit_limit,
-    //             code,
-    //             data,
-    //             salt,
-    //             pallet_contracts::DebugInfo::UnsafeDebug,
-    //             pallet_contracts::CollectEvents::UnsafeCollect,
-    //          )
-    //     }
-
-    //     fn upload_code(
-    //         origin: AccountId,
-    //         code: Vec<u8>,
-    //         storage_deposit_limit: Option<Balance>,
-    //         determinism: pallet_contracts::Determinism,
-    //     ) -> pallet_contracts_primitives::CodeUploadResult<Hash, Balance>
-    //     {
-    //         Contracts::bare_upload_code(
-    //             origin,
-    //             code,
-    //             storage_deposit_limit,
-    //             determinism,
-    //         )
-    //     }
-
-    //     fn get_storage(
-    //         address: AccountId,
-    //         key: Vec<u8>,
-    //     ) -> pallet_contracts_primitives::GetStorageResult {
-    //         Contracts::get_storage(
-    //             address,
-    //             key
-    //         )
-    //     }
-    // }
 
     impl pallet_transaction_payment_rpc_runtime_api::TransactionPaymentApi<
         Block,
@@ -2074,7 +1991,8 @@ impl_runtime_apis! {
         fn dispatch_benchmark(
             config: frame_benchmarking::BenchmarkConfig
         ) -> Result<Vec<frame_benchmarking::BenchmarkBatch>, sp_runtime::RuntimeString> {
-            use frame_benchmarking::{baseline, Benchmarking, BenchmarkBatch,  TrackedStorageKey};
+            use frame_benchmarking::{baseline, Benchmarking, BenchmarkBatch};
+            use sp_storage::TrackedStorageKey;
 
             // Trying to add benchmarks directly to the Session Pallet caused cyclic dependency
             // issues. To get around that, we separated the Session benchmarks into its own crate,
@@ -2106,6 +2024,16 @@ impl_runtime_apis! {
             let params = (&config, &whitelist);
             add_benchmarks!(params, batches);
             Ok(batches)
+        }
+    }
+
+    impl sp_genesis_builder::GenesisBuilder<Block> for Runtime {
+        fn create_default_config() -> Vec<u8> {
+            create_default_config::<RuntimeGenesisConfig>()
+        }
+
+        fn build_config(config: Vec<u8>) -> sp_genesis_builder::Result {
+            build_config::<RuntimeGenesisConfig>(config)
         }
     }
 }
