@@ -1,7 +1,26 @@
-#![allow(dead_code)]
+// This file is part of Substrate.
 
-use acuity_runtime::constants::currency::*;
-use acuity_runtime::{wasm_binary_unwrap, MaxNominations, SessionKeys, StakerStatus};
+// Copyright (C) Parity Technologies (UK) Ltd.
+// SPDX-License-Identifier: GPL-3.0-or-later WITH Classpath-exception-2.0
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+//! Substrate chain configurations.
+
+use acuity_runtime::{
+    constants::currency::*, wasm_binary_unwrap, Block, MaxNominations, SessionKeys, StakerStatus,
+};
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use sc_chain_spec::ChainSpecExtension;
 use sc_service::ChainType;
@@ -23,7 +42,7 @@ pub use primitives::{AccountId, Balance, Signature};
 type AccountPublic = <Signature as Verify>::Signer;
 
 const STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
-const ENDOWMENT: Balance = 10_000_000 * DOLLARS;
+const ENDOWMENT: Balance = 1 * DOLLARS;
 const STASH: Balance = ENDOWMENT / 1000;
 
 /// Node `ChainSpec` extensions.
@@ -33,6 +52,10 @@ const STASH: Balance = ENDOWMENT / 1000;
 #[derive(Default, Clone, Serialize, Deserialize, ChainSpecExtension)]
 #[serde(rename_all = "camelCase")]
 pub struct Extensions {
+    /// Block numbers with known hashes.
+    pub fork_blocks: sc_client_api::ForkBlocks<Block>,
+    /// Known bad block hashes.
+    pub bad_blocks: sc_client_api::BadBlocks<Block>,
     /// The light sync state extension used by the sync-state rpc.
     pub light_sync_state: sc_sync_state_rpc::LightSyncStateExtension,
 }
@@ -389,29 +412,9 @@ pub fn testnet_genesis(
             "slashRewardFraction": Perbill::from_percent(10),
             "stakers": stakers.clone(),
         },
-        "elections": {
-            "members": endowed_accounts
-                .iter()
-                .take((num_endowed_accounts + 1) / 2)
-                .cloned()
-                .map(|member| (member, STASH))
-                .collect::<Vec<_>>(),
-        },
-        "technicalCommittee": {
-            "members": endowed_accounts
-                .iter()
-                .take((num_endowed_accounts + 1) / 2)
-                .cloned()
-                .collect::<Vec<_>>(),
-        },
         "sudo": { "key": Some(root_key.clone()) },
         "babe": {
             "epochConfig": Some(acuity_runtime::BABE_GENESIS_EPOCH_CONFIG),
-        },
-        "society": { "pot": 0 },
-        "assets": {
-            // This asset is used by the NIS pallet as counterpart currency.
-            "assets": vec![(9, get_account_id_from_seed::<sr25519::Public>("Alice"), true, 1)],
         },
         "nominationPools": {
             "minCreateBond": 10 * DOLLARS,

@@ -28,6 +28,7 @@ claims = { package = "claims", path = "../pallets/claims", default-features = fa
 
 # primitives
 sp-authority-discovery = { version = "25.0.0", default-features = false }
+sp-arithmetic = { version = "22.0.0", default-features = false }
 sp-consensus-babe = { version = "0.31.0", default-features = false }
 sp-consensus-grandpa = { version = "12.0.0", default-features = false }
 sp-block-builder = { version = "25.0.0", default-features = false }
@@ -70,21 +71,17 @@ pallet-balances = { version = "27.0.0", default-features = false }
 pallet-bounties = { version = "26.0.0", default-features = false }
 # pallet-broker = { version = "0.5.0", default-features = false }
 pallet-child-bounties = { version = "26.0.0", default-features = false }
-pallet-collective = { version = "27.0.0", default-features = false }
 # pallet-contracts =  { version = "26.0.0", default-features = false }
 pallet-conviction-voting = { version = "27.0.0", default-features = false }
 # pallet-core-fellowship = { version = "11.0.0", default-features = false }
-pallet-democracy = { version = "27.0.0", default-features = false }
 pallet-election-provider-multi-phase = { version = "26.0.0", default-features = false }
 # pallet-election-provider-support-benchmarking = { version = "26.0.0", default-features = false, optional = true }
-pallet-elections-phragmen = { version = "28.0.0", default-features = false }
 pallet-fast-unstake = { version = "26.0.0", default-features = false }
 # pallet-nis = { version = "27.0.0", default-features = false }
 pallet-grandpa = { version = "27.0.0", default-features = false }
 pallet-im-online = { version = "26.0.0", default-features = false }
 pallet-indices = { version = "27.0.0", default-features = false }
 pallet-identity = { version = "27.0.0", default-features = false }
-pallet-membership = { version = "27.0.0", default-features = false }
 pallet-message-queue = { version = "30.0.0", default-features = false }
 # pallet-mmr = { version = "26.0.0", default-features = false }
 pallet-mixnet = { version = "0.3.0", default-features = false }
@@ -96,7 +93,6 @@ pallet-offences = { version = "26.0.0", default-features = false }
 # pallet-offences-benchmarking = { version = "27.0.0", default-features = false, optional = true }
 pallet-preimage = { version = "27.0.0", default-features = false }
 pallet-insecure-randomness-collective-flip = { version = "15.0.0", default-features = false }
-pallet-ranked-collective = { version = "27.0.0", default-features = false }
 pallet-recovery = { version = "27.0.0", default-features = false }
 pallet-referenda = { version = "27.0.0", default-features = false }
 pallet-remark = { version = "27.0.0", default-features = false }
@@ -110,7 +106,6 @@ pallet-statement = { version = "9.0.0", default-features = false }
 pallet-scheduler = { version = "28.0.0", default-features = false }
 pallet-sudo = { version = "27.0.0", default-features = false }
 pallet-timestamp = { version = "26.0.0", default-features = false }
-pallet-tips = { version = "26.0.0", default-features = false }
 pallet-treasury = { version = "26.0.0", default-features = false }
 pallet-utility = { version = "27.0.0", default-features = false }
 pallet-transaction-payment = { version = "27.0.0", default-features = false }
@@ -118,6 +113,7 @@ pallet-transaction-payment-rpc-runtime-api = { version = "27.0.0", default-featu
 pallet-transaction-storage = { version = "26.0.0", default-features = false }
 pallet-vesting = { version = "27.0.0", default-features = false }
 pallet-proxy = { version = "27.0.0", default-features = false }
+pallet-whitelist = { version = "26.0.0", default-features = false }
 
 pallet-acuity-orderbook = { git = 'https://github.com/acuity-social/acuity-orderbook-pallet', branch = "master", default-features = false }
 
@@ -157,21 +153,17 @@ std = [
 	"pallet-bounties/std",
 	# "pallet-broker/std",
 	"pallet-child-bounties/std",
-	"pallet-collective/std",
 	# "pallet-contracts/std",
 	"pallet-conviction-voting/std",
 	# "pallet-core-fellowship/std",
-	"pallet-democracy/std",
 	"pallet-election-provider-multi-phase/std",
 	# "pallet-election-provider-support-benchmarking?/std",
-	"pallet-elections-phragmen/std",
 	"pallet-fast-unstake/std",
 	"pallet-grandpa/std",
 	"pallet-identity/std",
 	"pallet-im-online/std",
 	"pallet-indices/std",
 	"pallet-insecure-randomness-collective-flip/std",
-	"pallet-membership/std",
 	"pallet-message-queue/std",
 	"pallet-mixnet/std",
 	# "pallet-mmr/std",
@@ -184,7 +176,6 @@ std = [
 	"pallet-offences/std",
 	"pallet-preimage/std",
 	"pallet-proxy/std",
-	"pallet-ranked-collective/std",
 	"pallet-recovery/std",
 	"pallet-referenda/std",
 	"pallet-remark/std",
@@ -197,17 +188,18 @@ std = [
 	"pallet-statement/std",
 	"pallet-sudo/std",
 	"pallet-timestamp/std",
-	"pallet-tips/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
 	"pallet-transaction-storage/std",
 	"pallet-treasury/std",
 	"pallet-utility/std",
 	"pallet-vesting/std",
+	"pallet-whitelist/std",
 	"scale-info/std",
 	# "serde_json/std",
 	"sp-api/std",
 	"sp-authority-discovery/std",
+	"sp-arithmetic/std",
 	"sp-block-builder/std",
 	"sp-consensus-babe/std",
 	"sp-consensus-grandpa/std",
@@ -249,20 +241,16 @@ runtime-benchmarks = [
 	"pallet-bounties/runtime-benchmarks",
 	# "pallet-broker/runtime-benchmarks",
 	"pallet-child-bounties/runtime-benchmarks",
-	"pallet-collective/runtime-benchmarks",
 	# "pallet-contracts/runtime-benchmarks",
 	"pallet-conviction-voting/runtime-benchmarks",
 	# "pallet-core-fellowship/runtime-benchmarks",
-	"pallet-democracy/runtime-benchmarks",
 	"pallet-election-provider-multi-phase/runtime-benchmarks",
 	# "pallet-election-provider-support-benchmarking/runtime-benchmarks",
-	"pallet-elections-phragmen/runtime-benchmarks",
 	"pallet-fast-unstake/runtime-benchmarks",
 	"pallet-grandpa/runtime-benchmarks",
 	"pallet-identity/runtime-benchmarks",
 	"pallet-im-online/runtime-benchmarks",
 	"pallet-indices/runtime-benchmarks",
-	"pallet-membership/runtime-benchmarks",
 	"pallet-message-queue/runtime-benchmarks",
 	"pallet-mixnet/runtime-benchmarks",
 	# "pallet-mmr/runtime-benchmarks",
@@ -274,7 +262,6 @@ runtime-benchmarks = [
 	"pallet-offences/runtime-benchmarks",
 	"pallet-preimage/runtime-benchmarks",
 	"pallet-proxy/runtime-benchmarks",
-	"pallet-ranked-collective/runtime-benchmarks",
 	"pallet-recovery/runtime-benchmarks",
 	"pallet-referenda/runtime-benchmarks",
 	"pallet-remark/runtime-benchmarks",
@@ -284,11 +271,11 @@ runtime-benchmarks = [
 	"pallet-state-trie-migration/runtime-benchmarks",
 	"pallet-sudo/runtime-benchmarks",
 	"pallet-timestamp/runtime-benchmarks",
-	"pallet-tips/runtime-benchmarks",
 	"pallet-transaction-storage/runtime-benchmarks",
 	"pallet-treasury/runtime-benchmarks",
 	"pallet-utility/runtime-benchmarks",
 	"pallet-vesting/runtime-benchmarks",
+	"pallet-whitelist/runtime-benchmarks",
 	"sp-runtime/runtime-benchmarks",
 	"sp-staking/runtime-benchmarks",
 ]
@@ -311,20 +298,16 @@ try-runtime = [
 	"pallet-bounties/try-runtime",
 	# "pallet-broker/try-runtime",
 	"pallet-child-bounties/try-runtime",
-	"pallet-collective/try-runtime",
 	# "pallet-contracts/try-runtime",
 	"pallet-conviction-voting/try-runtime",
 	# "pallet-core-fellowship/try-runtime",
-	"pallet-democracy/try-runtime",
 	"pallet-election-provider-multi-phase/try-runtime",
-	"pallet-elections-phragmen/try-runtime",
 	"pallet-fast-unstake/try-runtime",
 	"pallet-grandpa/try-runtime",
 	"pallet-identity/try-runtime",
 	"pallet-im-online/try-runtime",
 	"pallet-indices/try-runtime",
 	"pallet-insecure-randomness-collective-flip/try-runtime",
-	"pallet-membership/try-runtime",
 	"pallet-message-queue/try-runtime",
 	"pallet-mixnet/try-runtime",
 	# "pallet-mmr/try-runtime",
@@ -334,7 +317,6 @@ try-runtime = [
 	"pallet-offences/try-runtime",
 	"pallet-preimage/try-runtime",
 	"pallet-proxy/try-runtime",
-	"pallet-ranked-collective/try-runtime",
 	"pallet-recovery/try-runtime",
 	"pallet-referenda/try-runtime",
 	"pallet-remark/try-runtime",
@@ -345,11 +327,11 @@ try-runtime = [
 	"pallet-statement/try-runtime",
 	"pallet-sudo/try-runtime",
 	"pallet-timestamp/try-runtime",
-	"pallet-tips/try-runtime",
 	"pallet-transaction-payment/try-runtime",
 	"pallet-transaction-storage/try-runtime",
 	"pallet-treasury/try-runtime",
 	"pallet-utility/try-runtime",
 	"pallet-vesting/try-runtime",
+	"pallet-whitelist/try-runtime",
 	"sp-runtime/try-runtime",
 ]

@@ -23,6 +23,7 @@ pub mod currency {
 
     pub const ACU: Balance = 1_000_000_000_000_000_000;
     pub const DOLLARS: Balance = ACU;
+    pub const GRAND: Balance = DOLLARS * 1000;
     pub const CENTS: Balance = DOLLARS / 100;
     pub const MILLICENTS: Balance = CENTS / 1_000;
 
