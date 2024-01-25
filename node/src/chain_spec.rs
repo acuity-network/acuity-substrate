@@ -468,7 +468,6 @@ pub fn local_testnet_config() -> ChainSpec {
 pub(crate) mod tests {
     use super::*;
     use crate::service::{new_full_base, NewFullBase};
-    use sc_service_test;
     use sp_runtime::BuildStorage;
 
     /// Local testnet config (single validator - Alice).
@@ -494,30 +493,6 @@ pub(crate) mod tests {
             .with_chain_type(ChainType::Development)
             .with_genesis_config_patch(local_testnet_genesis())
             .build()
-    }
-
-    #[test]
-    #[ignore]
-    fn test_connectivity() {
-        sp_tracing::try_init_simple();
-
-        sc_service_test::connectivity(integration_test_config_with_two_authorities(), |config| {
-            let NewFullBase {
-                task_manager,
-                client,
-                network,
-                sync,
-                transaction_pool,
-                ..
-            } = new_full_base(config, None, false, |_, _| ())?;
-            Ok(sc_service_test::TestNetComponents::new(
-                task_manager,
-                client,
-                network,
-                sync,
-                transaction_pool,
-            ))
-        });
     }
 
     #[test]
