@@ -16,7 +16,7 @@
   ],
   "protocolId": "acu",
   "properties": {
-    "ss58Format": 42,
+    "ss58Format": 76,
     "tokenDecimals": 18,
     "tokenSymbol": "ACU"
   },
