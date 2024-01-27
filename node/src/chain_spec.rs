@@ -42,7 +42,7 @@ pub use primitives::{AccountId, Balance, Signature};
 type AccountPublic = <Signature as Verify>::Signer;
 
 const STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
-const ENDOWMENT: Balance = 1 * DOLLARS;
+const ENDOWMENT: Balance = 10 * 1000 * 1000 * DOLLARS;
 const STASH: Balance = ENDOWMENT / 1000;
 
 /// Node `ChainSpec` extensions.
@@ -62,8 +62,7 @@ pub struct Extensions {
 
 /// Specialized `ChainSpec`.
 pub type ChainSpec = sc_service::GenericChainSpec<RuntimeGenesisConfig, Extensions>;
-/// Flaming Fir testnet generator
-pub fn flaming_fir_config() -> Result<ChainSpec, String> {
+pub fn acuity_config() -> Result<ChainSpec, String> {
     ChainSpec::from_json_bytes(&include_bytes!("../res/acuity.json")[..])
 }
 

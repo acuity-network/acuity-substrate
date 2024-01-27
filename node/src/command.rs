@@ -55,7 +55,7 @@ impl SubstrateCli for Cli {
 
     fn load_spec(&self, id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
         let spec = match id {
-            "" | "acuity" => Box::new(chain_spec::development_config()),
+            "" | "acuity" => Box::new(chain_spec::acuity_config()?),
             "dev" => Box::new(chain_spec::development_config()),
             "local" => Box::new(chain_spec::local_testnet_config()),
             "staging" => Box::new(chain_spec::staging_testnet_config()),
