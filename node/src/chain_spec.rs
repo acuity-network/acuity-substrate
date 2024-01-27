@@ -42,7 +42,7 @@ pub use primitives::{AccountId, Balance, Signature};
 type AccountPublic = <Signature as Verify>::Signer;
 
 const STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
-const ENDOWMENT: Balance = 10 * 1000 * 1000 * DOLLARS;
+const ENDOWMENT: Balance = 1000 * DOLLARS;
 const STASH: Balance = ENDOWMENT / 1000;
 
 /// Node `ChainSpec` extensions.
@@ -296,7 +296,6 @@ fn configure_accounts(
         MixnetId,
     )>,
     Vec<AccountId>,
-    usize,
     Vec<(AccountId, AccountId, Balance, StakerStatus<AccountId>)>,
 ) {
     let mut endowed_accounts: Vec<AccountId> = endowed_accounts.unwrap_or_else(|| {
@@ -350,14 +349,7 @@ fn configure_accounts(
         }))
         .collect::<Vec<_>>();
 
-    let num_endowed_accounts = endowed_accounts.len();
-
-    (
-        initial_authorities,
-        endowed_accounts,
-        num_endowed_accounts,
-        stakers,
-    )
+    (initial_authorities, endowed_accounts, stakers)
 }
 
 /// Helper function to create RuntimeGenesisConfig json patch for testing.
@@ -375,7 +367,7 @@ pub fn testnet_genesis(
     root_key: AccountId,
     endowed_accounts: Option<Vec<AccountId>>,
 ) -> serde_json::Value {
-    let (initial_authorities, endowed_accounts, num_endowed_accounts, stakers) = configure_accounts(
+    let (initial_authorities, endowed_accounts, stakers) = configure_accounts(
         initial_authorities,
         initial_nominators,
         endowed_accounts,

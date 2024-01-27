@@ -106,7 +106,7 @@ pub fn create_full<C, P, SC, B>(
         babe,
         grandpa,
         statement_store,
-        backend,
+        backend: _,
         mixnet_api,
     }: FullDeps<C, P, SC, B>,
 ) -> Result<RpcModule<()>, Box<dyn std::error::Error + Send + Sync>>
